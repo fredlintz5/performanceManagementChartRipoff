@@ -200,7 +200,7 @@ function initApp() {
 
 function signOut() {
   firebase.auth().signOut()
-  	.then(() => window.location.assign("https://fredlintz5.github.io/performanceManagementChartRipoff/")
+  	.then(() => window.location.assign("https://fredlintz5.github.io/performanceManagementChartRipoff/"))
   	.catch(error => console.log(error));
 }
 

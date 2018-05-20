@@ -50,18 +50,8 @@ let chartObject = {
   } 
 };
 
-initApp = function() {
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      console.log(user + ' is logged in.')
-    } else {
-      console.log('Something is wrong...')
-    }
-  }, function(error) {
-    console.log(error);
-  });
-};
 
+initApp()
 getFirebaseData();
 // getFirebaseData2();
 
@@ -190,6 +180,18 @@ function postFirebaseData(object) {
 		body: `{"date": "${object.date}","tss": "${object.tss}"}`
 	})
 }
+
+function initApp() {
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      console.log(user + ' is logged in.')
+    } else {
+      console.log('Something is wrong...')
+    }
+  }, function(error) {
+    console.log(error);
+  });
+};
 
 // function getFirebaseData2() {
 // 	// if (chart.length) {

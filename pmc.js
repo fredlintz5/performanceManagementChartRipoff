@@ -55,7 +55,7 @@ let chartObject = {
 initApp()
 // getFirebaseData2();
 
-document.getElementById("submitVisibleDates").addEventListener("click", function(event){
+document.getElementById("submitVisibleDates").addEventListener("click", event => {
 	event.preventDefault();
 	visibleDates = document.getElementById("visibleDatesInput").value;
 	chartObject.data.labels = [];
@@ -63,7 +63,7 @@ document.getElementById("submitVisibleDates").addEventListener("click", function
 	document.getElementById("visibleDatesInput").value = "";
 })
 
-document.getElementById("submitTSS").addEventListener("click", function(event){
+document.getElementById("submitTSS").addEventListener("click", event => {
 	event.preventDefault();
 
 	let submittedTSS = document.getElementById("submittedTSS").value;
@@ -158,7 +158,7 @@ function getFirebaseData(uid) {
 		.then(response => {
 
 			if (response === null) {
-				alert(You have no Data, start adding data to get chart!);
+				alert('You have no Data, start adding data to get chart display!');
 			} else {
 				let responseArray = [];
 				let responseKeys = Object.keys(response);
@@ -172,7 +172,7 @@ function getFirebaseData(uid) {
 					responseArray.unshift(responseObject);
 				})
 
-				fireBaseData = responseArray.sort(function(a, b){return b.values.date - a.values.date});
+				fireBaseData = responseArray.sort(a, b => b.values.date - a.values.date);
 			}
 		})
 		.then(response => createChart(visibleDates));
@@ -187,16 +187,14 @@ function postFirebaseData(object) {
 }
 
 function initApp() {
-  firebase.auth().onAuthStateChanged(function(user) {
+  firebase.auth().onAuthStateChanged(user => {
     if (user) {
       uid = user.uid;
       getFirebaseData(uid);
     } else {
       window.location.href = "https://fredlintz5.github.io/performanceManagementChartRipoff/";
     }
-  }, function(error) {
-    console.log(error);
-  });
+  }, error => console.log(error));
 };
 
 

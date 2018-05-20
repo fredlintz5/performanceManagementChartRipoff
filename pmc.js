@@ -153,7 +153,7 @@ function getFirebaseData(uid) {
 		chart.destroy();
 	}
 	console.log(uid);
-	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}}/.json`)
+	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/.json`)
 		.then(response => response.json())
 		.then(response => {
 			console.log(response);

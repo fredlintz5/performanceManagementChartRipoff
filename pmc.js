@@ -153,10 +153,11 @@ function getFirebaseData(uid) {
 	if (chart.length) {
 		chart.destroy();
 	}
-	
+	console.log(uid);
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}}/.json`)
 		.then(response => response.json())
 		.then(response => {
+			console.log(response);
 			let responseArray = [];
 			let responseKeys = Object.keys(response);
 			let responseValues = Object.values(response);

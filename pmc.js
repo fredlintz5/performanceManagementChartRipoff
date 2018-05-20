@@ -159,6 +159,7 @@ function getFirebaseData(uid) {
 
 			if (response === null) {
 				alert('You have no Data, start adding data to get chart display!');
+				return;
 			} else {
 				let responseArray = [];
 				let responseKeys = Object.keys(response);

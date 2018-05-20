@@ -11,22 +11,22 @@
 </head>
 <body>
 
-<div class="container">
-	<div class="row text-center">
-		<div class="form-inline" style="margin: 15px 0px 15px 0px">
-			<input class="form-control" id="visibleDatesInput" type="numeric" placeholder="Visible Dates">
-			<input class="form-control btn btn-default" id="submitVisibleDates" type="button" value="Update">
-			<input class="form-control" id="submittedTSS" type="numeric" placeholder="TSS" style="margin-left: 80px">
-		  <input class="form-control" id="submittedDate" type="date">
-		  <input class="form-control btn btn-default" id="submitTSS" type="button" value="Submit">
-		</form>
+	<div class="container">
+		<div class="row text-center">
+			<div class="form-inline" style="margin: 15px 0px 15px 0px">
+				<input class="form-control" id="visibleDatesInput" type="numeric" placeholder="Visible Dates">
+				<input class="form-control btn btn-default" id="submitVisibleDates" type="button" value="Update">
+				<input class="form-control" id="submittedTSS" type="numeric" placeholder="TSS" style="margin-left: 80px">
+			  <input class="form-control" id="submittedDate" type="date">
+			  <input class="form-control btn btn-default" id="submitTSS" type="button" value="Submit">
+			</form>
+		</div>
+
+		<div class="row">
+			<canvas id="powerGraph"></canvas>
+		</div>
 	</div>
 
-	<div class="row">
-		<canvas id="powerGraph"></canvas>
-	</div>
-</div>
-
-<script src="pmc.js"></script>
+	<script src="pmc.js"></script>
 </body>
 </html>

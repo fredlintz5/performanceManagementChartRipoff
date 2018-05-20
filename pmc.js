@@ -53,7 +53,6 @@ let chartObject = {
 
 
 initApp()
-getFirebaseData(uid);
 // getFirebaseData2();
 
 document.getElementById("submitVisibleDates").addEventListener("click", function(event){
@@ -187,6 +186,7 @@ function initApp() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       uid = user.uid;
+      getFirebaseData(uid);
     } else {
       window.location.href = "https://fredlintz5.github.io/performanceManagementChartRipoff/";
     }

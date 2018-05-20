@@ -10,6 +10,7 @@ var config = {
 firebase.initializeApp(config);
 
 let chart = '';
+let uid = '';
 let visibleDates = 30;
 let ctx = document.getElementById('powerGraph').getContext('2d');
 let fireBaseData = [];
@@ -52,7 +53,7 @@ let chartObject = {
 
 
 initApp()
-getFirebaseData();
+getFirebaseData(uid);
 // getFirebaseData2();
 
 document.getElementById("submitVisibleDates").addEventListener("click", function(event){
@@ -148,12 +149,12 @@ function createBubbleChartData(howMany, data) {
 	}
 }
 
-function getFirebaseData() {
+function getFirebaseData(uid) {
 	if (chart.length) {
 		chart.destroy();
 	}
 	
-	fetch('https://performance-management-chart.firebaseio.com/users/8APzI8H9ZdYROAZ8NZzH30GWj492/.json')
+	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}}/.json`)
 		.then(response => response.json())
 		.then(response => {
 			let responseArray = [];
@@ -184,9 +185,9 @@ function postFirebaseData(object) {
 function initApp() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      console.log(user + ' is logged in.')
+      uid = user.uid;
     } else {
-      console.log('Something is wrong...')
+      window.location.href = "https://fredlintz5.github.io/performanceManagementChartRipoff/";
     }
   }, function(error) {
     console.log(error);

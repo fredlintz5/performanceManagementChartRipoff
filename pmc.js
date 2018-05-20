@@ -42,6 +42,7 @@ let chartObject = {
 };
 
 getFirebaseData();
+// getFirebaseData2();
 
 document.getElementById("submitVisibleDates").addEventListener("click", function(event){
 	event.preventDefault();
@@ -141,7 +142,7 @@ function getFirebaseData() {
 		chart.destroy();
 	}
 	
-	fetch('https://performance-management-chart.firebaseio.com/.json')
+	fetch('https://performance-management-chart.firebaseio.com/users/8APzI8H9ZdYROAZ8NZzH30GWj492/.json')
 		.then(response => response.json())
 		.then(response => {
 			let responseArray = [];
@@ -162,12 +163,49 @@ function getFirebaseData() {
 }
 
 function postFirebaseData(object) {
-	fetch('https://performance-management-chart.firebaseio.com/.json', {
+	fetch('https://performance-management-chart.firebaseio.com/users/8APzI8H9ZdYROAZ8NZzH30GWj492/.json', {
 		method: 'POST',
 		type: 'JSON',
 		body: `{"date": "${object.date}","tss": "${object.tss}"}`
 	})
 }
+
+// function getFirebaseData2() {
+// 	// if (chart.length) {
+// 	// 	chart.destroy();
+// 	// }
+	
+// 	fetch('https://performance-management-chart.firebaseio.com/.json')
+// 		.then(response => response.json())
+// 		.then(response => {
+// 			console.log(response);
+// 			let responseArray = [];
+// 			let responseKeys = Object.keys(response);
+// 			let responseValues = Object.values(response);
+
+// 			responseKeys.forEach((value, index) => {
+// 				let responseObject = new Object();
+
+// 				responseObject.key = value;
+// 				responseObject.values = responseValues[index];
+// 				// console.log(responseObject);
+// 				postFirebaseData2(responseObject.values);
+// 			})
+// 		})
+// }
+
+// function postFirebaseData2(object) {
+// 	fetch('https://performance-management-chart.firebaseio.com/users/8APzI8H9ZdYROAZ8NZzH30GWj492/.json', {
+// 		method: 'POST',
+// 		type: 'JSON',
+// 		body: `{"date": "${object.date}","tss": "${object.tss}"}`
+// 	})
+// }
+
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.
 // Fatigue (ATL) is a 7 day average of your TSS that accounts for the workouts you have done recently.
 // Form (TSB) is the balance of TSS equal to yesterday's fitness minus yesterday's fatigue.
+
+
+
+

@@ -152,30 +152,34 @@ function getFirebaseData(uid) {
 	if (chart.length) {
 		chart.destroy();
 	}
-	console.log(uid);
+
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/.json`)
 		.then(response => response.json())
 		.then(response => {
-			console.log(response);
-			let responseArray = [];
-			let responseKeys = Object.keys(response);
-			let responseValues = Object.values(response);
 
-			responseKeys.forEach((value, index) => {
-				let responseObject = new Object();
+			if (response === null) {
+				alert(You have no Data, start adding data to get chart!);
+			} else {
+				let responseArray = [];
+				let responseKeys = Object.keys(response);
+				let responseValues = Object.values(response);
 
-				responseObject.key = value;
-				responseObject.values = responseValues[index];
-				responseArray.unshift(responseObject);
-			})
+				responseKeys.forEach((value, index) => {
+					let responseObject = new Object();
 
-			fireBaseData = responseArray.sort(function(a, b){return b.values.date - a.values.date});
+					responseObject.key = value;
+					responseObject.values = responseValues[index];
+					responseArray.unshift(responseObject);
+				})
+
+				fireBaseData = responseArray.sort(function(a, b){return b.values.date - a.values.date});
+			}
 		})
 		.then(response => createChart(visibleDates));
 }
 
 function postFirebaseData(object) {
-	fetch('https://performance-management-chart.firebaseio.com/users/8APzI8H9ZdYROAZ8NZzH30GWj492/.json', {
+	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/.json`, {
 		method: 'POST',
 		type: 'JSON',
 		body: `{"date": "${object.date}","tss": "${object.tss}"}`
@@ -195,42 +199,7 @@ function initApp() {
   });
 };
 
-// function getFirebaseData2() {
-// 	// if (chart.length) {
-// 	// 	chart.destroy();
-// 	// }
-	
-// 	fetch('https://performance-management-chart.firebaseio.com/.json')
-// 		.then(response => response.json())
-// 		.then(response => {
-// 			console.log(response);
-// 			let responseArray = [];
-// 			let responseKeys = Object.keys(response);
-// 			let responseValues = Object.values(response);
-
-// 			responseKeys.forEach((value, index) => {
-// 				let responseObject = new Object();
-
-// 				responseObject.key = value;
-// 				responseObject.values = responseValues[index];
-// 				// console.log(responseObject);
-// 				postFirebaseData2(responseObject.values);
-// 			})
-// 		})
-// }
-
-// function postFirebaseData2(object) {
-// 	fetch('https://performance-management-chart.firebaseio.com/users/8APzI8H9ZdYROAZ8NZzH30GWj492/.json', {
-// 		method: 'POST',
-// 		type: 'JSON',
-// 		body: `{"date": "${object.date}","tss": "${object.tss}"}`
-// 	})
-// }
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.
 // Fatigue (ATL) is a 7 day average of your TSS that accounts for the workouts you have done recently.
 // Form (TSB) is the balance of TSS equal to yesterday's fitness minus yesterday's fatigue.
-
-
-
-

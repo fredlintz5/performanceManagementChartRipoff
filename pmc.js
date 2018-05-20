@@ -193,10 +193,16 @@ function initApp() {
       uid = user.uid;
       getFirebaseData(uid);
     } else {
-      window.location.href = "https://fredlintz5.github.io/performanceManagementChartRipoff/";
+      window.location.assign("https://fredlintz5.github.io/performanceManagementChartRipoff/");
     }
   }, error => console.log(error));
 };
+
+function signOut() {
+  firebase.auth().signOut()
+  	.then(() => window.location.assign("https://fredlintz5.github.io/performanceManagementChartRipoff/")
+  	.catch(error => console.log(error));
+}
 
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.

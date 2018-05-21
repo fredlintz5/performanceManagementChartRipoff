@@ -56,37 +56,25 @@ let chartObject = {
   	}, 
   	scales: {
       yAxes: [{
-      	gridLines: {
-          display:false
-      	}
-      },{
         id: 'A',
         type: 'linear',
         position: 'right',
-        max: 100,
-        min: 0
+        ticks: {max: 100,min: 0},
+        gridlines: {display: false}
       }, {
         id: 'B',
         type: 'linear',
         position: 'left',
-        ticks: {
-          max: 30,
-          min: -30
-        }
+        ticks: {max: 30,min: -30},
+        gridlines: {display: false}
       }, {
         id: 'C',
         type: 'linear',
         position: 'right',
-        ticks: {
-          max: 200,
-          min: 0
-        }
+        ticks: {max: 200,min: 0},
+        gridlines: {display: false}
       }],
-      xAxes: [{
-      	gridLines: {
-          display:false
-      	}
-    	}]
+      xAxes: [{gridLines: {display:false}}]
     }
   } 
 };

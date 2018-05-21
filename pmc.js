@@ -122,11 +122,10 @@ function setChartDateLabels(howMany) {
 function calulateATLData(days, data) {
 	let atlTSS, tss;
 	let newArray = data;
-	let arrayLength = newArray.length;
 
 	for (let i = 0; i < days; i++) {
 		atlTSS = 0;
-		for (let j = 0; j < arrayLength; j++) {
+		for (let j = 0; j < newArray.length; j++) {
 			tss = parseInt(newArray[j].values.tss);
 
 			i < 7 ? atlTSS += tss : break;

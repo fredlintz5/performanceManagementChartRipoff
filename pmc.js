@@ -190,7 +190,7 @@ function getFirebaseData(uid) {
 				firebaseData = responseArray.sort((a, b) => b.values.date - a.values.date);
 				console.log(firebaseData);
 				// createChart(visibleDates, newDataArray);
-}
+			}
 
 
 
@@ -205,7 +205,7 @@ function getFirebaseData(uid) {
 
 				// fireBaseData = responseArray.sort((a, b) => b.values.date - a.values.date);
 				// addZeroTSSDaysToData(visibleDates,fireBaseData);
-			}
+			// }
 		})
 }
 

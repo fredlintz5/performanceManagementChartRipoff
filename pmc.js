@@ -166,11 +166,11 @@ function getFirebaseData(uid) {
 				// let responseKeys = Object.keys(response);
 				let responseValues = Object.values(response);
 
-				for (var i = 0; i < howMany; i++) {
+				for (var i = 0; i < visibleDates; i++) {
 					descendingDates.push(moment.unix(startDate).subtract(i, 'days').format('M/DD'));
 				}
 
-				for (var j = 0; j < descendingDates.length; j++) {
+				for (var j = 0; j < responseValues.length; j++) {
 					let pushZero = false;
 					for (var k = 0; k < responseValues.length; k++) {
 						let compareDate = moment.unix(responseValues[k].date).format('M/DD');

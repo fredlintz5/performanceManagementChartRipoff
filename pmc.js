@@ -147,27 +147,6 @@ function calulateGraphData(data) {
 	}		
 }
 
-// function createBubbleChartData(howMany, data) {
-	
-// 	for (var j = 0; j < descendingDates.length; j++) {
-// 		let pushZero = false;
-// 		for (var k = 0; k < data.length; k++) {
-// 			let compareDate = moment.unix(data[k].values.date).format('M/DD');
-
-// 			if (descendingDates[j] === compareDate) {
-// 				chartObject.data.datasets[3].data.unshift({y: data[k].values.tss, r: 3});	
-// 				pushZero = false;
-// 				break;
-// 			} else {
-// 				pushZero = true;	
-// 			}
-// 		}
-// 		if (pushZero) {
-// 			chartObject.data.datasets[3].data.unshift({y: 0, r: 3});
-// 		} 
-// 	}
-// }
-
 function getFirebaseData(uid) {
 	if (chart.length) {
 		chart.destroy();
@@ -178,60 +157,91 @@ function getFirebaseData(uid) {
 		.then(response => {
 
 			if (response === null) {
-				alert('Add some data to get Charts to Dsiplay');
+				alert('Add some data to get Charts to Display');
 				return;
 			} else {
+				let descendingDates = [];
+				let startDate = moment().unix();
 				let responseArray = [];
-				let responseKeys = Object.keys(response);
+				// let responseKeys = Object.keys(response);
 				let responseValues = Object.values(response);
 
-				responseKeys.forEach((value, index) => {
-					let responseObject = new Object();
+				for (var i = 0; i < howMany; i++) {
+					descendingDates.push(moment.unix(startDate).subtract(i, 'days').format('M/DD'));
+				}
 
-					responseObject.key = value;
-					responseObject.values = responseValues[index];
-					responseArray.push(responseObject);
-				})
+				for (var j = 0; j < descendingDates.length; j++) {
+					let pushZero = false;
+					for (var k = 0; k < responseValues.length; k++) {
+						let compareDate = moment.unix(responseValues[k].date).format('M/DD');
 
-				fireBaseData = responseArray.sort((a, b) => b.values.date - a.values.date);
-				addZeroTSSDaysToData(visibleDates,fireBaseData);
+						if (descendingDates[j] === compareDate) {
+							responseArray.push(responseValues[k]);	
+							pushZero = false;
+							break;
+						} else {
+							pushZero = true;	
+						}
+					}
+					if (pushZero) {
+						responseArray.push({date: moment.unix(descendingDates[j]), tss: 0});
+					} 
+				}
+				firebaseData = responseArray.sort((a, b) => b.values.date - a.values.date);
+				console.log(firebaseData);
+				// createChart(visibleDates, newDataArray);
+}
+
+
+
+
+				// responseKeys.forEach((value, index) => {
+				// 	let responseObject = new Object();
+
+				// 	responseObject.key = value;
+				// 	responseObject.values = responseValues[index];
+				// 	responseArray.push(responseObject);
+				// })
+
+				// fireBaseData = responseArray.sort((a, b) => b.values.date - a.values.date);
+				// addZeroTSSDaysToData(visibleDates,fireBaseData);
 			}
 		})
 }
 
-function addZeroTSSDaysToData(howMany, data) {
-	let descendingDates = [];
-	let startDate = moment().unix();
-	let newDataArray = [];
+// function addZeroTSSDaysToData(howMany, data) {
+// 	let descendingDates = [];
+// 	let startDate = moment().unix();
+// 	let newDataArray = [];
 
-	for (var i = 0; i < howMany; i++) {
-		descendingDates.push(moment.unix(startDate).subtract(i, 'days').format('M/DD'));
-	}
+// 	for (var i = 0; i < howMany; i++) {
+// 		descendingDates.push(moment.unix(startDate).subtract(i, 'days').format('M/DD'));
+// 	}
 
-	for (var j = 0; j < descendingDates.length; j++) {
-		let pushZero = false;
-		for (var k = 0; k < data.length; k++) {
-			let compareDate = moment.unix(data[k].values.date).format('M/DD');
+// 	for (var j = 0; j < descendingDates.length; j++) {
+// 		let pushZero = false;
+// 		for (var k = 0; k < data.length; k++) {
+// 			let compareDate = moment.unix(data[k].values.date).format('M/DD');
 
-			if (descendingDates[j] === compareDate) {
-				newDataArray.push(data[k]);	
-				pushZero = false;
-				break;
-			} else {
-				pushZero = true;	
-			}
-		}
-		if (pushZero) {
-			let responseObject = new Object();
+// 			if (descendingDates[j] === compareDate) {
+// 				newDataArray.push(data[k]);	
+// 				pushZero = false;
+// 				break;
+// 			} else {
+// 				pushZero = true;	
+// 			}
+// 		}
+// 		if (pushZero) {
+// 			let responseObject = new Object();
 
-			responseObject.key = [k];
-			responseObject.values = {date: descendingDates[j], tss: 0};
-			newDataArray.push(responseObject);
-		} 
-	}
-	newDataArray.sort((a, b) => b.values.date - a.values.date);
-	createChart(visibleDates, newDataArray);
-}
+// 			responseObject.key = [k];
+// 			responseObject.values = {date: descendingDates[j], tss: 0};
+// 			newDataArray.push(responseObject);
+// 		} 
+// 	}
+// 	newDataArray.sort((a, b) => b.values.date - a.values.date);
+// 	createChart(visibleDates, newDataArray);
+// }
 
 function postFirebaseData(object) {
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/.json`, {

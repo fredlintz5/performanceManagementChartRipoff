@@ -44,7 +44,7 @@ let chartObject = {
     }, {
     		type: 'bubble',
         label: 'Daily TSS',
-        yAxisID: 'A',
+        yAxisID: 'C',
         backgroundColor: 'rgba(253, 101, 133, 0.6)',
       	borderColor: 'rgba(253, 101, 133, 0.8)',
         data: []
@@ -59,6 +59,7 @@ let chartObject = {
         id: 'A',
         type: 'linear',
         position: 'right',
+        max: 100,
         min: 0
       }, {
         id: 'B',
@@ -67,6 +68,14 @@ let chartObject = {
         ticks: {
           max: 30,
           min: -30
+        }
+      }, {
+        id: 'C',
+        type: 'linear',
+        position: 'right',
+        ticks: {
+          max: 200,
+          min: 0
         }
       }]
     }

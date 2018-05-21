@@ -158,8 +158,7 @@ function getFirebaseData(uid) {
 		.then(response => {
 
 			if (response === null) {
-				alert('You have no Data, start adding data to get chart display!');
-				return;
+				document.getElementById('dataAlert')
 			} else {
 				let responseArray = [];
 				let responseKeys = Object.keys(response);
@@ -174,9 +173,9 @@ function getFirebaseData(uid) {
 				})
 
 				fireBaseData = responseArray.sort(a, b => b.values.date - a.values.date);
+				createChart(visibleDates);
 			}
 		})
-		.then(response => createChart(visibleDates));
 }
 
 function postFirebaseData(object) {

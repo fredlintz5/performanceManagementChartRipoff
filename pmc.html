@@ -4,7 +4,10 @@
 	<meta charset="UTF-8">
 	<title>PMC - Charts</title>
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
@@ -12,15 +15,31 @@
 <body>
 
 	<div class="container">
-		<div class="row text-center">
-			<div class="form-inline" style="margin: 15px 0px 15px 0px">
-				<input class="form-control" id="visibleDatesInput" type="numeric" placeholder="Visible Dates">
-				<input class="form-control btn btn-default" id="submitVisibleDates" type="button" value="Update">
-				<input class="form-control" id="submittedTSS" type="numeric" placeholder="TSS" style="margin-left: 80px">
-			  <input class="form-control" id="submittedDate" type="date">
-			  <input class="form-control btn btn-default" id="submitTSS" type="button" value="Submit">
-			  <input class="form-control btn btn-danger" onsubmit="signOut()" type="button" value="Log Out">
-			</form>
+		<div class="row text-center" style="margin: 30px 0px 10px 0px">
+			<div class="col-sm-3 text-left">				
+				<span class="input-group">
+					<input class="form-control" id="visibleDatesInput" type="numeric" placeholder="Visible Dates">
+					<span class="input-group-btn">
+						<button class="btn btn-secondary" id="submitVisibleDates" type="button">Update</button>
+					</span>
+				</span>
+			</div>
+			<div class="col-sm-6 text-center">
+				<div class="form-inline">
+					<input class="form-control" id="submittedTSS" type="numeric" placeholder="TSS">
+				  <input class="form-control" id="submittedDate" type="date" style="padding: .375rem .75rem">
+				  <button class="btn btn-secondary" id="submitTSS" type="button">Submit</button>
+				</div>
+			</div>
+			<div class="col-sm-3 text-right">
+				<input class="form-control btn btn-outline-danger" onsubmit="signOut()" type="button" value="Log Out">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="alert alert-success" role="alert">You have No Data, Add some TSS values to Get Chart Displays</div>
+			</div>
 		</div>
 
 		<div class="row">

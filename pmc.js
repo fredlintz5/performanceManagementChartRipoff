@@ -110,6 +110,13 @@ function createChart(days) {
 	chart = new Chart(ctx, chartObject);
 }
 
+function setChartDateLabels(howMany) {
+	chartObject.data.labels.unshift(moment().add(1, 'days').format("M/DD"));
+	for (var i = 0; i < howMany; i++) {
+		chartObject.data.labels.unshift(moment().subtract(i, 'days').format("M/DD"));
+	}
+}
+
 function calulateGraphData(days, data) {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
 
@@ -139,13 +146,6 @@ function calulateGraphData(days, data) {
 		chartObject.data.datasets[1].data.unshift(ATL);
 		chartObject.data.datasets[2].data.unshift(TSB);
 	}		
-}
-
-function setChartDateLabels(howMany) {
-	chartObject.data.labels.unshift(moment().add(1, 'days').format("M/DD"));
-	for (var i = 0; i < howMany; i++) {
-		chartObject.data.labels.unshift(moment().subtract(i, 'days').format("M/DD"));
-	}
 }
 
 function createBubbleChartData(howMany, data) {
@@ -197,7 +197,7 @@ function getFirebaseData(uid) {
 
 					responseObject.key = value;
 					responseObject.values = responseValues[index];
-					responseArray.shift(responseObject);
+					responseArray.push(responseObject);
 				})
 
 				fireBaseData = responseArray.sort((a, b) => a.values.date - b.values.date);

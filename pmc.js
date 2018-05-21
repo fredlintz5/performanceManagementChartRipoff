@@ -158,7 +158,13 @@ function getFirebaseData(uid) {
 		.then(response => {
 
 			if (response === null) {
-				document.getElementById('dataAlert')
+				let alert = document.getElementsByClassName('alert');
+
+		    if (alert.style.display === "none") {
+		        alert.style.display = "block";
+		    } else {
+		        alert.style.display = "none";
+		    }
 			} else {
 				let responseArray = [];
 				let responseKeys = Object.keys(response);

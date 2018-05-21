@@ -222,7 +222,11 @@ function addZeroTSSDaysToData(howMany, data) {
 			}
 		}
 		if (pushZero) {
-			newDataArray.push({[k]: values {date: descendingDates[j], tss: 0});
+			let responseObject = new Object();
+
+			responseObject.key = [k];
+			responseObject.values = {date: descendingDates[j], tss: 0};
+			newDataArray.push(responseObject);
 		} 
 	}
 	newDataArray.sort((a, b) => b.values.date - a.values.date);

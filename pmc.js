@@ -106,7 +106,7 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 
 function createChart(days, data) {
 	setChartDateLabels(days);
-	calulateGraphData(days, data);
+	calulateGraphData(data);
 	chart = new Chart(ctx, chartObject);
 }
 
@@ -117,10 +117,10 @@ function setChartDateLabels(howMany) {
 	}
 }
 
-function calulateGraphData(days, data) {
+function calulateGraphData(data) {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
 
-	for (var i = 0; i < days; i++) {
+	for (var i = 0; i < data.length; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
 		chartObject.data.datasets[3].data.unshift({y: data[i].values.tss, r: 3});

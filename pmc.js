@@ -11,7 +11,7 @@ firebase.initializeApp(config);
 
 let chart = '';
 let uid = '';
-let visibleDates = 45;
+let visibleDates = 60;
 let ctx = document.getElementById('powerGraph').getContext('2d');
 let fireBaseData = [];
 let chartObject = {

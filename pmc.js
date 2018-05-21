@@ -56,6 +56,10 @@ let chartObject = {
   	}, 
   	scales: {
       yAxes: [{
+      	gridLines: {
+          display:false
+      	}
+      },{
         id: 'A',
         type: 'linear',
         position: 'right',
@@ -77,7 +81,12 @@ let chartObject = {
           max: 200,
           min: 0
         }
-      }]
+      }],
+      xAxes: [{
+      	gridLines: {
+          display:false
+      	}
+    	}]
     }
   } 
 };

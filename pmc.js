@@ -60,7 +60,7 @@ let chartObject = {
         id: 'A',
         type: 'linear',
         position: 'right',
-        ticks: {max: 100,min: 0},
+        ticks: {max: 150,min: 0},
         gridlines: {display: false}
       }, {
         id: 'B',
@@ -72,7 +72,7 @@ let chartObject = {
         id: 'C',
         type: 'linear',
         position: 'right',
-        ticks: {max: 200,min: 0},
+        ticks: {max: 250,min: 0},
         gridlines: {display: false}
       }],
       xAxes: [{gridLines: {display:false}}]
@@ -232,7 +232,6 @@ function signOut() {
   	.then(() => window.location.assign("https://fredlintz5.github.io/performanceManagementChartRipoff/"))
   	.catch(error => console.log(error));
 }
-
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.
 // Fatigue (ATL) is a 7 day average of your TSS that accounts for the workouts you have done recently.

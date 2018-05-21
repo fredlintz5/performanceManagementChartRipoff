@@ -173,7 +173,7 @@ function getFirebaseData(uid) {
 					responseArray.unshift(responseObject);
 				})
 
-				fireBaseData = responseArray.sort(a, b => b.values.date - a.values.date);
+				fireBaseData = responseArray.sort((a, b) => b.values.date - a.values.date);
 				createChart(visibleDates);
 			}
 		})

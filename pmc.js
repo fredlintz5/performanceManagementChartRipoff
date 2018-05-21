@@ -128,7 +128,7 @@ function calulateATLData(days, data) {
 		for (let j = 0; j < newArray.length; j++) {
 			tss = parseInt(newArray[j].values.tss);
 
-			i < 7 ? atlTSS += tss : break;
+			if (i < 7) {atlTSS += tss;} else {break;}
 		}
 		newArray.shift();
 

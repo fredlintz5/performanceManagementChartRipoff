@@ -106,6 +106,7 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 
 function createChart(days) {
 	setChartDateLabels(days);
+	createBubbleChartData(days, fireBaseData);
 	calulateGraphData(days, fireBaseData);
 	chart = new Chart(ctx, chartObject);
 }
@@ -120,12 +121,10 @@ function setChartDateLabels(howMany) {
 function calulateGraphData(days, data) {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
 
-	createBubbleChartData(days, data);
-
 	for (var i = 0; i < days; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
-		data.forEach(function(item, index){
+		data.forEach((item, index) => {
 			tss = parseInt(item.values.tss);
 
 			if (index > 42) {

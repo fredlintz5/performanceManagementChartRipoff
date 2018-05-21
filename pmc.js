@@ -65,7 +65,7 @@ let chartObject = {
         type: 'linear',
         position: 'left',
         ticks: {
-          max: 10,
+          max: 30,
           min: -30
         }
       }]

@@ -123,6 +123,7 @@ function calulateGraphData(days, data) {
 	for (var i = 0; i < days; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
+		chartObject.data.datasets[3].data.unshift({y: data[i].values.tss, r: 3});
 		data.forEach((item, index) => {
 			tss = parseInt(item.values.tss);
 
@@ -146,32 +147,26 @@ function calulateGraphData(days, data) {
 	}		
 }
 
-function createBubbleChartData(howMany, data) {
-	let descendingDates = [];
-	let startDate = data[0].values.date;
+// function createBubbleChartData(howMany, data) {
+	
+// 	for (var j = 0; j < descendingDates.length; j++) {
+// 		let pushZero = false;
+// 		for (var k = 0; k < data.length; k++) {
+// 			let compareDate = moment.unix(data[k].values.date).format('M/DD');
 
-	for (var i = 0; i < howMany; i++) {
-		descendingDates.push(moment.unix(startDate).subtract(i, 'days').format('M/DD'));
-	}
-
-	for (var j = 0; j < descendingDates.length; j++) {
-		let pushZero = false;
-		for (var k = 0; k < data.length; k++) {
-			let compareDate = moment.unix(data[k].values.date).format('M/DD');
-
-			if (descendingDates[j] === compareDate) {
-				chartObject.data.datasets[3].data.unshift({y: data[k].values.tss, r: 3});	
-				pushZero = false;
-				break;
-			} else {
-				pushZero = true;	
-			}
-		}
-		if (pushZero) {
-			chartObject.data.datasets[3].data.unshift({y: 0, r: 3});
-		} 
-	}
-}
+// 			if (descendingDates[j] === compareDate) {
+// 				chartObject.data.datasets[3].data.unshift({y: data[k].values.tss, r: 3});	
+// 				pushZero = false;
+// 				break;
+// 			} else {
+// 				pushZero = true;	
+// 			}
+// 		}
+// 		if (pushZero) {
+// 			chartObject.data.datasets[3].data.unshift({y: 0, r: 3});
+// 		} 
+// 	}
+// }
 
 function getFirebaseData(uid) {
 	if (chart.length) {
@@ -227,7 +222,7 @@ function addZeroTSSDaysToData(howMany, data) {
 			}
 		}
 		if (pushZero) {
-			newDataArray.push({[k]: values: {date: descendingDates[j], tss: 0}});
+			newDataArray.push({[k]: values {date: descendingDates[j], tss: 0});
 		} 
 	}
 	newDataArray.sort((a, b) => b.values.date - a.values.date);

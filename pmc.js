@@ -11,7 +11,7 @@ firebase.initializeApp(config);
 
 let chart = '';
 let uid = '';
-let visibleDates = 30;
+let visibleDates = 45;
 let ctx = document.getElementById('powerGraph').getContext('2d');
 let fireBaseData = [];
 let chartObject = {
@@ -51,15 +51,13 @@ let chartObject = {
   } 
 };
 
-
 initApp()
-// getFirebaseData2();
 
 document.getElementById("submitVisibleDates").addEventListener("click", event => {
 	event.preventDefault();
 	visibleDates = document.getElementById("visibleDatesInput").value;
 	chartObject.data.labels = [];
-	getFirebaseData();
+	getFirebaseData(uid);
 	document.getElementById("visibleDatesInput").value = "";
 })
 
@@ -71,7 +69,7 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 	let convertedDate = moment(submittedDate).unix();
 
 	postFirebaseData({date: convertedDate,tss: submittedTSS});
-	getFirebaseData();
+	getFirebaseData(uid);
 
 	document.getElementById("submittedTSS").value = "";
 	document.getElementById("submittedDate").value = "";

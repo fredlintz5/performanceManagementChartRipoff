@@ -123,9 +123,9 @@ function calulateGraphData(data) {
 	for (var i = 0; i < data.length; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
-		chartObject.data.datasets[3].data.unshift({y: data[i].values.tss, r: 3});
+		chartObject.data.datasets[3].data.unshift({y: data[i].tss, r: 3});
 		data.forEach((item, index) => {
-			tss = parseInt(item.values.tss);
+			tss = parseInt(item.tss);
 
 			if (index > 42) {
 				return;
@@ -184,12 +184,12 @@ function getFirebaseData(uid) {
 						}
 					}
 					if (pushZero) {
-						responseArray.push({date: moment.unix(descendingDates[j]), tss: 0});
+						responseArray.push({date: descendingDates[j], tss: 0});
 					} 
 				}
 				firebaseData = responseArray.sort((a, b) => b.date - a.date);
 				console.log(firebaseData);
-				// createChart(visibleDates, newDataArray);
+				createChart(visibleDates, firebaseData);
 			}
 
 

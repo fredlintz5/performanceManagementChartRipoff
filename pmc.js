@@ -187,7 +187,7 @@ function getFirebaseData(uid) {
 						responseArray.push({date: moment.unix(descendingDates[j]), tss: 0});
 					} 
 				}
-				firebaseData = responseArray.sort((a, b) => b.values.date - a.values.date);
+				firebaseData = responseArray.sort((a, b) => b.date - a.date);
 				console.log(firebaseData);
 				// createChart(visibleDates, newDataArray);
 			}

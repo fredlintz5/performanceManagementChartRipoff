@@ -11,6 +11,7 @@ firebase.initializeApp(config);
 
 let chart = '';
 let uid = '';
+let userEmail = '';
 let visibleDates = 90;
 let ctx = document.getElementById('powerGraph').getContext('2d');
 let fireBaseData = [];
@@ -217,7 +218,9 @@ function initApp() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       uid = user.uid;
+     	userEmail = user.email;
       getFirebaseData(uid);
+      document.getElementById("welcome").innerHTML = `<h4>${userEmail}</h4>`
     } else {
       window.location.assign("https://fredlintz5.github.io/performanceManagementChartRipoff/");
     }

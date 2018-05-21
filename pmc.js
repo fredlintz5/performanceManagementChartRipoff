@@ -104,11 +104,9 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 	document.getElementById("submittedDate").value = "";
 })
 
-function createChart(days) {
+function createChart(days, data) {
 	setChartDateLabels(days);
-	createBubbleChartData(days, fireBaseData);
-	calulateATLData(days, fireBaseData);
-	// calulateGraphData(days, fireBaseData);
+	calulateGraphData(days, data);
 	chart = new Chart(ctx, chartObject);
 }
 
@@ -117,23 +115,6 @@ function setChartDateLabels(howMany) {
 	for (var i = 0; i < howMany; i++) {
 		chartObject.data.labels.unshift(moment().subtract(i, 'days').format("M/DD"));
 	}
-}
-
-function calulateATLData(days, data) {
-	let atlTSS, tss;
-	let newArray = data;
-
-	for (let i = 0; i < days; i++) {
-		atlTSS = 0;
-		for (let j = 0; j < newArray.length; j++) {
-			tss = parseInt(newArray[j].values.tss);
-
-			if (i < 7) {atlTSS += tss;} else {break;}
-		}
-		newArray.shift();
-
-		chartObject.data.datasets[1].data.unshift((atlTSS/7).toFixed(2));
-	}		
 }
 
 function calulateGraphData(days, data) {
@@ -218,9 +199,39 @@ function getFirebaseData(uid) {
 				})
 
 				fireBaseData = responseArray.sort((a, b) => b.values.date - a.values.date);
-				createChart(visibleDates);
+				addZeroTSSDaysToData(visibleDates,fireBaseData);
 			}
 		})
+}
+
+function addZeroTSSDaysToData(howMany, data) {
+	let descendingDates = [];
+	let startDate = moment().unix();
+	let newDataArray = [];
+
+	for (var i = 0; i < howMany; i++) {
+		descendingDates.push(moment.unix(startDate).subtract(i, 'days').format('M/DD'));
+	}
+
+	for (var j = 0; j < descendingDates.length; j++) {
+		let pushZero = false;
+		for (var k = 0; k < data.length; k++) {
+			let compareDate = moment.unix(data[k].values.date).format('M/DD');
+
+			if (descendingDates[j] === compareDate) {
+				newDataArray.push(data[k]);	
+				pushZero = false;
+				break;
+			} else {
+				pushZero = true;	
+			}
+		}
+		if (pushZero) {
+			newDataArray.push({[k]: values: {date: descendingDates[j], tss: 0}});
+		} 
+	}
+	newDataArray.sort((a, b) => b.values.date - a.values.date);
+	createChart(visibleDates, newDataArray);
 }
 
 function postFirebaseData(object) {

@@ -102,12 +102,13 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 
 	document.getElementById("submittedTSS").value = "";
 	document.getElementById("submittedDate").value = "";
-});
+})
 
 function createChart(days) {
 	setChartDateLabels(days);
 	createBubbleChartData(days, fireBaseData);
-	calulateGraphData(days, fireBaseData);
+	calulateATLData(days, fireBaseData);
+	// calulateGraphData(days, fireBaseData);
 	chart = new Chart(ctx, chartObject);
 }
 
@@ -116,6 +117,24 @@ function setChartDateLabels(howMany) {
 	for (var i = 0; i < howMany; i++) {
 		chartObject.data.labels.unshift(moment().subtract(i, 'days').format("M/DD"));
 	}
+}
+
+function calulateATLData(days, data) {
+	let atlTSS, tss;
+	let newArray = data;
+	let arrayLength = newArray.length;
+
+	for (let i = 0; i < days; i++) {
+		atlTSS = 0;
+		for (let j = 0; j < arrayLength; j++) {
+			tss = parseInt(newArray[j].values.tss);
+
+			i < 7 ? atlTSS += tss : break;
+		}
+		newArray.shift();
+
+		chartObject.data.datasets[1].data.unshift((atlTSS/7).toFixed(2));
+	}		
 }
 
 function calulateGraphData(days, data) {
@@ -224,7 +243,7 @@ function initApp() {
       window.location.assign("https://fredlintz5.github.io/performanceManagementChartRipoff/");
     }
   }, error => console.log(error));
-};
+}
 
 function signOut() {
   firebase.auth().signOut()

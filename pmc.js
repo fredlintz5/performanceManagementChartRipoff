@@ -132,7 +132,7 @@ function calulateGraphData(days, data) {
 		for (var j = 0; tssArray.length; j++) {
 			tss = parseInt(tssArray[j]);
 
-			if (j == 42) {
+			if (j === 42) {
 				return;
 			} else {
 				ctlTSS += tss;
@@ -175,7 +175,7 @@ function getFirebaseData(uid) {
 					descendingDates[moment.unix(startDate).subtract(i, 'days').format('M/DD')] = 0;
 				}
 
-				for (var j = 0; j < responseValues; j++) {
+				for (var j = 0; j < arrayLength; j++) {
 					responseValues[j].tss !== undefined ? tss = parseInt(responseValues[j].tss) : tss = 0;
 					compareDate = moment.unix(responseValues[j].date).format('M/DD');
 					descendingDates[compareDate] += tss;

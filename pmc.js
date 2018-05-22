@@ -129,26 +129,26 @@ function calulateGraphData(days, data) {
 		atlTSS = 0;
 		chartObject.data.datasets[3].data.unshift({y: tssArray[i], r: 3});
 
-		for (var j = 0; tssArray.length; j++) {
-			tss = parseInt(tssArray[j]);
+		// for (var j = 0; tssArray.length; j++) {
+		// 	tss = parseInt(tssArray[j]);
 
-			if (j == 42) {
-				return;
-			} else {
-				ctlTSS += tss;
-				if (j < 7) {
-					atlTSS += tss;
-				}
-			} 
-		}
-		tssArray.shift();
+		// 	if (j == 42) {
+		// 		return;
+		// 	} else {
+		// 		ctlTSS += tss;
+		// 		if (j < 7) {
+		// 			atlTSS += tss;
+		// 		}
+		// 	} 
+		// }
+		// tssArray.shift();
 
-		CTL = (ctlTSS/42).toFixed(2);
-		ATL = (atlTSS/7).toFixed(2);
-		TSB = (CTL - ATL).toFixed(2);
-		chartObject.data.datasets[0].data.unshift(CTL);
-		chartObject.data.datasets[1].data.unshift(ATL);
-		chartObject.data.datasets[2].data.unshift(TSB);
+		// CTL = (ctlTSS/42).toFixed(2);
+		// ATL = (atlTSS/7).toFixed(2);
+		// TSB = (CTL - ATL).toFixed(2);
+		// chartObject.data.datasets[0].data.unshift(CTL);
+		// chartObject.data.datasets[1].data.unshift(ATL);
+		// chartObject.data.datasets[2].data.unshift(TSB);
 	}		
 }
 

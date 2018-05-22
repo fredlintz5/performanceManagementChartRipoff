@@ -129,8 +129,8 @@ function calulateGraphData(days, data) {
 		atlTSS = 0;
 		chartObject.data.datasets[3].data.unshift({y: tssArray[i], r: 3});
 
-		tssArray.forEach((data, index) => {
-			tss = parseInt(data);
+		tssArray.forEach((value, index) => {
+			tss = parseInt(value);
 
 			if (index > 42) {
 				return;

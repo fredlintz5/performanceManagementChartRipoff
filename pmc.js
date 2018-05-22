@@ -129,18 +129,18 @@ function calulateGraphData(days, data) {
 		atlTSS = 0;
 		chartObject.data.datasets[3].data.unshift({y: tssArray[i], r: 3});
 
-		tssArray.forEach((value, index) => {
-			tss = parseInt(value);
+		for (var j = 0; tssArray.length; j++) {
+			tss = parseInt(tssArray[j]);
 
-			if (index > 42) {
+			if (j = 42) {
 				return;
 			} else {
 				ctlTSS += tss;
-				if (index < 7) {
+				if (j < 7) {
 					atlTSS += tss;
 				}
 			} 
-		})
+		}
 		tssArray.shift();
 
 		CTL = (ctlTSS/42).toFixed(2);

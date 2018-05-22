@@ -103,7 +103,9 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 	let convertedDate = moment(submittedDate).unix();
 
 	postFirebaseData({date: convertedDate,tss: submittedTSS});
-	chart.destroy();
+	if (chart.length) {
+		chart.destroy();
+	}
 	getFirebaseData(uid);
 
 	document.getElementById("submittedTSS").value = "";

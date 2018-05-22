@@ -25,7 +25,7 @@ let chartObject = {
         yAxisID: 'A',
         backgroundColor: 'rgba(100,146,182, 0.2)',
         borderColor: 'rgb(100,146,182, 0.8)',
-        borderWidth: 0.5,
+        borderWidth: 0.75,
         data: []
     }, {
     		type: 'line',
@@ -34,7 +34,7 @@ let chartObject = {
         fill: false,
         backgroundColor: 'rgba(242,140,222, 0.2)',
         borderColor: 'rgba(242,140,222, 0.8)',
-        borderWidth: 0.5,
+        borderWidth: 0.75,
         data: []
     }, {
     		type: 'line',
@@ -43,7 +43,7 @@ let chartObject = {
         fill: false,
         backgroundColor: 'rgba(246,192,119, 0.2)',
         borderColor: 'rgba(246,192,119, 0.8)',
-        borderWidth: 0.5,
+        borderWidth: 0.75,
         data: []
     }, {
     		type: 'bubble',
@@ -51,7 +51,7 @@ let chartObject = {
         yAxisID: 'C',
         backgroundColor: 'rgba(253, 101, 133, 0.6)',
       	borderColor: 'rgba(253, 101, 133, 0.8)',
-      	borderWidth: 0.5,
+      	borderWidth: 0.75,
         data: []
     }]
   }, 

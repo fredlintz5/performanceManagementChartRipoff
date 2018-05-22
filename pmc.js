@@ -106,7 +106,7 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 
 function createChart(days, data) {
 	setChartDateLabels(days, data);
-	// calulateGraphData(days, data);
+	calulateGraphData(days, data);
 	chart = new Chart(ctx, chartObject);
 }
 
@@ -119,33 +119,35 @@ function setChartDateLabels(days, data) {
 	}
 }
 
-function calulateGraphData(data) {
+function calulateGraphData(days, data) {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
 
-	for (var i = 0; i < data.length; i++) {
+	let tssArray = Object.Values(data);
+
+	for (var i = 0; i < days; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
-		chartObject.data.datasets[3].data.unshift({y: data[i].tss, r: 3});
-		data.forEach((item, index) => {
-			tss = parseInt(item.tss);
+		chartObject.data.datasets[3].data.unshift({y: tssArray[i], r: 3});
+		// data.forEach((item, index) => {
+		// 	tss = parseInt(item.tss);
 
-			if (index > 42) {
-				return;
-			} else {
-				ctlTSS += tss;
-				if (index < 7) {
-					atlTSS += tss;
-				}
-			} 
-		})
-		data.shift();
+		// 	if (index > 42) {
+		// 		return;
+		// 	} else {
+		// 		ctlTSS += tss;
+		// 		if (index < 7) {
+		// 			atlTSS += tss;
+		// 		}
+		// 	} 
+		// })
+		// data.shift();
 
-		CTL = (ctlTSS/42).toFixed(2);
-		ATL = (atlTSS/7).toFixed(2);
-		TSB = (CTL - ATL).toFixed(2);
-		chartObject.data.datasets[0].data.unshift(CTL);
-		chartObject.data.datasets[1].data.unshift(ATL);
-		chartObject.data.datasets[2].data.unshift(TSB);
+		// CTL = (ctlTSS/42).toFixed(2);
+		// ATL = (atlTSS/7).toFixed(2);
+		// TSB = (CTL - ATL).toFixed(2);
+		// chartObject.data.datasets[0].data.unshift(CTL);
+		// chartObject.data.datasets[1].data.unshift(ATL);
+		// chartObject.data.datasets[2].data.unshift(TSB);
 	}		
 }
 

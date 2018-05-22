@@ -60,7 +60,7 @@ let chartObject = {
         id: 'A',
         type: 'linear',
         position: 'right',
-        ticks: {max: 150,min: 0},
+        ticks: {max: 90,min: 0},
         gridlines: {display: false}
       }, {
         id: 'B',
@@ -72,7 +72,7 @@ let chartObject = {
         id: 'C',
         type: 'linear',
         position: 'right',
-        ticks: {max: 250,min: 0},
+        ticks: {max: 200,min: 0},
         gridlines: {display: false}
       }],
       xAxes: [{gridLines: {display:false}}]

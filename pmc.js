@@ -162,19 +162,14 @@ function getFirebaseData(uid) {
 			} else {
 				let descendingDates = {};
 				let startDate = moment().unix();
-				// let responseArray = [];
 				let responseValues = Object.values(response);
-				// console.log(responseValues);
-
+				
 				for (var i = 0; i < visibleDates; i++) {
 					descendingDates[moment.unix(startDate).subtract(i, 'days').format('M/DD')] = 0;
 				}
 
 				for (var j = 0; j < visibleDates; j++) {
 					let compareDate = moment.unix(responseValues[j].date).format('M/DD');
-					console.log(compareDate);
-					// console.log(responseValues[j].date);
-					// console.log(responseValues[j].tss);
 					descendingDates[compareDate] += parseInt(responseValues[j].tss);
 				}
 
@@ -184,40 +179,6 @@ function getFirebaseData(uid) {
 			}
 		})
 }
-
-// function addZeroTSSDaysToData(howMany, data) {
-// 	let descendingDates = [];
-// 	let startDate = moment().unix();
-// 	let newDataArray = [];
-
-// 	for (var i = 0; i < howMany; i++) {
-// 		descendingDates.push(moment.unix(startDate).subtract(i, 'days').format('M/DD'));
-// 	}
-
-// 	for (var j = 0; j < descendingDates.length; j++) {
-// 		let pushZero = false;
-// 		for (var k = 0; k < data.length; k++) {
-// 			let compareDate = moment.unix(data[k].values.date).format('M/DD');
-
-// 			if (descendingDates[j] === compareDate) {
-// 				newDataArray.push(data[k]);	
-// 				pushZero = false;
-// 				break;
-// 			} else {
-// 				pushZero = true;	
-// 			}
-// 		}
-// 		if (pushZero) {
-// 			let responseObject = new Object();
-
-// 			responseObject.key = [k];
-// 			responseObject.values = {date: descendingDates[j], tss: 0};
-// 			newDataArray.push(responseObject);
-// 		} 
-// 	}
-// 	newDataArray.sort((a, b) => b.values.date - a.values.date);
-// 	createChart(visibleDates, newDataArray);
-// }
 
 function postFirebaseData(object) {
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/.json`, {
@@ -249,3 +210,19 @@ function signOut() {
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.
 // Fatigue (ATL) is a 7 day average of your TSS that accounts for the workouts you have done recently.
 // Form (TSB) is the balance of TSS equal to yesterday's fitness minus yesterday's fatigue.
+
+
+// fetch(`https://performance-management-chart.firebaseio.com/.json`)
+//     .then(response => response.json())
+//     .then(response => {
+// 		let fireBaseData = Object.values(response);
+	
+// 		for (var i=0; i < fireBaseData.length; i++){
+// 			fetch(`https://performance-management-chart.firebaseio.com/users/${userid}/.json`, {
+//                 method: 'POST',
+//                 type: 'JSON',
+//                 body: `{"date": "${fireBaseData.date}","tss": "${fireBaseData.tss}"}`
+//             })
+// 		}
+
+// 	})

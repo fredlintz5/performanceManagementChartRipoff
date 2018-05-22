@@ -111,11 +111,14 @@ function createChart(days, data) {
 }
 
 function setChartDateLabels(days, data) {
+	let index = 1;
 	chartObject.data.labels.unshift(moment().add(1, 'days').format("M/DD"));
 
-	let labelArray = Object.keys(data);
-	for (var i = 0; i < days; i++) {
-		chartObject.data.labels.unshift(labelArray[i]);
+	for (let prop in data) {
+		index === days ? break 
+		chartObject.data.labels.unshift(prop);
+		chartObject.data.datasets[3].data.unshift({y: data[prop], r: 3});
+		index++;
 	}
 }
 
@@ -127,7 +130,6 @@ function calulateGraphData(days, data) {
 	for (var i = 0; i < days; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
-		chartObject.data.datasets[3].data.unshift({y: tssArray[i], r: 3});
 
 		for (var j = 0; tssArray.length; j++) {
 			tss = parseInt(tssArray[j]);

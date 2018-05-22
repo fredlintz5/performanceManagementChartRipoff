@@ -171,9 +171,8 @@ function getFirebaseData(uid) {
 
 				for (var j = 0; j < responseValues.length; j++) {
 					let compareDate = moment.unix(responseValues[j].date).format('M/DD');
-					descendingDates[compareDate] += responseValues[j].tss;
+					descendingDates[compareDate] += parseInt(responseValues[j].tss);
 				}
-
 
 				// firebaseData = responseArray.sort((a, b) => b.date - a.date);
 				console.log(descendingDates);

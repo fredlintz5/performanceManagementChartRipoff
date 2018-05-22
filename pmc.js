@@ -12,7 +12,7 @@ firebase.initializeApp(config);
 let chart = '';
 let uid = '';
 let userEmail = '';
-let visibleDates = 90;
+let visibleDates = 60;
 let ctx = document.getElementById('powerGraph').getContext('2d');
 let fireBaseData = [];
 let chartObject = {
@@ -105,15 +105,17 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 })
 
 function createChart(days, data) {
-	setChartDateLabels(days);
-	calulateGraphData(data);
+	setChartDateLabels(days, data);
+	// calulateGraphData(days, data);
 	chart = new Chart(ctx, chartObject);
 }
 
-function setChartDateLabels(howMany) {
+function setChartDateLabels(days, data) {
 	chartObject.data.labels.unshift(moment().add(1, 'days').format("M/DD"));
-	for (var i = 0; i < howMany; i++) {
-		chartObject.data.labels.unshift(moment().subtract(i, 'days').format("M/DD"));
+
+	let labelArray = Object.keys(data);
+	for (var i = 0; i < days; i++) {
+		chartObject.data.labels.unshift(labelArray[i]);
 	}
 }
 
@@ -176,9 +178,7 @@ function getFirebaseData(uid) {
 					descendingDates[compareDate] += parseInt(responseValues[j].tss);
 				}
 
-				// firebaseData = responseArray.sort((a, b) => b.date - a.date);
-				console.log(descendingDates);
-				// createChart(visibleDates, firebaseData);
+				createChart(visibleDates, descendingDates);
 			}
 		})
 }
@@ -216,16 +216,15 @@ function signOut() {
 
 
 // fetch(`https://performance-management-chart.firebaseio.com/.json`)
-//     .then(response => response.json())
-//     .then(response => {
-// 		let fireBaseData = Object.values(response);
-	
-// 		for (var i=0; i < fireBaseData.length; i++){
-// 			fetch(`https://performance-management-chart.firebaseio.com/users/${userid}/.json`, {
-//                 method: 'POST',
-//                 type: 'JSON',
-//                 body: `{"date": "${fireBaseData.date}","tss": "${fireBaseData.tss}"}`
-//             })
-// 		}
+//   .then(response => response.json())
+//   .then(response => {
+// 	let fireBaseData = Object.values(response);
 
-// 	})
+// 	for (var i=0; i < fireBaseData.length; i++){
+// 		fetch(`https://performance-management-chart.firebaseio.com/users/8APzI8H9ZdYROAZ8NZzH30GWj492/.json`, {
+//         method: 'POST',
+//         type: 'JSON',
+//         body: `{"date": "${fireBaseData[i].date}","tss": "${fireBaseData[i].tss}"}`
+//     })
+// 	}
+// })

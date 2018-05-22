@@ -116,9 +116,6 @@ function createChart(days, data) {
 
 function setChartDateLabels(days, data) {
 	let index = 1;
-	chartObject.data.labels.unshift(moment().add(5, 'days').format("M/DD"));
-	chartObject.data.labels.unshift(moment().add(4, 'days').format("M/DD"));
-	chartObject.data.labels.unshift(moment().add(3, 'days').format("M/DD"));
 	chartObject.data.labels.unshift(moment().add(2, 'days').format("M/DD"));
 	chartObject.data.labels.unshift(moment().add(1, 'days').format("M/DD"));
 

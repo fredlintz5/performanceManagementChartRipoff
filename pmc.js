@@ -115,7 +115,9 @@ function setChartDateLabels(days, data) {
 	chartObject.data.labels.unshift(moment().add(1, 'days').format("M/DD"));
 
 	for (let prop in data) {
-		index === days ? break 
+		if (index === days) {
+			break;
+		} 
 		chartObject.data.labels.unshift(prop);
 		chartObject.data.datasets[3].data.unshift({y: data[prop], r: 3});
 		index++;

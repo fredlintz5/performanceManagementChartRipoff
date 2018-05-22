@@ -157,39 +157,27 @@ function getFirebaseData(uid) {
 		.then(response => {
 
 			if (response === null) {
-				alert('Add some data to get Charts to Display');
+				alert('Add some data to get Chart to Display');
 				return;
 			} else {
-				let descendingDates = [];
+				let descendingDates = {};
 				let startDate = moment().unix();
-				let responseArray = [];
-				// let responseKeys = Object.keys(response);
+				// let responseArray = [];
 				let responseValues = Object.values(response);
 
 				for (var i = 0; i < visibleDates; i++) {
-					descendingDates.push(moment.unix(startDate).subtract(i, 'days').format('M/DD'));
+					descendingDates[moment.unix(startDate).subtract(i, 'days').format('M/DD')] = 0;
 				}
 
 				for (var j = 0; j < responseValues.length; j++) {
-					let pushZero = false;
-					for (var k = 0; k < responseValues.length; k++) {
-						let compareDate = moment.unix(responseValues[k].date).format('M/DD');
-
-						if (descendingDates[j] === compareDate) {
-							responseArray.push(responseValues[k]);	
-							pushZero = false;
-							break;
-						} else {
-							pushZero = true;	
-						}
-					}
-					if (pushZero) {
-						responseArray.push({date: descendingDates[j], tss: 0});
-					} 
+					let compareDate = moment.unix(responseValues[j].date).format('M/DD');
+					descendingDates[compareDate] += responseValues[j].tss;
 				}
-				firebaseData = responseArray.sort((a, b) => b.date - a.date);
-				console.log(firebaseData);
-				createChart(visibleDates, firebaseData);
+
+
+				// firebaseData = responseArray.sort((a, b) => b.date - a.date);
+				console.log(descendingDates);
+				// createChart(visibleDates, firebaseData);
 			}
 
 

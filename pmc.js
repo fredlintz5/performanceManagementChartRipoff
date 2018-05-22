@@ -165,7 +165,6 @@ function getFirebaseData(uid) {
 				alert('Add some data to get Chart to Display');
 				return;
 			} else {
-				let arrayLength = 0;
 				let compareDate = '';
 				let descendingDates = {};
 				let startDate = moment().unix();

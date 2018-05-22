@@ -160,6 +160,7 @@ function getFirebaseData(uid) {
 				alert('Add some data to get Chart to Display');
 				return;
 			} else {
+				let arrayLength = 0;
 				let descendingDates = {};
 				let startDate = moment().unix();
 				let responseValues = Object.values(response);
@@ -168,7 +169,9 @@ function getFirebaseData(uid) {
 					descendingDates[moment.unix(startDate).subtract(i, 'days').format('M/DD')] = 0;
 				}
 
-				for (var j = 0; j < visibleDates; j++) {
+				(responseValues.length > visibleDates) ? arrayLength = visibleDates : arrayLength = responseValues.length;
+
+				for (var j = 0; j < arrayLength; j++) {
 					let compareDate = moment.unix(responseValues[j].date).format('M/DD');
 					descendingDates[compareDate] += parseInt(responseValues[j].tss);
 				}

@@ -1,5 +1,5 @@
 // Initialize Firebase
-var config = {
+let config = {
 	apiKey: "AIzaSyCkkEdBNDDh4kGZFOrhE1Pm4_Fn528m7ak",
 	authDomain: "performance-management-chart.firebaseapp.com",
 	databaseURL: "https://performance-management-chart.firebaseio.com",
@@ -90,6 +90,7 @@ document.getElementById("submitVisibleDates").addEventListener("click", event =>
 	event.preventDefault();
 	visibleDates = document.getElementById("visibleDatesInput").value;
 	chartObject.data.labels = [];
+	chart.destroy();
 	getFirebaseData(uid);
 	document.getElementById("visibleDatesInput").value = "";
 })
@@ -102,6 +103,7 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 	let convertedDate = moment(submittedDate).unix();
 
 	postFirebaseData({date: convertedDate,tss: submittedTSS});
+	chart.destroy();
 	getFirebaseData(uid);
 
 	document.getElementById("submittedTSS").value = "";
@@ -161,10 +163,6 @@ function calulateGraphData(days, data) {
 }
 
 function getFirebaseData(uid) {
-	if (chart.length) {
-		chart.destroy();
-	}
-
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/.json`)
 		.then(response => response.json())
 		.then(response => {

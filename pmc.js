@@ -169,7 +169,7 @@ function getFirebaseData(uid) {
 					descendingDates[moment.unix(startDate).subtract(i, 'days').format('M/DD')] = 0;
 				}
 
-				for (var j = 0; j < responseValues.length; j++) {
+				for (var j = 0; j < visibleDates; j++) {
 					let compareDate = moment.unix(responseValues[j].date).format('M/DD');
 					descendingDates[compareDate] += parseInt(responseValues[j].tss);
 				}

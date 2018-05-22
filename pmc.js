@@ -131,7 +131,6 @@ function setChartDateLabels(days, data) {
 function calulateGraphData(days, data) {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
 	let tssArray = Object.values(data);
-	chartObject.data.datasets[2].data.unshift(0);
 
 	for (var i = 0; i < days; i++) {
 		ctlTSS = 0;
@@ -157,7 +156,8 @@ function calulateGraphData(days, data) {
 		chartObject.data.datasets[0].data.unshift(CTL);
 		chartObject.data.datasets[1].data.unshift(ATL);
 		chartObject.data.datasets[2].data.unshift(TSB);
-	}		
+	}	
+	chartObject.data.datasets[2].data.unshift(0);	
 }
 
 function getFirebaseData(uid) {

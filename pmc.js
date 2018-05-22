@@ -122,7 +122,7 @@ function setChartDateLabels(days, data) {
 function calulateGraphData(days, data) {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
 
-	let tssArray = Object.Values(data);
+	let tssArray = Object.values(data);
 
 	for (var i = 0; i < days; i++) {
 		ctlTSS = 0;

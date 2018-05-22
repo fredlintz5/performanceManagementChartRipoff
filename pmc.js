@@ -133,7 +133,7 @@ function calulateGraphData(days, data) {
 			tss = parseInt(tssArray[j]);
 
 			if (j === 42) {
-				return;
+				break;
 			} else {
 				ctlTSS += tss;
 				if (j < 7) {

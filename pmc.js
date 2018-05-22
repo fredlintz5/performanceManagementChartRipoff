@@ -171,12 +171,12 @@ function getFirebaseData(uid) {
 				let responseValues = Object.values(response);
 				let arrayLength = responseValues.length;
 				
-				for (var i = 0; i < arrayLength; i++) {
+				for (var i = 0; i < 120; i++) {
 					descendingDates[moment.unix(startDate).subtract(i, 'days').format('M/DD')] = 0;
 				}
 
-				for (var j = 0; j < arrayLength; j++) {
-					responseValues[j].tss === undefined ? tss = 0 : tss = parseInt(responseValues[j].tss);
+				for (var j = 0; j < responseValues; j++) {
+					responseValues[j].tss !== undefined ? tss = parseInt(responseValues[j].tss) : tss = 0;
 					compareDate = moment.unix(responseValues[j].date).format('M/DD');
 					descendingDates[compareDate] += tss;
 				}

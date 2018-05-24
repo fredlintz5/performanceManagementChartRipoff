@@ -89,12 +89,7 @@ initApp()
 document.getElementById("submitVisibleDates").addEventListener("click", event => {
 	event.preventDefault();
 	visibleDates = document.getElementById("visibleDatesInput").value;
-	chartObject.data.labels = [];
-	chartObject.data.datasets[0].data = [];
-	chartObject.data.datasets[1].data = [];
-	chartObject.data.datasets[2].data = [];
-	chartObject.data.datasets[3].data = [];
-	chart.destroy();
+	clearData();
 	getFirebaseData(uid);
 	document.getElementById("visibleDatesInput").value = "";
 })
@@ -108,7 +103,7 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 
 	postFirebaseData({date: convertedDate,tss: submittedTSS});
 	if (chart.length > 0) {
-		chart.destroy();
+		clearData();
 	}
 	getFirebaseData(uid);
 
@@ -221,6 +216,15 @@ function signOut() {
   firebase.auth().signOut()
   	.then(() => window.location.assign("https://fredlintz5.github.io/performanceManagementChartRipoff/"))
   	.catch(error => console.log(error));
+}
+
+function clearData() {
+	chartObject.data.labels = [];
+	chartObject.data.datasets[0].data = [];
+	chartObject.data.datasets[1].data = [];
+	chartObject.data.datasets[2].data = [];
+	chartObject.data.datasets[3].data = [];
+	chart.destroy();
 }
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.

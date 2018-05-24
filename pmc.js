@@ -13,7 +13,7 @@ let chart = '';
 let uid = '';
 let userEmail = '';
 let visibleDates = 60;
-let ctx = $('#powerGraph').getContext('2d');
+let ctx = document.getElementById('powerGraph').getContext('2d');
 let chartObject = {
   type: 'bar',
   data: {

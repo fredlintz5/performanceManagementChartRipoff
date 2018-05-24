@@ -230,7 +230,7 @@ function initApp() {
       uid = user.uid;
      	userEmail = user.email;
       getFirebaseData(uid);
-      document.getElementById("welcome").innerHTML = `<h4>${userEmail}</h4>`
+      document.getElementById("welcome").innerHTML = `<h5>${userEmail}</h5>`
     } else {
       window.location.assign("https://fredlintz5.github.io/performanceManagementChartRipoff/");
     }

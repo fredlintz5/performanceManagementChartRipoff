@@ -115,18 +115,23 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 
 $('#legend button').on('click', function() {
 	let text = $(this).text();
+	
 	switch (text) {
 		case 'Fitness (CTL)':
 			chartObject.data.datasets[0].hidden = $(this).hasClass('false') ? true : false;
+			$(this).toggleClass('false');
 			break;
 		case 'Fatigue (ATL)':
 			chartObject.data.datasets[1].hidden = $(this).hasClass('false') ? true : false;
+			$(this).toggleClass('false');
 			break;
 		case 'Form (TSB)':
 			chartObject.data.datasets[2].hidden = $(this).hasClass('false') ? true : false;
+			$(this).toggleClass('false');
 			break;
 		case 'Daily TSS':
 			chartObject.data.datasets[3].hidden = $(this).hasClass('false') ? true : false;
+			$(this).toggleClass('false');
 			break;
 	}
 	chart.update();

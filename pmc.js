@@ -181,7 +181,7 @@ function getFirebaseData(uid) {
 				let responseValues = Object.values(response);
 				let arrayLength = responseValues.length;
 				
-				for (var i = -5; i < 120; i++) {
+				for (var i = -10; i < 120; i++) {
 					descendingDates[moment.unix(startDate).subtract(i, 'days').format('M/DD')] = 0;
 				}
 

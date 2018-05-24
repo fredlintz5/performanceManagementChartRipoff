@@ -87,7 +87,7 @@ let chartObject = {
 
 initApp()
 
-$('#submitVisibleDates').addEventListener('click', event => {
+$('#submitVisibleDates').on('click', event => {
 	event.preventDefault();
 	visibleDates = $('#visibleDatesInput').value;
 	clearData();
@@ -96,7 +96,7 @@ $('#submitVisibleDates').addEventListener('click', event => {
 	$('#visibleDatesInput').value = '';
 })
 
-$('#submitTSS').addEventListener('click', event => {
+$('#submitTSS').on('click', event => {
 	event.preventDefault();
 
 	let submittedTSS = $("#submittedTSS").value;

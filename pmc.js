@@ -14,7 +14,6 @@ let uid = '';
 let userEmail = '';
 let visibleDates = 60;
 let ctx = document.getElementById('powerGraph').getContext('2d');
-let fireBaseData = [];
 let chartObject = {
   type: 'bar',
   data: {
@@ -90,6 +89,7 @@ document.getElementById("submitVisibleDates").addEventListener("click", event =>
 	event.preventDefault();
 	visibleDates = document.getElementById("visibleDatesInput").value;
 	clearData();
+	chart.destroy();
 	getFirebaseData(uid);
 	document.getElementById("visibleDatesInput").value = "";
 })
@@ -102,9 +102,7 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 	let convertedDate = moment(submittedDate).unix();
 
 	postFirebaseData({date: convertedDate,tss: submittedTSS});
-	if (chart.length > 0) {
-		clearData();
-	}
+	(chartObject.data.datasets[3].data.length > 0) ? clearData(); chart.destroy();
 	getFirebaseData(uid);
 
 	document.getElementById("submittedTSS").value = "";
@@ -224,7 +222,6 @@ function clearData() {
 	chartObject.data.datasets[1].data = [];
 	chartObject.data.datasets[2].data = [];
 	chartObject.data.datasets[3].data = [];
-	chart.destroy();
 }
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.

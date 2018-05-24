@@ -25,7 +25,7 @@ let chartObject = {
         backgroundColor: 'rgba(100,146,182, 0.2)',
         borderColor: 'rgb(100,146,182, 0.9)',
         borderWidth: 0.85,
-        hidden: true,
+        hidden: false,
         data: []
     }, {
     		type: 'line',
@@ -35,6 +35,7 @@ let chartObject = {
         backgroundColor: 'rgba(242,140,222, 0.6)',
         borderColor: 'rgba(242,140,222, 0.9)',
         borderWidth: 0.85,
+        hidden: false,
         data: []
     }, {
     		type: 'line',
@@ -44,6 +45,7 @@ let chartObject = {
         backgroundColor: 'rgba(246,192,119, 0.6)',
         borderColor: 'rgba(246,192,119, 0.9)',
         borderWidth: 0.85,
+        hidden: false,
         data: []
     }, {
     		type: 'bubble',
@@ -52,13 +54,11 @@ let chartObject = {
         backgroundColor: 'rgba(253, 101, 133, 0.6)',
       	borderColor: 'rgba(253, 101, 133, 0.9)',
       	borderWidth: 0.85,
+      	hidden: false,
         data: []
     }]
   }, 
   options: {
-  	legend: {
-  		position: "bottom"
-  	}, 
   	scales: {
       yAxes: [{
         id: 'A',
@@ -111,6 +111,25 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 
 	document.getElementById("submittedTSS").value = "";
 	document.getElementById("submittedDate").value = "";
+})
+
+$('#legend button').on('click', function() {
+	let text = $(this).text();
+	switch (text) {
+		case 'Fitness (CTL)';
+			chartObject.data.datasets[0].hidden = $(this).hasClass('false') ? return true; : return false;
+			break;
+		case 'Fatigue (ATL)';
+			chartObject.data.datasets[1].hidden = $(this).hasClass('false') ? return true; : return false;
+			break;
+		case 'Form (TSB)';
+			chartObject.data.datasets[2].hidden = $(this).hasClass('false') ? return true; : return false;
+			break;
+		case 'Daily TSS';
+			chartObject.data.datasets[3].hidden = $(this).hasClass('false') ? return true; : return false;
+			break;
+	}
+	chart.update();
 })
 
 function createChart(days, data) {

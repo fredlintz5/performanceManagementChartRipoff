@@ -11,6 +11,9 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
 	<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+	<style type="text/css">
+		.btn {cursor: pointer;}
+	</style>
 </head>
 <body>
 
@@ -42,8 +45,18 @@
 		<div class="row">
 			<canvas id="powerGraph"></canvas>
 		</div>
+		<div class="row" id="legend">
+			<div class="col-sm-2"></div>
+			<div class="col-sm-8 text-center">
+				<button class="btn btn-secondary btn-sm false" style="background-color: rgba(100,146,182,0.6)">Fitness (CTL)</button>
+				<button class="btn btn-secondary btn-sm false" style="background-color: rgba(242,140,222,0.6)">Fatigue (ATL)</button>
+				<button class="btn btn-secondary btn-sm false" style="background-color: rgba(246,192,119,0.6)">Form (TSB)</button>
+				<button class="btn btn-secondary btn-sm false" style="background-color: rgba(253,101,133,0.6)">Daily TSS</button>
+			</div>
+			<div class="col-sm-2"></div>
+		</div>
 	</div>
-
+	
 	<script src="pmc.js"></script>
 </body>
 </html>

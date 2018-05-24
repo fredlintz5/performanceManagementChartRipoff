@@ -59,6 +59,7 @@ let chartObject = {
     }]
   }, 
   options: {
+  	legend: {display: false},
   	scales: {
       yAxes: [{
         id: 'A',

@@ -25,6 +25,7 @@ let chartObject = {
         backgroundColor: 'rgba(100,146,182, 0.2)',
         borderColor: 'rgb(100,146,182, 0.9)',
         borderWidth: 0.85,
+        hidden: true,
         data: []
     }, {
     		type: 'line',

@@ -90,6 +90,10 @@ document.getElementById("submitVisibleDates").addEventListener("click", event =>
 	event.preventDefault();
 	visibleDates = document.getElementById("visibleDatesInput").value;
 	chartObject.data.labels = [];
+	chartObject.data.datasets[0].data = [];
+	chartObject.data.datasets[1].data = [];
+	chartObject.data.datasets[2].data = [];
+	chartObject.data.datasets[3].data = [];
 	chart.destroy();
 	getFirebaseData(uid);
 	document.getElementById("visibleDatesInput").value = "";
@@ -103,7 +107,7 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 	let convertedDate = moment(submittedDate).unix();
 
 	postFirebaseData({date: convertedDate,tss: submittedTSS});
-	if (chart.length) {
+	if (chart.length > 0) {
 		chart.destroy();
 	}
 	getFirebaseData(uid);

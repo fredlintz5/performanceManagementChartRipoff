@@ -20,7 +20,10 @@
 
 	<div class="container">
 		<div class="row text-center" style="margin-top: 10px">
-			<div class="col-sm-12"><h4 id="welcome"></h4></div>
+			<div class="col-sm-12">
+				<h4 id="welcome"></h4>
+				<button class="form-control btn btn-outline-danger" onclick="signOut()" style="width: 100px">Log Out</button>
+			</div>
 		</div>
 		<div class="row text-center" style="margin-bottom: 10px">
 			<div class="col-sm-3 text-left">				
@@ -32,14 +35,11 @@
 				</span>
 			</div>
 			<div class="col-sm-6">
-				<div class="form-inline justify-content-center">
+				<div class="form-inline">
 					<input class="form-control" id="submittedTSS" type="numeric" placeholder="TSS">
 				  <input class="form-control" id="submittedDate" type="date" style="padding: .375rem .75rem">
 				  <button class="btn btn-secondary" id="submitTSS" type="button">Submit</button>
 				</div>
-			</div>
-			<div class="col-sm-3 text-right">
-				<button class="form-control btn btn-outline-danger" onclick="signOut()" type="button">Log Out</button>
 			</div>
 		</div>
 

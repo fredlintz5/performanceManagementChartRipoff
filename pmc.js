@@ -24,7 +24,7 @@ let chartObject = {
         label: "Fitness (CTL)",
         yAxisID: 'A',
         backgroundColor: 'rgba(100,146,182, 0.2)',
-        borderColor: 'rgb(100,146,182, 0.8)',
+        borderColor: 'rgb(100,146,182, 0.9)',
         borderWidth: 0.85,
         data: []
     }, {
@@ -33,7 +33,7 @@ let chartObject = {
         yAxisID: 'A',
         fill: false,
         backgroundColor: 'rgba(242,140,222, 0.2)',
-        borderColor: 'rgba(242,140,222, 0.8)',
+        borderColor: 'rgba(242,140,222, 0.9)',
         borderWidth: 0.85,
         data: []
     }, {
@@ -42,7 +42,7 @@ let chartObject = {
         yAxisID: 'B',
         fill: false,
         backgroundColor: 'rgba(246,192,119, 0.2)',
-        borderColor: 'rgba(246,192,119, 0.8)',
+        borderColor: 'rgba(246,192,119, 0.9)',
         borderWidth: 0.85,
         data: []
     }, {
@@ -50,7 +50,7 @@ let chartObject = {
         label: 'Daily TSS',
         yAxisID: 'C',
         backgroundColor: 'rgba(253, 101, 133, 0.6)',
-      	borderColor: 'rgba(253, 101, 133, 0.8)',
+      	borderColor: 'rgba(253, 101, 133, 0.9)',
       	borderWidth: 0.85,
         data: []
     }]

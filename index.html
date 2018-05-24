@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PMC - Login</title>
 	<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.css"/>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -16,10 +17,9 @@
 
 	<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
 	<script src="https://cdn.firebase.com/libs/firebaseui/2.3.0/firebaseui.js"></script>
-
 	<script>
 	  // Initialize Firebase
-	  var config = {
+	  let config = {
 	    apiKey: "AIzaSyCkkEdBNDDh4kGZFOrhE1Pm4_Fn528m7ak",
 	    authDomain: "performance-management-chart.firebaseapp.com",
 	    databaseURL: "https://performance-management-chart.firebaseio.com",
@@ -30,15 +30,15 @@
 	  firebase.initializeApp(config);
 	
     // FirebaseUI config.
-    var uiConfig = {
+    let uiConfig = {
       signInSuccessUrl: 'pmc.html',
       signInOptions: [
         firebase.auth.GoogleAuthProvider.PROVIDER_ID
       ],
     };
     // Initialize the FirebaseUI Widget using Firebase.
-    var ui = new firebaseui.auth.AuthUI(firebase.auth());
-    // The start method will wait until the DOM is loaded.
+    let ui = new firebaseui.auth.AuthUI(firebase.auth());
+    
     ui.start('#firebaseui-auth-container', uiConfig);
   </script>
 </body>

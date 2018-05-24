@@ -117,16 +117,16 @@ $('#legend button').on('click', function() {
 	let text = $(this).text();
 	switch (text) {
 		case 'Fitness (CTL)':
-			chartObject.data.datasets[0].hidden = $(this).hasClass('false') ? return true; : return false;
+			chartObject.data.datasets[0].hidden = $(this).hasClass('false') ? true : false;
 			break;
 		case 'Fatigue (ATL)':
-			chartObject.data.datasets[1].hidden = $(this).hasClass('false') ? return true; : return false;
+			chartObject.data.datasets[1].hidden = $(this).hasClass('false') ? true : false;
 			break;
 		case 'Form (TSB)':
-			chartObject.data.datasets[2].hidden = $(this).hasClass('false') ? return true; : return false;
+			chartObject.data.datasets[2].hidden = $(this).hasClass('false') ? true : false;
 			break;
 		case 'Daily TSS':
-			chartObject.data.datasets[3].hidden = $(this).hasClass('false') ? return true; : return false;
+			chartObject.data.datasets[3].hidden = $(this).hasClass('false') ? true : false;
 			break;
 	}
 	chart.update();

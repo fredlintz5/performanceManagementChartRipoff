@@ -21,12 +21,13 @@
 	<div class="container">
 		<div class="row text-center" style="margin-top: 10px; display: inline-block;">
 			<div class="col-sm-12">
-				<div id="welcome" style="display: inline-block"></div>
-				<button class="form-control btn btn-outline-danger btn-sm pull-right" onclick="signOut()" style="width: 75px">Log Out</button>
+				<div id="welcome" style="display: inline-block">
+					<button class="form-control btn btn-outline-danger btn-sm pull-right" onclick="signOut()" style="width: 75px">Log Out</button>
+				</div>
 			</div>
 		</div>
 		<div class="row text-center" style="margin-bottom: 10px">
-			<div class="col-sm-3 text-left">				
+			<div class="col-sm-2 text-left">				
 				<span class="input-group">
 					<input class="form-control" id="visibleDatesInput" type="numeric" placeholder="Visible Dates">
 					<span class="input-group-btn">
@@ -35,12 +36,10 @@
 				</span>
 			</div>
 			<div class="col-sm-6">
-				<div class="input-group">
+				<div class="form-inline">
 					<input class="form-control" id="submittedTSS" type="numeric" placeholder="TSS">
-					<span class="input-group-addon">
-				  	<input class="form-control" id="submittedDate" type="date" style="padding: .375rem .75rem">
-				  </span>
-				  <!-- <button class="btn btn-secondary" id="submitTSS" type="button">Submit</button> -->
+				  <input class="form-control" id="submittedDate" type="date" style="padding: .375rem .75rem">
+				  <button class="btn btn-secondary" id="submitTSS" type="button">Submit</button>
 				</div>
 			</div>
 		</div>

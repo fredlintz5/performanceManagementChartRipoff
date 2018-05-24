@@ -13,7 +13,7 @@ let chart = '';
 let uid = '';
 let userEmail = '';
 let visibleDates = 60;
-let ctx = document.getElementById('powerGraph').getContext('2d');
+let ctx = $('#powerGraph').getContext('2d');
 let chartObject = {
   type: 'bar',
   data: {
@@ -87,20 +87,20 @@ let chartObject = {
 
 initApp()
 
-document.getElementById("submitVisibleDates").addEventListener("click", event => {
+$('#submitVisibleDates').addEventListener('click', event => {
 	event.preventDefault();
-	visibleDates = document.getElementById("visibleDatesInput").value;
+	visibleDates = $('#visibleDatesInput').value;
 	clearData();
 	chart.destroy();
 	getFirebaseData(uid);
-	document.getElementById("visibleDatesInput").value = "";
+	$('#visibleDatesInput').value = '';
 })
 
-document.getElementById("submitTSS").addEventListener("click", event => {
+$('#submitTSS').addEventListener('click', event => {
 	event.preventDefault();
 
-	let submittedTSS = document.getElementById("submittedTSS").value;
-	let submittedDate = document.getElementById("submittedDate").value;
+	let submittedTSS = $("#submittedTSS").value;
+	let submittedDate = $("#submittedDate").value;
 	let convertedDate = moment(submittedDate).unix();
 
 	postFirebaseData({date: convertedDate,tss: submittedTSS});
@@ -110,8 +110,8 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 	}
 	getFirebaseData(uid);
 
-	document.getElementById("submittedTSS").value = "";
-	document.getElementById("submittedDate").value = "";
+	$('#submittedTSS').value = '';
+	$('#submittedDate').value = '';
 })
 
 $('#legend button').on('click', function() {
@@ -230,16 +230,16 @@ function initApp() {
       uid = user.uid;
      	userEmail = user.email;
       getFirebaseData(uid);
-      document.getElementById("welcome").innerHTML = `<h5>${userEmail}</h5>`
+      $('#welcome').prepend(`<h5>${userEmail}</h5>`);
     } else {
-      window.location.assign("https://fredlintz5.github.io/performanceManagementChartRipoff/");
+      window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/');
     }
   }, error => console.log(error));
 }
 
 function signOut() {
   firebase.auth().signOut()
-  	.then(() => window.location.assign("https://fredlintz5.github.io/performanceManagementChartRipoff/"))
+  	.then(() => window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/'))
   	.catch(error => console.log(error));
 }
 

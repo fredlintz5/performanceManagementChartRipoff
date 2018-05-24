@@ -115,9 +115,7 @@ document.getElementById("submitTSS").addEventListener("click", event => {
 })
 
 $('#legend button').on('click', function() {
-	let text = $(this).text();
-	
-	switch (text) {
+	switch ($(this).text()) {
 		case 'Fitness (CTL)':
 			chartObject.data.datasets[0].hidden = $(this).hasClass('false') ? true : false;
 			$(this).toggleClass('false');

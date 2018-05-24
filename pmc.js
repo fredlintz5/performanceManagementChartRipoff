@@ -32,7 +32,7 @@ let chartObject = {
         label: "Fatigue (ATL)",
         yAxisID: 'A',
         fill: false,
-        backgroundColor: 'rgba(242,140,222, 0.2)',
+        backgroundColor: 'rgba(242,140,222, 0.6)',
         borderColor: 'rgba(242,140,222, 0.9)',
         borderWidth: 0.85,
         data: []
@@ -41,7 +41,7 @@ let chartObject = {
         label: "Form (TSB)",
         yAxisID: 'B',
         fill: false,
-        backgroundColor: 'rgba(246,192,119, 0.2)',
+        backgroundColor: 'rgba(246,192,119, 0.6)',
         borderColor: 'rgba(246,192,119, 0.9)',
         borderWidth: 0.85,
         data: []

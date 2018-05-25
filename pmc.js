@@ -134,7 +134,7 @@ $('#legend button').on('click', () => {
 			break;
 	}
 	chart.update();
-}
+})
 
 function createChart(days, data) {
 	setChartDateLabels(days, data);

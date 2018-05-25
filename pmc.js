@@ -114,7 +114,7 @@ $('#submitTSS').on('click', event => {
 	$('#submittedDate').val() = '';
 })
 
-$('#legend button').on('click', => {
+$('#legend button').on('click', () => {
 	switch ($(this).text()) {
 		case 'Fitness (CTL)':
 			chartObject.data.datasets[0].hidden = $(this).hasClass('false') ? true : false;

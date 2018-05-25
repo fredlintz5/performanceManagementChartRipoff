@@ -110,8 +110,8 @@ $('#submitTSS').on('click', event => {
 	}
 	getFirebaseData(uid);
 
-	$('#submittedTSS').val() = '';
-	$('#submittedDate').val() = '';
+	$('#submittedTSS').val('');
+	$('#submittedDate').val('');
 })
 
 $('#legend button').on('click', () => {

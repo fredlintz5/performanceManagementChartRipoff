@@ -65,7 +65,7 @@ let chartObject = {
         id: 'A',
         type: 'linear',
         position: 'right',
-        ticks: {max: 90,min: 0},
+        ticks: {max: 80,min: 0},
         gridlines: {display: false}
       }, {
         id: 'B',

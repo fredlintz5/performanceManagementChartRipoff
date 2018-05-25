@@ -89,18 +89,18 @@ initApp()
 
 $('#submitVisibleDates').on('click', event => {
 	event.preventDefault();
-	visibleDates = $('#visibleDatesInput').value;
+	visibleDates = $('#visibleDatesInput').val();
 	clearData();
 	chart.destroy();
 	getFirebaseData(uid);
-	$('#visibleDatesInput').value = '';
+	$('#visibleDatesInput').val('');
 })
 
 $('#submitTSS').on('click', event => {
 	event.preventDefault();
 
-	let submittedTSS = $("#submittedTSS").value;
-	let submittedDate = $("#submittedDate").value;
+	let submittedTSS = $("#submittedTSS").val();
+	let submittedDate = $("#submittedDate").val();
 	let convertedDate = moment(submittedDate).unix();
 
 	postFirebaseData({date: convertedDate,tss: submittedTSS});
@@ -110,11 +110,11 @@ $('#submitTSS').on('click', event => {
 	}
 	getFirebaseData(uid);
 
-	$('#submittedTSS').value = '';
-	$('#submittedDate').value = '';
+	$('#submittedTSS').val() = '';
+	$('#submittedDate').val() = '';
 })
 
-$('#legend button').on('click', function() {
+$('#legend button').on('click', => {
 	switch ($(this).text()) {
 		case 'Fitness (CTL)':
 			chartObject.data.datasets[0].hidden = $(this).hasClass('false') ? true : false;
@@ -134,7 +134,7 @@ $('#legend button').on('click', function() {
 			break;
 	}
 	chart.update();
-})
+}
 
 function createChart(days, data) {
 	setChartDateLabels(days, data);

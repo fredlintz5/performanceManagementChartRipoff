@@ -21,6 +21,7 @@ let chartObject = {
     datasets: [{
     		type: 'line',
         label: "Fitness (CTL)",
+        lineTension: 0,
         yAxisID: 'A',
         backgroundColor: 'rgba(100,146,182, 0.2)',
         borderColor: 'rgb(100,146,182, 0.9)',
@@ -60,7 +61,6 @@ let chartObject = {
   }, 
   options: {
   	legend: {display: false},
-  	line: {tension: 0},
   	scales: {
       yAxes: [{
         id: 'A',

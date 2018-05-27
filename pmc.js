@@ -77,7 +77,7 @@ let chartObject = {
         id: 'C',
         type: 'linear',
         position: 'right',
-        ticks: {max: 200,min: 0},
+        ticks: {max: 500,min: 0},
         gridlines: {display: false}
       }],
       xAxes: [{gridLines: {display:false}}]

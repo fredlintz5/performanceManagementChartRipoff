@@ -65,7 +65,8 @@ let chartObject = {
   	legend: {display: false},
   	tooltips: {
        mode: 'index',
-       intersect: false
+       intersect: true,
+       axis: 'xy'
     },
   	scales: {
       yAxes: [{

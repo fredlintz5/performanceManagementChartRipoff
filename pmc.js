@@ -64,7 +64,7 @@ let chartObject = {
   options: {
   	legend: {display: false},
   	tooltips: {
-       mode: 'index',
+       mode: 'x',
        intersect: true
     },
   	scales: {

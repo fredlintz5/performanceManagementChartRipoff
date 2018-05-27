@@ -63,10 +63,6 @@ let chartObject = {
   }, 
   options: {
   	legend: {display: false},
-  	tooltips: {
-       mode: 'x',
-       intersect: true
-    },
   	scales: {
       yAxes: [{
         id: 'A',

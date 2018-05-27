@@ -64,12 +64,7 @@ let chartObject = {
   options: {
   	legend: {display: false},
   	tooltips: {
-       mode: 'index',
-       intersect: false
-    },
-    hover: {
-       mode: 'index',
-       intersect: false
+       mode: 'index'
     },
   	scales: {
       yAxes: [{

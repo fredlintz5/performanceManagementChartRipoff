@@ -66,6 +66,9 @@ let chartObject = {
   	tooltips: {
        mode: 'index'
     },
+    hover: {
+    	mode: 'index'
+    },
   	scales: {
       yAxes: [{
         id: 'A',

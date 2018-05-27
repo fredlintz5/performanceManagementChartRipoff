@@ -137,7 +137,7 @@ $('#legend button').on('click', function() {
 })
 
 function createChart(days, data) {
-	setChartDateLabels(days, data);
+	// setChartDateLabels(days, data);
 	calulateGraphData(days, data);
 	chart = new Chart(ctx, chartObject);
 }

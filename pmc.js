@@ -31,6 +31,7 @@ let chartObject = {
     }, {
     		type: 'line',
         label: "Fatigue (ATL)",
+        lineTension: 0,
         yAxisID: 'A',
         fill: false,
         backgroundColor: 'rgba(242,140,222, 0.6)',
@@ -41,6 +42,7 @@ let chartObject = {
     }, {
     		type: 'line',
         label: "Form (TSB)",
+        lineTension: 0,
         yAxisID: 'B',
         fill: false,
         backgroundColor: 'rgba(246,192,119, 0.6)',

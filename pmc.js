@@ -67,7 +67,8 @@ let chartObject = {
        mode: 'index'
     },
     hover: {
-    	mode: 'index'
+    	mode: 'index',
+    	axis: 'x'
     },
   	scales: {
       yAxes: [{

@@ -51,7 +51,7 @@ let chartObject = {
         hidden: false,
         data: []
     }, {
-    		type: 'bubble',
+    		type: 'bar',
         label: 'Daily TSS',
         yAxisID: 'C',
         backgroundColor: 'rgba(253, 101, 133, 0.6)',
@@ -153,7 +153,8 @@ function setChartDateLabels(days, data) {
 			break;
 		} 
 		chartObject.data.labels.unshift(prop);
-		chartObject.data.datasets[3].data.unshift({y: data[prop], r: 3});
+		chartObject.data.datasets[3].data.unshift(data[prop]);
+		// chartObject.data.datasets[3].data.unshift({y: data[prop], r: 3});
 		index++;
 	}
 }

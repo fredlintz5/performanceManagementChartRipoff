@@ -64,7 +64,7 @@ let chartObject = {
   options: {
   	legend: {display: false},
   	tooltips: {
-       mode: 'x'
+       mode: 'point'
     },
   	scales: {
       yAxes: [{
@@ -157,7 +157,6 @@ function setChartDateLabels(days, data) {
 		} 
 		chartObject.data.labels.unshift(prop);
 		chartObject.data.datasets[3].data.unshift(data[prop]);
-		// chartObject.data.datasets[3].data.unshift({y: data[prop], r: 3});
 		index++;
 	}
 }

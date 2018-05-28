@@ -68,7 +68,7 @@ let chartObject = {
 			intersect: false,
 			callbacks: {
           label: (tooltipItem, data) => {
-          	return tooltipItem.yLabel;
+          	console.log(tooltipItem.yLabel);
               // return "$" + Number(tooltipItem.yLabel).toFixed(2).replace(/./g, function(c, i, a) {
               //             return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
               //         });

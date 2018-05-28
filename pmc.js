@@ -155,8 +155,8 @@ $('#legend button').on('click', function() {
 function createChart(days, data) {
 	setChartDateLabels(days, data);
 	calulateGraphData(days, data);
-	chart = new Chart(ctx, chartObject, addAlert());
-	// addAlert();
+	chart = new Chart(ctx, chartObject);
+	addAlert();
 }
 
 function setChartDateLabels(days, data) {
@@ -281,7 +281,7 @@ function addAlert() {
 		    <span aria-hidden="true">&times;</span>
 		  </button>
 		</span>`
-		$('#powerGraphRow').prepend(html);
+		$('.container').append(html);
 }
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.

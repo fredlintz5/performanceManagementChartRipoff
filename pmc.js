@@ -68,9 +68,11 @@ let chartObject = {
 			intersect: true,
 			callbacks: {
         label: (tooltipItem, data) => {
-        	console.log(tooltipItem);
-        	console.log(data);
-        	return data.label + tooltipItem.yLabel;
+        	let label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+          if (label) {label += ': ';}
+          label += tooltipItem.yLabel;
+          return label;
         } 
       }
 		},

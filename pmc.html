@@ -31,25 +31,17 @@
 				<button class="btn btn-secondary btn-sm pull-left" id="addTSSIcon" data-toggle="modal" data-target="#addTSSModal" title="Add Daily TSS"><i class="fas fa-plus"></i></button>
 			</div>
 			<div class="col-sm-6" id="welcome"></div>
-			<div class="col-sm-3 text-right">
-				<button class="form-control btn btn-outline-danger btn-sm pull-right" onclick="signOut()" style="width: 75px">Log Out</button>
-			</div>
-		</div>
-		<div class="row text-center" style="margin-bottom: 10px">
-			<div class="col-sm-2"></div>
-			<div class="col-sm-3">				
+			<div class="col-sm-3">
 				<span class="input-group">
 					<input class="form-control" id="visibleDatesInput" type="numeric" placeholder="Visible Dates">
 					<span class="input-group-btn">
 						<button class="btn btn-secondary" id="submitVisibleDates">Update</button>
 					</span>
 				</span>
+				<button class="form-control btn btn-outline-danger btn-sm pull-right" onclick="signOut()" style="width: 75px">Log Out</button>
 			</div>
-			<div class="col-sm-6">
-				
-			</div>
-			<div class="col-sm-1"></div>
 		</div>
+		
 
 		<div class="row" id="legend">
 			<div class="col-sm-2"></div>
@@ -58,7 +50,7 @@
 				<button class="btn btn-secondary btn-sm false" style="background-color: rgba(242,140,222,0.6)">Fatigue (ATL)</button>
 				<button class="btn btn-secondary btn-sm false" style="background-color: rgba(246,192,119,0.6)">Form (TSB)</button>
 				<button class="btn btn-secondary btn-sm false" style="background-color: rgba(253,101,133,0.6)">Daily TSS</button>
-				<button class="btn btn-secondary btn-sm false" style="background-color: rgba(253,101,133,0.6)">Intensity Factor</button>
+				<button class="btn btn-secondary btn-sm false" style="background-color: rgba(0,255,0,0.6)">Intensity Factor</button>
 			</div>
 			<div class="col-sm-2"></div>
 		</div>
@@ -68,22 +60,12 @@
 		</div>
 	</div>
 
-	<!-- The Modal -->
 	<div class="modal" id="addTSSModal">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
-	      <!-- <div class="modal-header">
-	      	<div class="form-group row">
-	        	<label for="submittedTSS" class="col-sm-2 col-form-label">Ride Date</label>
-	        	<div class="col-sm-10">
-	      			<input class="form-control" id="submittedDate" type="date">
-	      		</div>
-	      	</div>
-	      </div> -->
-
 	      <div class="modal-body">
 	      	<div class="form-group row">
-	        	<label for="submittedTSS" class="col-sm-2 col-form-label">Ride Date</label>
+	        	<label for="submittedTSS" class="col-sm-2 col-form-label">Date</label>
 	        	<div class="col-sm-10">
 	      			<input class="form-control" id="submittedDate" type="date">
 	      		</div>
@@ -97,7 +79,7 @@
 					<div class="form-group row">
 	        	<label for="submittedIF" class="col-sm-2 col-form-label">IF</label>
 	        	<div class="col-sm-10">
-							<input class="form-control" id="submittedIF" type="numeric" placeholder=".8">
+							<input class="form-control" id="submittedIF" type="numeric" placeholder="0.8" min="0.1" max="2.0" step="0.01">
 						</div>
 					</div>
 					<button class="btn btn-secondary pull-right btn-block" id="submitTSS" type="button">Submit</button>

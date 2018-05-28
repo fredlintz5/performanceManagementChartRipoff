@@ -156,6 +156,7 @@ function createChart(days, data) {
 	setChartDateLabels(days, data);
 	calulateGraphData(days, data);
 	chart = new Chart(ctx, chartObject);
+	addAlert();
 }
 
 function setChartDateLabels(days, data) {
@@ -269,6 +270,18 @@ function clearData() {
 	chartObject.data.datasets[1].hidden = false;
 	chartObject.data.datasets[2].hidden = false;
 	chartObject.data.datasets[3].hidden = false;
+}
+
+function addAlert() {
+	let html = `
+		<div class="alert alert-info alert-dismissible fade show" role="alert" 
+			style="position:relative;top:80px;left:40px;">
+			<strong>Holy guacamole!</strong> You should check in on some of those fields below.
+		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+		    <span aria-hidden="true">&times;</span>
+		  </button>
+		</div>`
+		return html;
 }
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.

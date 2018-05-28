@@ -281,7 +281,7 @@ function addAlert() {
 		    <span aria-hidden="true">&times;</span>
 		  </button>
 		</div>`
-		$('#powerGraph').prepend(html);
+		$('#powerGraph').insertBefore(html);
 }
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.

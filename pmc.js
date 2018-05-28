@@ -68,6 +68,7 @@ let chartObject = {
 			intersect: false,
 			callbacks: {
         label: (tooltipItem, data) => {
+        	console.log(tooltipItem);
         	return tooltipItem.yLabel;
         } 
       }

@@ -65,7 +65,15 @@ let chartObject = {
   	legend: {display: false},
   	tooltips: {
 			mode: 'index',
-			intersect: false
+			intersect: false,
+			callbacks: {
+          label: (tooltipItem, data) => {
+          	return tooltipItem.yLabel;
+              // return "$" + Number(tooltipItem.yLabel).toFixed(2).replace(/./g, function(c, i, a) {
+              //             return i > 0 && c !== "." && (a.length - i) % 3 === 0 ? "," + c : c;
+              //         });
+          } 
+      }
 		},
   	scales: {
       yAxes: [{

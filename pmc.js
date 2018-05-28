@@ -20,7 +20,7 @@ let chartObject = {
     labels: [],
     datasets: [{
     		type: 'line',
-        label: "Fitness (CTL)",
+        label: "CTL",
         lineTension: 0,
         yAxisID: 'A',
         backgroundColor: 'rgba(100,146,182, 0.2)',
@@ -30,7 +30,7 @@ let chartObject = {
         data: []
     }, {
     		type: 'line',
-        label: "Fatigue (ATL)",
+        label: "ATL",
         lineTension: 0,
         yAxisID: 'A',
         fill: false,
@@ -41,7 +41,7 @@ let chartObject = {
         data: []
     }, {
     		type: 'line',
-        label: "Form (TSB)",
+        label: "TSB",
         lineTension: 0,
         yAxisID: 'B',
         fill: false,
@@ -52,7 +52,7 @@ let chartObject = {
         data: []
     }, {
     		type: 'bar',
-        label: 'Daily TSS',
+        label: 'TSS',
         yAxisID: 'C',
         backgroundColor: 'rgba(253, 101, 133, 0.6)',
       	borderColor: 'rgba(253, 101, 133, 0.9)',
@@ -68,8 +68,7 @@ let chartObject = {
 			intersect: true,
 			callbacks: {
         label: (tooltipItem, data) => {
-        	let index = data.datasets[tooltipItem.datasetIndex].label.indexOf('(') || '';
-        	let label = data.datasets[tooltipItem.datasetIndex].label.slice(index+1, index+4) || '';
+        	let label = data.datasets[tooltipItem.datasetIndex].label || '';
 
           if (label) {label += ': ';}
           label += tooltipItem.yLabel;

@@ -246,7 +246,7 @@ function initApp() {
       uid = user.uid;
      	userEmail = user.email;
       getFirebaseData(uid);
-      $('#welcome').prepend(`<h5>${userEmail}</h5>`);
+      $('#welcome').prepend(`<h5 style="font-color: #6C757C">${userEmail}</h5>`);
     } else {
       window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/');
     }

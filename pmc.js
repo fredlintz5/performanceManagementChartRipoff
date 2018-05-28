@@ -156,7 +156,7 @@ function createChart(days, data) {
 	setChartDateLabels(days, data);
 	calulateGraphData(days, data);
 	chart = new Chart(ctx, chartObject);
-	addAlert();
+	addAlert(chartObject.data.datasets[0].data[0],chartObject.data.datasets[0].data[1],chartObject.data.datasets[0].data[2]);
 }
 
 function setChartDateLabels(days, data) {
@@ -272,14 +272,15 @@ function clearData() {
 	chartObject.data.datasets[3].hidden = false;
 }
 
-function addAlert() {
+function addAlert(fitness,fatigue,form) {
 	let html = `
 		<span class="alert alert-info alert-dismissible fade show" role="alert" 
-			style="position:relative;top:80px;left:40px;">
-			<strong>Holy guacamole!</strong> You should check in on some of those fields below.
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		    <span aria-hidden="true">&times;</span>
-		  </button>
+			style="position:absolute;top:65px;left:110px;">
+			<table>
+				<tr><td>Fitness</td><td>${fitness}</td></tr>
+				<tr><td>Fatigue</td><td>${fatigue}</td></tr>
+				<tr><td>Form</td><td>${form}</td></tr>
+			</table>
 		</span>`
 		$('.container').append(html);
 }

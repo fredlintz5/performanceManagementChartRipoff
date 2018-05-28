@@ -58,7 +58,7 @@
 				<button class="btn btn-secondary btn-sm false" style="background-color: rgba(242,140,222,0.6)">Fatigue (ATL)</button>
 				<button class="btn btn-secondary btn-sm false" style="background-color: rgba(246,192,119,0.6)">Form (TSB)</button>
 				<button class="btn btn-secondary btn-sm false" style="background-color: rgba(253,101,133,0.6)">Daily TSS</button>
-				<!-- <button class="btn btn-secondary btn-sm false" style="background-color: rgba(253,101,133,0.6)">Intensity Factor</button> -->
+				<button class="btn btn-secondary btn-sm false" style="background-color: rgba(253,101,133,0.6)">Intensity Factor</button>
 			</div>
 			<div class="col-sm-2"></div>
 		</div>
@@ -75,17 +75,26 @@
 
 	      <!-- Modal Header -->
 	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      	<input class="form-control" id="submittedDate" type="date">
+	        <button type="button" class="close pull-right" data-dismiss="modal">&times;</button>
 	      </div>
 
 	      <!-- Modal body -->
 	      <div class="modal-body">
-	        <div class="form-inline">
-						<input class="form-control" id="submittedTSS" type="numeric" placeholder="TSS">
-					  <input class="form-control" id="submittedDate" type="date" style="padding: .375rem .75rem">
-					  <button class="btn btn-secondary" id="submitTSS" type="button">Submit</button>
+	        <div class="form-group">
+	        	<label for="submittedTSS">TSS</label>
+						<input class="form-control" id="submittedTSS" type="numeric" placeholder="100">
+					</div>
+					<div class="form-group">
+	        	<label for="submittedIF">IF</label>
+						<input class="form-control" id="submittedIF" type="numeric" placeholder=".8">
 					</div>
 	      </div>
+
+	      <div class="modal-footer">
+	        <button class="btn btn-secondary pull-right" id="submitTSS" type="button">Submit</button>
+	      </div>
+
 	    </div>
 	  </div>
 	</div>

@@ -51,7 +51,7 @@ let chartObject = {
         hidden: false,
         data: []
     }, {
-    		type: 'line',
+    		type: 'bar',
         label: 'Daily TSS',
         yAxisID: 'C',
         backgroundColor: 'rgba(253, 101, 133, 0.6)',

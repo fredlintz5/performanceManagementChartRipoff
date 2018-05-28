@@ -63,7 +63,7 @@ let chartObject = {
   }, 
   options: {
   	legend: {display: false},
-  	tooltips: {
+  	tooltip: {
 			mode: 'index',
 			intersect: false
 		},

@@ -155,8 +155,8 @@ $('#legend button').on('click', function() {
 function createChart(days, data) {
 	setChartDateLabels(days, data);
 	calulateGraphData(days, data);
-	chart = new Chart(ctx, chartObject);
-	addAlert();
+	chart = new Chart(ctx, chartObject, addAlert());
+	// addAlert();
 }
 
 function setChartDateLabels(days, data) {

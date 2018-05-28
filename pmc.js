@@ -70,7 +70,7 @@ let chartObject = {
         label: (tooltipItem, data) => {
         	console.log(tooltipItem);
         	console.log(data);
-        	return tooltipItem.yLabel;
+        	return data.label + tooltipItem.yLabel;
         } 
       }
 		},

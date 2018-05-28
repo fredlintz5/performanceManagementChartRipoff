@@ -103,6 +103,10 @@ let chartObject = {
 
 initApp()
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+
 // $('#submitVisibleDates').on('click', event => {
 // 	event.preventDefault();
 // 	visibleDates = $('#visibleDatesInput').val();

@@ -69,7 +69,7 @@ let chartObject = {
 			callbacks: {
         label: (tooltipItem, data) => {
         	let index = data.datasets[tooltipItem.datasetIndex].label.indexOf('(') || '';
-        	let label = data.datasets[tooltipItem.datasetIndex].label.slice(.slice(index+1, index+4)) || '';
+        	let label = data.datasets[tooltipItem.datasetIndex].label.slice(index+1, index+4) || '';
 
           if (label) {label += ': ';}
           label += tooltipItem.yLabel;

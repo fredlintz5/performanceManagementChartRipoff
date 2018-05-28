@@ -51,7 +51,7 @@ let chartObject = {
         hidden: false,
         data: []
     }, {
-    		type: 'bar',
+    		type: 'line',
         label: 'Daily TSS',
         yAxisID: 'C',
         backgroundColor: 'rgba(253, 101, 133, 0.6)',
@@ -63,10 +63,10 @@ let chartObject = {
   }, 
   options: {
   	legend: {display: false},
-  	tooltip: {
-			mode: 'index',
-			intersect: false
-		},
+  // 	tooltips: {
+		// 	mode: 'index',
+		// 	intersect: false
+		// },
   	scales: {
       yAxes: [{
         id: 'A',

@@ -153,7 +153,7 @@ function setChartDateLabels(days, data) {
 	let index = 1;
 
 	for (let prop in data) {
-		if (index === parseInt(days)) {
+		if (index < parseInt(days)) {
 			break;
 		} 
 		chartObject.data.labels.unshift(prop);

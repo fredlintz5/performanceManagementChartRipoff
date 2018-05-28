@@ -103,14 +103,14 @@ let chartObject = {
 
 initApp()
 
-$('#submitVisibleDates').on('click', event => {
-	event.preventDefault();
-	visibleDates = $('#visibleDatesInput').val();
-	clearData();
-	chart.destroy();
-	getFirebaseData(uid);
-	$('#visibleDatesInput').val('');
-})
+// $('#submitVisibleDates').on('click', event => {
+// 	event.preventDefault();
+// 	visibleDates = $('#visibleDatesInput').val();
+// 	clearData();
+// 	chart.destroy();
+// 	getFirebaseData(uid);
+// 	$('#visibleDatesInput').val('');
+// })
 
 $('#submitTSS').on('click', event => {
 	event.preventDefault();

@@ -274,13 +274,13 @@ function clearData() {
 
 function addAlert() {
 	let html = `
-		<div class="alert alert-info alert-dismissible fade show" role="alert" 
+		<span class="alert alert-info alert-dismissible fade show" role="alert" 
 			style="position:relative;top:80px;left:40px;">
 			<strong>Holy guacamole!</strong> You should check in on some of those fields below.
 		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 		    <span aria-hidden="true">&times;</span>
 		  </button>
-		</div>`
+		</span>`
 		$('#powerGraphRow').prepend(html);
 }
 

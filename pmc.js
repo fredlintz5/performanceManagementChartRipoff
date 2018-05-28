@@ -65,10 +65,11 @@ let chartObject = {
   	legend: {display: false},
   	tooltips: {
 			mode: 'index',
-			intersect: false,
+			intersect: true,
 			callbacks: {
         label: (tooltipItem, data) => {
         	console.log(tooltipItem);
+        	console.log(data);
         	return tooltipItem.yLabel;
         } 
       }

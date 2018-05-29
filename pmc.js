@@ -278,14 +278,14 @@ function addAlert(fitness,fatigue,form) {
 			style='position:absolute;top:65px;left:110px;'>
 			<table class='table table-dark'>
 				<thead>
-					<tr><th>Today's Stats</th><tr>
+					<tr><th>Today's Stats</th></tr>
 					<tr>
 						<th>
 							<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
 						    <span aria-hidden='true'>&times;</span>
 						  </button>
 					  </th>
-					<tr>
+					</tr>
 				</thead>
 				<tbody>
 					<tr><td>Fitness</td><td>${fitness}</td></tr>

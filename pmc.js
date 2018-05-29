@@ -99,8 +99,7 @@ let chartObject = {
       xAxes: [{gridLines: {display:false}}]
     }, 
     title: {
-    	display: true,
-    	text: ''
+    	display: true
     }
   } 
 };

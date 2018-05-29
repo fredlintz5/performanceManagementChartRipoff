@@ -103,15 +103,6 @@ let chartObject = {
 
 initApp()
 
-// $('#submitVisibleDates').on('click', event => {
-// 	event.preventDefault();
-// 	visibleDates = $('#visibleDatesInput').val();
-// 	clearData();
-// 	chart.destroy();
-// 	getFirebaseData(uid);
-// 	$('#visibleDatesInput').val('');
-// })
-
 $('#submitActualTSS').on('click', event => {
 	event.preventDefault();
 
@@ -126,10 +117,31 @@ $('#submitActualTSS').on('click', event => {
 		chart.destroy();
 	}
 	getFirebaseData(uid, 'actual');
+	getFirebaseData(uid, 'projected');
 
 	$('#submittedActualTSS').val('');
 	$('#submittedActualDate').val('');
 	$('#submittedActualIF').val('');
+	$('#addTSSModal').modal('hide');
+})
+
+$('#submitProjectedTSS').on('click', event => {
+	event.preventDefault();
+
+	let submittedProjectedTSS = $("#submittedProjectedTSS").val();
+	let submittedProjectedDate = $("#submittedProjectedDate").val();
+	let convertedDate = moment(submittedProjectedDate).unix();
+
+	postFirebaseData({date:convertedDate,tss:submittedProjectedTSS}, 'projected');
+	if (chartObject.data.datasets[3].data.length > 0) {
+		clearData(); 
+		chart.destroy();
+	}
+	getFirebaseData(uid, 'actual');
+	getFirebaseData(uid, 'projected');
+
+	$('#submittedProjectedTSS').val('');
+	$('#submittedProjectedDate').val('');
 	$('#addTSSModal').modal('hide');
 })
 

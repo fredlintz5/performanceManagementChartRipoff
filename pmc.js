@@ -97,9 +97,6 @@ let chartObject = {
         gridlines: {display: false}
       }],
       xAxes: [{gridLines: {display:false}}]
-    }, 
-    title: {
-    	display: true
     }
   } 
 };
@@ -158,10 +155,6 @@ $('#legend button').on('click', function() {
 function createChart(days, data) {
 	setChartDateLabels(days, data);
 	calulateGraphData(days, data);
-	let fitness = chartObject.data.datasets[0].data[0];
-	let fatigue = chartObject.data.datasets[1].data[0];
-	let form    = chartObject.data.datasets[2].data[0];
-	chartObject.options.title = `Fitness: ${fitness} | Fatigue: ${fatigue} | Form: ${form}`;
 	chart = new Chart(ctx, chartObject);
 }
 

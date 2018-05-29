@@ -97,6 +97,10 @@ let chartObject = {
         gridlines: {display: false}
       }],
       xAxes: [{gridLines: {display:false}}]
+    }, 
+    title: {
+    	display: true,
+    	text: ''
     }
   } 
 };
@@ -156,7 +160,10 @@ function createChart(days, data) {
 	setChartDateLabels(days, data);
 	calulateGraphData(days, data);
 	chart = new Chart(ctx, chartObject);
-	addAlert(chartObject.data.datasets[0].data[0],chartObject.data.datasets[0].data[1],chartObject.data.datasets[0].data[2]);
+	let fitness = chartObject.data.datasets[0].data[0];
+	let fatigue = chartObject.data.datasets[0].data[1];
+	let form    = chartObject.data.datasets[0].data[2];
+	chartObject.options.title = `Fitness: ${fitness} | Fatigue: ${fatigue} | Form: ${form}`;
 }
 
 function setChartDateLabels(days, data) {
@@ -270,27 +277,6 @@ function clearData() {
 	chartObject.data.datasets[1].hidden = false;
 	chartObject.data.datasets[2].hidden = false;
 	chartObject.data.datasets[3].hidden = false;
-}
-
-function addAlert(fitness,fatigue,form) {
-	let html = `
-		<span class='alert fade show' role='alert' style='position:relative;top:65px;left:110px;'>
-			<table class='table table-dark'>
-				<thead><tr>
-					<th>Today's Stats</th>
-					<th>
-					<button type='button' class='close text-white' data-dismiss='alert' aria-label='Close'>
-				    <span aria-hidden='true'>&times;</span>
-				  </button></th></tr>
-				</thead>
-				<tbody>
-					<tr><td>Fitness</td><td>${fitness}</td></tr>
-					<tr><td>Fatigue</td><td>${fatigue}</td></tr>
-					<tr><td>Form</td><td>${form}</td></tr>
-				</tbody>
-			</table>
-		</span>`
-		$('.container').append(html);
 }
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.

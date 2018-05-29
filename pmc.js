@@ -275,14 +275,14 @@ function clearData() {
 function addAlert(fitness,fatigue,form) {
 	let html = `
 		<span class='alert alert-dismissible fade show' role='alert' 
-			style='position:absolute;top:65px;left:110px;>
+			style='position:absolute;top:65px;left:110px;'>
 			<table class='table table-dark'>
 				<thead>
 					<tr><th>Today's Stats</th><tr>
 					<tr>
 						<th>
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-						    <span aria-hidden="true">&times;</span>
+							<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+						    <span aria-hidden='true'>&times;</span>
 						  </button>
 					  </th>
 					<tr>

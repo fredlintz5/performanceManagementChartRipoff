@@ -274,12 +274,17 @@ function clearData() {
 
 function addAlert(fitness,fatigue,form) {
 	let html = `
-		<span class="alert alert-info alert-dismissible fade show" role="alert" 
-			style="position:absolute;top:65px;left:110px;">
-			<table>
-				<tr><td>Fitness</td><td>${fitness}</td></tr>
-				<tr><td>Fatigue</td><td>${fatigue}</td></tr>
-				<tr><td>Form</td><td>${form}</td></tr>
+		<span class='alert alert-info alert-dismissible fade show' role='alert' 
+			style='position:absolute;top:65px;left:110px;''>
+			<table class='table table-dark'>
+				<thead>
+					<tr><th colpan='2'>Today's Stats</th><tr>
+				</thead>
+				<tbody>
+					<tr><td>Fitness</td><td>${fitness}</td></tr>
+					<tr><td>Fatigue</td><td>${fatigue}</td></tr>
+					<tr><td>Form</td><td>${form}</td></tr>
+				</tbody>
 			</table>
 		</span>`
 		$('.container').append(html);

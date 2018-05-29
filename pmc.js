@@ -274,7 +274,7 @@ function clearData() {
 
 function addAlert(fitness,fatigue,form) {
 	let html = `
-		<span class='alert fade show' role='alert' style='position:absolute;top:65px;left:110px;'>
+		<span class='alert fade show' role='alert' style='position:relative;top:65px;left:110px;'>
 			<table class='table table-dark'>
 				<thead><tr>
 					<th>Today's Stats</th>

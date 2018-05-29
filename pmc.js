@@ -112,22 +112,24 @@ initApp()
 // 	$('#visibleDatesInput').val('');
 // })
 
-$('#submitTSS').on('click', event => {
+$('#submitActualTSS').on('click', event => {
 	event.preventDefault();
 
-	let submittedTSS = $("#submittedTSS").val();
-	let submittedDate = $("#submittedDate").val();
-	let convertedDate = moment(submittedDate).unix();
+	let submittedActualTSS = $("#submittedActualTSS").val();
+	let submittedActualDate = $("#submittedActualDate").val();
+	let submittedActualIF = $("#submittedActualIF").val();
+	let convertedDate = moment(submittedActualDate).unix();
 
-	postFirebaseData({date: convertedDate,tss: submittedTSS});
+	postFirebaseData({date:convertedDate,tss:submittedActualTSS,if:submittedActualIF}, 'actual');
 	if (chartObject.data.datasets[3].data.length > 0) {
 		clearData(); 
 		chart.destroy();
 	}
 	getFirebaseData(uid);
 
-	$('#submittedTSS').val('');
-	$('#submittedDate').val('');
+	$('#submittedActualTSS').val('');
+	$('#submittedActualDate').val('');
+	$('#submittedActualIF').val('');
 })
 
 $('#legend button').on('click', function() {
@@ -232,11 +234,11 @@ function getFirebaseData(uid) {
 		})
 }
 
-function postFirebaseData(object) {
-	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/.json`, {
+function postFirebaseData(object, whereTo) {
+	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/${whereTo}/.json`, {
 		method: 'POST',
 		type: 'JSON',
-		body: `{"date": "${object.date}","tss": "${object.tss}"}`
+		body: `{"date": "${object.date}","tss": "${object.tss}","if": "${object.if}"}`
 	})
 }
 

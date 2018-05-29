@@ -132,7 +132,7 @@ $('#submitProjectedTSS').on('click', event => {
 	let submittedProjectedDate = $("#submittedProjectedDate").val();
 	let convertedDate = moment(submittedProjectedDate).unix();
 
-	postFirebaseData({date:convertedDate,tss:submittedProjectedTSS}, 'projected');
+	postFirebaseData({date:convertedDate,tss:submittedProjectedTSS,if:'0'}, 'projected');
 	if (chartObject.data.datasets[3].data.length > 0) {
 		clearData(); 
 		chart.destroy();

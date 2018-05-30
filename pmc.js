@@ -330,7 +330,7 @@ function calulateProjectedGraphData(days, chartObject) {
 	}	
 }
 
-function getFirebaseData(uid) {
+function getFirebaseData(uid, cb1, cb2) {
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/actual/.json`)
 		.then(response => response.json())
 		.then(response => {
@@ -355,7 +355,7 @@ function getFirebaseData(uid) {
 					descendingDates[compareDate] += tss;
 				}
 
-				createActualChart(visibleDates, descendingDates);
+				cb1(visibleDates, descendingDates);
 			}
 		})
 
@@ -383,7 +383,7 @@ function getFirebaseData(uid) {
 					ascendingDates[compareDate] += tss;
 				}
 
-				createProjectedChart(visibleDates, ascendingDates, chartObject);
+				cb2(visibleDates, ascendingDates, chartObject);
 			}
 		})
 }
@@ -431,7 +431,7 @@ function initApp() {
     if (user) {
       uid = user.uid;
      	userEmail = user.email;
-      getFirebaseData(uid);
+      getFirebaseData(uid, createActualChart, createProjectedChart;
       // getProjectedFirebaseData(uid);
       $('#welcome').prepend(`<span style="color: #6C757C;">${userEmail}</span>`);
     } else {

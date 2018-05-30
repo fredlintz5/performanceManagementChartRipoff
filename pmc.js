@@ -235,7 +235,7 @@ function setActualChartDateLabels(days, data) {
 		
 		chartObject.data.labels.unshift(prop);
 		chartObject.data.datasets[3].data.unshift(data[prop]);
-		chartObject.data.datasets[7].data.unshift(data[prop]);
+		// chartObject.data.datasets[7].data.unshift(data[prop]);
 		
 		index++;
 	}

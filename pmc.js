@@ -261,12 +261,13 @@ function setProjectedChartDateLabels(data) {
 function calulateGraphData(days, data) {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
 	let tssArray = Object.values(data);
+	let arrayLength = tssArray.length;
 
 	for (var i = 0; i < days; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
 
-		for (var j = 0; tssArray.length; j++) {
+		for (var j = 0; arrayLength; j++) {
 			tss = parseInt(tssArray[j]);
 
 			if (j === 42) {
@@ -287,27 +288,21 @@ function calulateGraphData(days, data) {
 		chartObject.data.datasets[0].data.unshift(CTL);
 		chartObject.data.datasets[1].data.unshift(ATL);
 		chartObject.data.datasets[2].data.unshift(TSB);
-		chartObject.data.datasets[4].data.unshift(CTL);
-		chartObject.data.datasets[5].data.unshift(ATL);
-		chartObject.data.datasets[6].data.unshift(TSB);
 	}	
 }
 
-function calulateProjectedGraphData(firebaseData, chartObject) {
+function calulateProjectedGraphData(days, chartObject) {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
-	let projectedTSSArray = Object.values(firebaseData);
-	let actualTSSArray = chartObject.data.datasets[7].data;
+	let projectedTSSArray = chartObject.data.datasets[7].data;
+	let arrayLength = projectedTSSArray.length;
 
-	for (var h = 0; h < projectedTSSArray.length; h++) {
-		actualTSSArray.push(projectedTSSArray[h].tss);
-	}
 
-	for (var i = 0; i <== 14; i++) {
+	for (var i = 0; i < days + 14; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
 
-		for (var j = 0; j < actualTSSArray.length; j++) {
-			tss = parseInt(actualTSSArray[j]);
+		for (var j = 0; j < arrayLength; j++) {
+			tss = parseInt(projectedTSSArray[j]);
 
 			if (j === 42) {
 				break;
@@ -318,15 +313,15 @@ function calulateProjectedGraphData(firebaseData, chartObject) {
 				}
 			} 
 		}
-		actualTSSArray.shift();
+		projectedTSSArray.shift();
 
 		CTL = (ctlTSS/42).toFixed(2);
 		ATL = (atlTSS/7).toFixed(2);
 		TSB = (CTL - ATL).toFixed(2);
 		
-		chartObject.data.datasets[4].data.push(CTL);
-		chartObject.data.datasets[5].data.push(ATL);
-		chartObject.data.datasets[6].data.push(TSB);
+		chartObject.data.datasets[4].data.unshift(CTL);
+		chartObject.data.datasets[5].data.unshift(ATL);
+		chartObject.data.datasets[6].data.unshift(TSB);
 	}	
 }
 

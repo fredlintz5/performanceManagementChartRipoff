@@ -357,35 +357,35 @@ function getFirebaseData(uid, cb1, cb2) {
 
 				cb1(visibleDates, descendingDates);
 			}
-		})
+		}).then(()=> {
+				fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected/.json`)
+					.then(response => response.json())
+					.then(response => {
 
-	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected/.json`)
-		.then(response => response.json())
-		.then(response => {
+						if (response === null) {
+							alert('Add some Projected data to get lines to Display');
+							return;
+						} else {
+							let compareDate = '';
+							let ascendingDates = {};
+							let startDate = moment().unix();
+							let responseValues = Object.values(response);
+							let arrayLength = responseValues.length;
+							
+							for (var i = 1; i < 14; i++) {
+								ascendingDates[moment.unix(startDate).add(i, 'days').format('M/DD')] = 0;
+							}
 
-			if (response === null) {
-				alert('Add some Projected data to get lines to Display');
-				return;
-			} else {
-				let compareDate = '';
-				let ascendingDates = {};
-				let startDate = moment().unix();
-				let responseValues = Object.values(response);
-				let arrayLength = responseValues.length;
-				
-				for (var i = 1; i < 14; i++) {
-					ascendingDates[moment.unix(startDate).add(i, 'days').format('M/DD')] = 0;
-				}
+							for (var j = 0; j < arrayLength; j++) {
+								tss = (responseValues[j].tss !== undefined) ? parseInt(responseValues[j].tss) : 0;
+								compareDate = moment.unix(responseValues[j].date).format('M/DD');
+								ascendingDates[compareDate] += tss;
+							}
 
-				for (var j = 0; j < arrayLength; j++) {
-					tss = (responseValues[j].tss !== undefined) ? parseInt(responseValues[j].tss) : 0;
-					compareDate = moment.unix(responseValues[j].date).format('M/DD');
-					ascendingDates[compareDate] += tss;
-				}
-
-				cb2(visibleDates, ascendingDates, chartObject);
-			}
-		})
+							cb2(visibleDates, ascendingDates, chartObject);
+						}
+					})
+			})
 }
 
 // function getProjectedFirebaseData(uid) {

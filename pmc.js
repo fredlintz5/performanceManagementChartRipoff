@@ -142,8 +142,10 @@ let chartObject = {
         position: 'right',
         ticks: {max: 500,min: 0},
         gridlines: {display: false}
+      }, {
+      	stacked: true
       }],
-      xAxes: [{gridLines: {display:false}}, {stacked: true}]
+      xAxes: [{gridLines: {display:false}}, {stacked: true}],
     }
   } 
 };

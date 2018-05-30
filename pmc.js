@@ -214,17 +214,17 @@ $('#legend button').on('click', function() {
 })
 
 function createActualChart(days, data) {
-	setChartDateLabels(days, data, 'actual');
+	setActualChartDateLabels(days, data);
 	calulateGraphData(days, data, 'actual');
 	chart = new Chart(ctx, chartObject);
 }
 
-function createProjectedChart(days, data) {
-	setChartDateLabels(days, data, 'projected');
-	calulateGraphData(days, data, 'projected');
+function createProjectedChart(firebaseData, chartObject) {
+	setProjectedChartDateLabels(firebaseData);
+	calulateProjectedGraphData(firebaseData, chartObject);
 }
 
-function setChartDateLabels(days, data, whereFrom) {
+function setActualChartDateLabels(days, data) {
 	let index = 1;
 
 	for (let prop in data) {
@@ -232,14 +232,26 @@ function setChartDateLabels(days, data, whereFrom) {
 			break;
 		} 
 		
-		if (whereFrom === 'actual') {
-			chartObject.data.labels.unshift(prop);
-			chartObject.data.datasets[3].data.unshift(data[prop]);
-		} else {
-			chartObject.data.labels.unshift(prop);
-			chartObject.data.datasets[7].data.unshift(data[prop]);
-		}
+		chartObject.data.labels.unshift(prop);
+		chartObject.data.datasets[3].data.unshift(data[prop]);
+		chartObject.data.datasets[7].data.unshift(data[prop]);
+		
 		index++;
+	}
+}
+
+function setProjectedChartDateLabels(data) {
+	let index = data.length;
+
+	for (let prop in data) {
+		if (index < 0) {
+			break;
+		} 
+		
+		chartObject.data.labels.unshift(prop);
+		chartObject.data.datasets[7].data.unshift(data[prop]);
+		
+		index--;
 	}
 }
 
@@ -268,15 +280,46 @@ function calulateGraphData(days, data, whereFrom) {
 		CTL = (ctlTSS/42).toFixed(2);
 		ATL = (atlTSS/7).toFixed(2);
 		TSB = (CTL - ATL).toFixed(2);
-		if (whereFrom === 'actual') {
-			chartObject.data.datasets[0].data.unshift(CTL);
-			chartObject.data.datasets[1].data.unshift(ATL);
-			chartObject.data.datasets[2].data.unshift(TSB);
-		} else {
-			chartObject.data.datasets[4].data.unshift(CTL);
-			chartObject.data.datasets[5].data.unshift(ATL);
-			chartObject.data.datasets[6].data.unshift(TSB);
+		
+		chartObject.data.datasets[0].data.unshift(CTL);
+		chartObject.data.datasets[1].data.unshift(ATL);
+		chartObject.data.datasets[2].data.unshift(TSB);
+		chartObject.data.datasets[4].data.unshift(CTL);
+		chartObject.data.datasets[5].data.unshift(ATL);
+		chartObject.data.datasets[6].data.unshift(TSB);
+	}	
+}
+
+function calulateProjectedGraphData(firebaseData, chartObject) {
+	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
+	let projectedTSSArray = Object.values(firebaseData);
+	let actualTSSArray = chartObject.data.datasets[3].data;
+
+	for (var i = 0; i < projectedTSSArray.length; i++) {
+		ctlTSS = 0;
+		atlTSS = 0;
+
+		for (var j = 0; actualTSSArray.length; j++) {
+			tss = parseInt(actualTSSArray[j]);
+
+			if (j === 42) {
+				break;
+			} else {
+				ctlTSS += tss;
+				if (j < 7) {
+					atlTSS += tss;
+				}
+			} 
 		}
+		actualTSSArray.shift();
+
+		CTL = (ctlTSS/42).toFixed(2);
+		ATL = (atlTSS/7).toFixed(2);
+		TSB = (CTL - ATL).toFixed(2);
+		
+		chartObject.data.datasets[4].data.unshift(CTL);
+		chartObject.data.datasets[5].data.unshift(ATL);
+		chartObject.data.datasets[6].data.unshift(TSB);
 	}	
 }
 
@@ -320,23 +363,22 @@ function getProjectedFirebaseData(uid) {
 				return;
 			} else {
 				let compareDate = '';
-				let descendingDates = {};
+				let ascendingDates = {};
 				let startDate = moment().unix();
 				let responseValues = Object.values(response);
 				let arrayLength = responseValues.length;
 				
-				for (var i = 0; i < 120; i++) {
-					descendingDates[moment.unix(startDate).subtract(i, 'days').format('M/DD')] = 0;
+				for (var i = 0; i < arrayLength; i++) {
+					ascendingDates[moment.unix(startDate).add(i, 'days').format('M/DD')] = 0;
 				}
 
 				for (var j = 0; j < arrayLength; j++) {
 					tss = (responseValues[j].tss !== undefined) ? parseInt(responseValues[j].tss) : 0;
 					compareDate = moment.unix(responseValues[j].date).format('M/DD');
-					descendingDates[compareDate] += tss;
+					ascendingDates[compareDate] += tss;
 				}
 
-				createProjectedChart(visibleDates, descendingDates);
-				chart.update();
+				createProjectedChart(ascendingDates, chartObject);
 			}
 		})
 }

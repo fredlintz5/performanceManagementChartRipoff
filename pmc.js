@@ -330,7 +330,7 @@ function calulateProjectedGraphData(days, chartObject) {
 	}	
 }
 
-function getActualFirebaseData(uid) {
+function getFirebaseData(uid) {
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/actual/.json`)
 		.then(response => response.json())
 		.then(response => {
@@ -358,9 +358,7 @@ function getActualFirebaseData(uid) {
 				createActualChart(visibleDates, descendingDates);
 			}
 		})
-}
 
-function getProjectedFirebaseData(uid) {
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected/.json`)
 		.then(response => response.json())
 		.then(response => {
@@ -390,6 +388,36 @@ function getProjectedFirebaseData(uid) {
 		})
 }
 
+// function getProjectedFirebaseData(uid) {
+// 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected/.json`)
+// 		.then(response => response.json())
+// 		.then(response => {
+
+// 			if (response === null) {
+// 				alert('Add some Projected data to get lines to Display');
+// 				return;
+// 			} else {
+// 				let compareDate = '';
+// 				let ascendingDates = {};
+// 				let startDate = moment().unix();
+// 				let responseValues = Object.values(response);
+// 				let arrayLength = responseValues.length;
+				
+// 				for (var i = 1; i < 14; i++) {
+// 					ascendingDates[moment.unix(startDate).add(i, 'days').format('M/DD')] = 0;
+// 				}
+
+// 				for (var j = 0; j < arrayLength; j++) {
+// 					tss = (responseValues[j].tss !== undefined) ? parseInt(responseValues[j].tss) : 0;
+// 					compareDate = moment.unix(responseValues[j].date).format('M/DD');
+// 					ascendingDates[compareDate] += tss;
+// 				}
+
+// 				createProjectedChart(visibleDates, ascendingDates, chartObject);
+// 			}
+// 		})
+// }
+
 function postFirebaseData(object, whereTo) {
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/${whereTo}/.json`, {
 		method: 'POST',
@@ -403,8 +431,8 @@ function initApp() {
     if (user) {
       uid = user.uid;
      	userEmail = user.email;
-      getActualFirebaseData(uid);
-      getProjectedFirebaseData(uid);
+      getFirebaseData(uid);
+      // getProjectedFirebaseData(uid);
       $('#welcome').prepend(`<span style="color: #6C757C;">${userEmail}</span>`);
     } else {
       window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/');

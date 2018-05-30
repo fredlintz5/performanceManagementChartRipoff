@@ -249,7 +249,7 @@ function setActualChartDateLabels(days, data) {
 }
 
 function setProjectedChartDateLabels(data) {
-	let index = data.length;
+	let index = 13;
 
 	for (let prop in data) {
 		if (index < 1) {

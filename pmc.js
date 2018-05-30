@@ -431,7 +431,7 @@ function initApp() {
     if (user) {
       uid = user.uid;
      	userEmail = user.email;
-      getFirebaseData(uid, createActualChart, createProjectedChart;
+      getFirebaseData(uid, createActualChart, createProjectedChart);
       // getProjectedFirebaseData(uid);
       $('#welcome').prepend(`<span style="color: #6C757C;">${userEmail}</span>`);
     } else {

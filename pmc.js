@@ -380,7 +380,7 @@ function getProjectedFirebaseData(uid) {
 					ascendingDates[compareDate] += tss;
 				}
 
-				createProjectedChart(visbibleDates, ascendingDates);
+				createProjectedChart(visibleDates, ascendingDates);
 			}
 		})
 }

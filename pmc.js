@@ -222,7 +222,6 @@ function createActualChart(days, data) {
 function createProjectedChart(days, data) {
 	setChartDateLabels(days, data, 'projected');
 	calulateGraphData(days, data, 'projected');
-	chart.update();
 }
 
 function setChartDateLabels(days, data, whereFrom) {
@@ -335,6 +334,7 @@ function getProjectedFirebaseData(uid) {
 				}
 
 				createProjectedChart(visibleDates, descendingDates);
+				chart.update();
 			}
 		})
 }

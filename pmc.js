@@ -59,7 +59,53 @@ let chartObject = {
       	borderWidth: 0.85,
       	hidden: false,
         data: []
-    }]
+    },{
+    		type: 'line',
+        label: "CTL - Projected",
+        lineTension: 0,
+        yAxisID: 'A',
+        fill: false,
+        backgroundColor: 'rgba(100,146,182, 0.2)',
+        borderColor: 'rgb(100,146,182, 0.9)',
+        borderWidth: 0.85,
+        borderDash: [5,5],
+        hidden: false,
+        data: []
+    }, {
+    		type: 'line',
+        label: "ATL - Projected",
+        lineTension: 0,
+        yAxisID: 'A',
+        fill: false,
+        backgroundColor: 'rgba(242,140,222, 0.9)',
+        borderColor: 'rgba(242,140,222, 0.9)',
+        borderWidth: 0.85,
+        borderDash: [5,5],
+        hidden: false,
+        data: []
+    }, {
+    		type: 'line',
+        label: "TSB - Projected",
+        lineTension: 0,
+        yAxisID: 'B',
+        fill: false,
+        backgroundColor: 'rgba(246,192,119, 0.9)',
+        borderColor: 'rgba(246,192,119, 0.9)',
+        borderWidth: 0.85,
+        borderDash: [5,5],
+        hidden: false,
+        data: []
+    }, {
+    		type: 'bar',
+        label: 'TSS - Projected',
+        yAxisID: 'C',
+        backgroundColor: 'transparent',
+      	borderColor: 'rgba(253, 101, 133, 0.9)',
+      	borderWidth: 0.85,
+      	hidden: false,
+        data: []
+    } 
+    ]
   }, 
   options: {
   	legend: {display: false},
@@ -181,7 +227,7 @@ function setChartDateLabels(days, data) {
 			break;
 		} 
 		chartObject.data.labels.unshift(prop);
-		chartObject.data.datasets[3].data.unshift(data[prop]);
+		chartObject.data.datasets[7].data.unshift(data[prop]);
 		index++;
 	}
 }
@@ -211,9 +257,12 @@ function calulateGraphData(days, data) {
 		CTL = (ctlTSS/42).toFixed(2);
 		ATL = (atlTSS/7).toFixed(2);
 		TSB = (CTL - ATL).toFixed(2);
-		chartObject.data.datasets[0].data.unshift(CTL);
-		chartObject.data.datasets[1].data.unshift(ATL);
-		chartObject.data.datasets[2].data.unshift(TSB);
+		// chartObject.data.datasets[0].data.unshift(CTL);
+		// chartObject.data.datasets[1].data.unshift(ATL);
+		// chartObject.data.datasets[2].data.unshift(TSB);
+		chartObject.data.datasets[4].data.unshift(CTL);
+		chartObject.data.datasets[5].data.unshift(ATL);
+		chartObject.data.datasets[6].data.unshift(TSB);
 	}	
 }
 

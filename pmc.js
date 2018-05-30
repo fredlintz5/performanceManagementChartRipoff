@@ -258,7 +258,7 @@ function setProjectedChartDateLabels(data) {
 	}
 }
 
-function calulateGraphData(days, data, whereFrom) {
+function calulateGraphData(days, data) {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
 	let tssArray = Object.values(data);
 
@@ -296,9 +296,13 @@ function calulateGraphData(days, data, whereFrom) {
 function calulateProjectedGraphData(firebaseData, chartObject) {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
 	let projectedTSSArray = Object.values(firebaseData);
-	let actualTSSArray = chartObject.data.datasets[3].data;
+	let actualTSSArray = chartObject.data.datasets[7].data;
 
-	for (var i = 0; i < projectedTSSArray.length; i++) {
+	for (var h = 0; h < projectedTSSArray.length; h++) {
+		actualTSSArray.push(projectedTSSArray[h].tss);
+	}
+
+	for (var i = 0; i <== 14; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
 

@@ -162,8 +162,8 @@ $('#submitActualTSS').on('click', event => {
 		clearData(); 
 		chart.destroy();
 	}
-	getFirebaseData(uid, 'actual');
-	// getFirebaseData(uid, 'projected');
+	getActualFirebaseData(uid);
+	getProjectedFirebaseData(uid);
 
 	$('#submittedActualTSS').val('');
 	$('#submittedActualDate').val('');
@@ -183,8 +183,8 @@ $('#submitProjectedTSS').on('click', event => {
 		clearData(); 
 		chart.destroy();
 	}
-	getFirebaseData(uid, 'actual');
-	// getFirebaseData(uid, 'projected');
+	getActualFirebaseData(uid);
+	getProjectedFirebaseData(uid);
 
 	$('#submittedProjectedTSS').val('');
 	$('#submittedProjectedDate').val('');
@@ -213,13 +213,19 @@ $('#legend button').on('click', function() {
 	chart.update();
 })
 
-function createChart(days, data) {
-	setChartDateLabels(days, data);
-	calulateGraphData(days, data);
+function createActualChart(days, data) {
+	setChartDateLabels(days, data, 'actual');
+	calulateGraphData(days, data, 'actual');
 	chart = new Chart(ctx, chartObject);
 }
 
-function setChartDateLabels(days, data) {
+function createProjectedChart(days, data) {
+	setChartDateLabels(days, data, 'projected');
+	calulateGraphData(days, data, 'projected');
+	chart.update();
+}
+
+function setChartDateLabels(days, data, whereFrom) {
 	let index = 1;
 
 	for (let prop in data) {
@@ -227,12 +233,16 @@ function setChartDateLabels(days, data) {
 			break;
 		} 
 		chartObject.data.labels.unshift(prop);
-		chartObject.data.datasets[7].data.unshift(data[prop]);
+		if (whereFrom === 'actual') {
+			chartObject.data.datasets[3].data.unshift(data[prop]);
+		} else {
+			chartObject.data.datasets[7].data.unshift(data[prop]);
+		}
 		index++;
 	}
 }
 
-function calulateGraphData(days, data) {
+function calulateGraphData(days, data, whereFrom) {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
 	let tssArray = Object.values(data);
 
@@ -257,17 +267,20 @@ function calulateGraphData(days, data) {
 		CTL = (ctlTSS/42).toFixed(2);
 		ATL = (atlTSS/7).toFixed(2);
 		TSB = (CTL - ATL).toFixed(2);
-		// chartObject.data.datasets[0].data.unshift(CTL);
-		// chartObject.data.datasets[1].data.unshift(ATL);
-		// chartObject.data.datasets[2].data.unshift(TSB);
-		chartObject.data.datasets[4].data.unshift(CTL);
-		chartObject.data.datasets[5].data.unshift(ATL);
-		chartObject.data.datasets[6].data.unshift(TSB);
+		if (whereFrom === 'actual') {
+			chartObject.data.datasets[0].data.unshift(CTL);
+			chartObject.data.datasets[1].data.unshift(ATL);
+			chartObject.data.datasets[2].data.unshift(TSB);
+		} else {
+			chartObject.data.datasets[4].data.unshift(CTL);
+			chartObject.data.datasets[5].data.unshift(ATL);
+			chartObject.data.datasets[6].data.unshift(TSB);
+		}
 	}	
 }
 
-function getFirebaseData(uid, whereFrom) {
-	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/${whereFrom}.json`)
+function getActualFirebaseData(uid) {
+	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/actual.json`)
 		.then(response => response.json())
 		.then(response => {
 
@@ -281,7 +294,7 @@ function getFirebaseData(uid, whereFrom) {
 				let responseValues = Object.values(response);
 				let arrayLength = responseValues.length;
 				
-				for (var i = -10; i < 120; i++) {
+				for (var i = 0; i < 120; i++) {
 					descendingDates[moment.unix(startDate).subtract(i, 'days').format('M/DD')] = 0;
 				}
 
@@ -291,7 +304,37 @@ function getFirebaseData(uid, whereFrom) {
 					descendingDates[compareDate] += tss;
 				}
 
-				createChart(visibleDates, descendingDates);
+				createActualChart(visibleDates, descendingDates);
+			}
+		})
+}
+
+function getProjectedFirebaseData(uid) {
+	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected.json`)
+		.then(response => response.json())
+		.then(response => {
+
+			if (response === null) {
+				alert('Add some Projected data to get lines to Display');
+				return;
+			} else {
+				let compareDate = '';
+				let descendingDates = {};
+				let startDate = moment().unix();
+				let responseValues = Object.values(response);
+				let arrayLength = responseValues.length;
+				
+				for (var i = 0; i < 120; i++) {
+					descendingDates[moment.unix(startDate).subtract(i, 'days').format('M/DD')] = 0;
+				}
+
+				for (var j = 0; j < arrayLength; j++) {
+					tss = (responseValues[j].tss !== undefined) ? parseInt(responseValues[j].tss) : 0;
+					compareDate = moment.unix(responseValues[j].date).format('M/DD');
+					descendingDates[compareDate] += tss;
+				}
+
+				createProjectedChart(visibleDates, descendingDates);
 			}
 		})
 }
@@ -309,7 +352,8 @@ function initApp() {
     if (user) {
       uid = user.uid;
      	userEmail = user.email;
-      getFirebaseData(uid, 'actual');
+      getActualFirebaseData(uid);
+      getProjectedFirebaseData(uid);
       $('#welcome').prepend(`<span style="color: #6C757C;">${userEmail}</span>`);
     } else {
       window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/');

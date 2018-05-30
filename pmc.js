@@ -170,8 +170,8 @@ $('#submitActualTSS').on('click', event => {
 		clearData(); 
 		chart.destroy();
 	}
-	getActualFirebaseData(uid);
-	getProjectedFirebaseData(uid);
+	getFirebaseData(uid);
+	// getProjectedFirebaseData(uid);
 
 	$('#submittedActualTSS').val('');
 	$('#submittedActualDate').val('');
@@ -191,8 +191,8 @@ $('#submitProjectedTSS').on('click', event => {
 		clearData(); 
 		chart.destroy();
 	}
-	getActualFirebaseData(uid);
-	getProjectedFirebaseData(uid);
+	getFirebaseData(uid);
+	// getProjectedFirebaseData(uid);
 
 	$('#submittedProjectedTSS').val('');
 	$('#submittedProjectedDate').val('');

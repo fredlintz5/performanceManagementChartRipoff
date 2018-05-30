@@ -301,8 +301,7 @@ function calulateProjectedGraphData(days, chartObject) {
 	let projectedTSSArray = chartObject.data.datasets[7].data;
 	let arrayLength = projectedTSSArray.length;
 
-
-	for (var i = 0; i < days + 14; i++) {
+	for (var i = 0; i < arrayLength; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
 

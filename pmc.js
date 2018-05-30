@@ -222,9 +222,9 @@ function createActualChart(days, data) {
 	chart = new Chart(ctx, chartObject);
 }
 
-function createProjectedChart(days, firebaseData, chartObject) {
+function createProjectedChart(days, firebaseData) {
 	setProjectedChartDateLabels(firebaseData);
-	calulateProjectedGraphData(days, chartObject);
+	calulateProjectedGraphData(days);
 }
 
 function setActualChartDateLabels(days, data) {
@@ -291,7 +291,7 @@ function calulateGraphData(days, data) {
 	}	
 }
 
-function calulateProjectedGraphData(days, chartObject) {
+function calulateProjectedGraphData(days) {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
 	let projectedTSSArray = chartObject.data.datasets[7].data;
 	let arrayLength = projectedTSSArray.length;
@@ -380,7 +380,7 @@ function getProjectedFirebaseData(uid) {
 					ascendingDates[compareDate] += tss;
 				}
 
-				createProjectedChart(visbibleDates, ascendingDates, chartObject);
+				createProjectedChart(visbibleDates, ascendingDates);
 			}
 		})
 }

@@ -12,7 +12,7 @@ firebase.initializeApp(config);
 let chart = '';
 let uid = '';
 let userEmail = '';
-let visibleDates = 60;
+let visibleDates = 42;
 let ctx = $('#powerGraph');
 let chartObject = {
   type: 'bar',
@@ -371,7 +371,7 @@ function getProjectedFirebaseData(uid) {
 				let responseValues = Object.values(response);
 				let arrayLength = responseValues.length;
 				
-				for (var i = 1; i < arrayLength; i++) {
+				for (var i = 1; i < 14; i++) {
 					ascendingDates[moment.unix(startDate).add(i, 'days').format('M/DD')] = 0;
 				}
 

@@ -302,7 +302,7 @@ function calulateProjectedGraphData(firebaseData, chartObject) {
 		ctlTSS = 0;
 		atlTSS = 0;
 
-		for (var j = 0; actualTSSArray.length; j++) {
+		for (var j = 0; j < actualTSSArray.length; j++) {
 			tss = parseInt(actualTSSArray[j]);
 
 			if (j === 42) {

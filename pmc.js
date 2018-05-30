@@ -373,10 +373,18 @@ function clearData() {
 	chartObject.data.datasets[1].data = [];
 	chartObject.data.datasets[2].data = [];
 	chartObject.data.datasets[3].data = [];
+	chartObject.data.datasets[4].data = [];
+	chartObject.data.datasets[5].data = [];
+	chartObject.data.datasets[6].data = [];
+	chartObject.data.datasets[7].data = [];
 	chartObject.data.datasets[0].hidden = false;
 	chartObject.data.datasets[1].hidden = false;
 	chartObject.data.datasets[2].hidden = false;
 	chartObject.data.datasets[3].hidden = false;
+	chartObject.data.datasets[4].hidden = false;
+	chartObject.data.datasets[5].hidden = false;
+	chartObject.data.datasets[6].hidden = false;
+	chartObject.data.datasets[7].hidden = false;
 }
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.

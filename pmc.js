@@ -222,9 +222,9 @@ function createActualChart(days, data) {
 	chart = new Chart(ctx, chartObject);
 }
 
-function createProjectedChart(firebaseData, chartObject) {
+function createProjectedChart(days, firebaseData, chartObject) {
 	setProjectedChartDateLabels(firebaseData);
-	calulateProjectedGraphData(firebaseData, chartObject);
+	calulateProjectedGraphData(days, chartObject);
 }
 
 function setActualChartDateLabels(days, data) {
@@ -380,7 +380,7 @@ function getProjectedFirebaseData(uid) {
 					ascendingDates[compareDate] += tss;
 				}
 
-				createProjectedChart(ascendingDates, chartObject);
+				createProjectedChart(visbibleDates, ascendingDates, chartObject);
 			}
 		})
 }

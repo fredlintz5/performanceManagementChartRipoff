@@ -279,7 +279,7 @@ function calulateGraphData(days, data, whereFrom) {
 }
 
 function getActualFirebaseData(uid) {
-	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/actual.json`)
+	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/actual/.json`)
 		.then(response => response.json())
 		.then(response => {
 
@@ -309,7 +309,7 @@ function getActualFirebaseData(uid) {
 }
 
 function getProjectedFirebaseData(uid) {
-	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected.json`)
+	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected/.json`)
 		.then(response => response.json())
 		.then(response => {
 

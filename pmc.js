@@ -245,12 +245,12 @@ function setProjectedChartDateLabels(data) {
 	let index = data.length;
 
 	for (let prop in data) {
-		if (index < 0) {
+		if (index < 1) {
 			break;
 		} 
 		
-		chartObject.data.labels.unshift(prop);
-		chartObject.data.datasets[7].data.unshift(data[prop]);
+		chartObject.data.labels.push(prop);
+		chartObject.data.datasets[7].data.push(data[prop]);
 		
 		index--;
 	}
@@ -369,7 +369,7 @@ function getProjectedFirebaseData(uid) {
 				let responseValues = Object.values(response);
 				let arrayLength = responseValues.length;
 				
-				for (var i = 0; i < arrayLength; i++) {
+				for (var i = 1; i < arrayLength; i++) {
 					ascendingDates[moment.unix(startDate).add(i, 'days').format('M/DD')] = 0;
 				}
 

@@ -216,7 +216,7 @@ $('#legend button').on('click', function() {
 
 function createActualChart(days, data) {
 	setActualChartDateLabels(days, data);
-	calulateGraphData(days, data, 'actual');
+	calulateGraphData(days, data);
 	chart = new Chart(ctx, chartObject);
 }
 
@@ -397,7 +397,7 @@ function initApp() {
       uid = user.uid;
      	userEmail = user.email;
       getActualFirebaseData(uid);
-      getProjectedFirebaseData(uid);
+      // getProjectedFirebaseData(uid);
       $('#welcome').prepend(`<span style="color: #6C757C;">${userEmail}</span>`);
     } else {
       window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/');

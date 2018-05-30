@@ -99,9 +99,10 @@ let chartObject = {
     		type: 'bar',
         label: 'TSS - Projected',
         yAxisID: 'C',
-        backgroundColor: 'transparent',
+        backgroundColor: 'rgba(253, 101, 133, 0.4)',
       	borderColor: 'rgba(253, 101, 133, 0.9)',
       	borderWidth: 0.85,
+      	borderDash: [5,5],
       	hidden: false,
         data: []
     } 

@@ -242,7 +242,7 @@ function setActualChartDateLabels(days, data) {
 		
 		chartObject.data.labels.unshift(prop);
 		chartObject.data.datasets[3].data.unshift(data[prop]);
-		// chartObject.data.datasets[7].data.unshift(data[prop]);
+		chartObject.data.datasets[7].data.unshift(data[prop]);
 		
 		index++;
 	}
@@ -404,7 +404,7 @@ function initApp() {
       uid = user.uid;
      	userEmail = user.email;
       getActualFirebaseData(uid);
-      // getProjectedFirebaseData(uid);
+      getProjectedFirebaseData(uid);
       $('#welcome').prepend(`<span style="color: #6C757C;">${userEmail}</span>`);
     } else {
       window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/');

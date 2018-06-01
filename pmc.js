@@ -143,14 +143,7 @@ let chartObject = {
         ticks: {max: 500,min: 0},
         gridlines: {display: false}
       }],
-      xAxes: [
-      	{
-      		gridLines: {
-      			display:false,
-      			offsetGridLines: false
-      		}
-      	}
-      ],
+      xAxes: {gridLines: {display:false}},
     }
   } 
 };
@@ -171,7 +164,6 @@ $('#submitActualTSS').on('click', event => {
 		chart.destroy();
 	}
 	getFirebaseData(uid);
-	// getProjectedFirebaseData(uid);
 
 	$('#submittedActualTSS').val('');
 	$('#submittedActualDate').val('');
@@ -192,7 +184,6 @@ $('#submitProjectedTSS').on('click', event => {
 		chart.destroy();
 	}
 	getFirebaseData(uid);
-	// getProjectedFirebaseData(uid);
 
 	$('#submittedProjectedTSS').val('');
 	$('#submittedProjectedDate').val('');
@@ -216,6 +207,11 @@ $('#legend button').on('click', function() {
 		case 'Daily TSS':
 			chartObject.data.datasets[3].hidden = $(this).hasClass('false') ? true : false;
 			$(this).toggleClass('false');
+			break;
+		case 'Projected Data':
+			// chartObject.data.datasets[3].hidden = $(this).hasClass('false') ? true : false;
+			// $(this).toggleClass('false');
+			console.log($(this));
 			break;
 	}
 	chart.update();
@@ -329,7 +325,7 @@ function calulateProjectedGraphData(days, chartObject) {
 	}	
 }
 
-function getFirebaseData(uid, cb1, cb2) {
+function getFirebaseData(uid) {
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/actual/.json`)
 		.then(response => response.json())
 		.then(response => {
@@ -354,68 +350,40 @@ function getFirebaseData(uid, cb1, cb2) {
 					descendingDates[compareDate] += tss;
 				}
 
-				cb1(visibleDates, descendingDates);
+				createActualChart(visibleDates, descendingDates);
 			}
-		}).then(()=> {
-				fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected/.json`)
-					.then(response => response.json())
-					.then(response => {
-
-						if (response === null) {
-							alert('Add some Projected data to get lines to Display');
-							return;
-						} else {
-							let compareDate = '';
-							let ascendingDates = {};
-							let startDate = moment().unix();
-							let responseValues = Object.values(response);
-							let arrayLength = responseValues.length;
-							
-							for (var i = 1; i < 14; i++) {
-								ascendingDates[moment.unix(startDate).add(i, 'days').format('M/DD')] = 0;
-							}
-
-							for (var j = 0; j < arrayLength; j++) {
-								tss = (responseValues[j].tss !== undefined) ? parseInt(responseValues[j].tss) : 0;
-								compareDate = moment.unix(responseValues[j].date).format('M/DD');
-								ascendingDates[compareDate] += tss;
-							}
-
-							cb2(visibleDates, ascendingDates, chartObject);
-						}
-					})
-			})
+		})
 }
 
-// function getProjectedFirebaseData(uid) {
-// 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected/.json`)
-// 		.then(response => response.json())
-// 		.then(response => {
+function getProjectedFirebaseData(uid) {
+	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected/.json`)
+		.then(response => response.json())
+		.then(response => {
 
-// 			if (response === null) {
-// 				alert('Add some Projected data to get lines to Display');
-// 				return;
-// 			} else {
-// 				let compareDate = '';
-// 				let ascendingDates = {};
-// 				let startDate = moment().unix();
-// 				let responseValues = Object.values(response);
-// 				let arrayLength = responseValues.length;
+			if (response === null) {
+				alert('Add some Projected data to get lines to Display');
+				return;
+			} else {
+				let compareDate = '';
+				let ascendingDates = {};
+				let startDate = moment().unix();
+				let responseValues = Object.values(response);
+				let arrayLength = responseValues.length;
 				
-// 				for (var i = 1; i < 14; i++) {
-// 					ascendingDates[moment.unix(startDate).add(i, 'days').format('M/DD')] = 0;
-// 				}
+				for (var i = 1; i < 14; i++) {
+					ascendingDates[moment.unix(startDate).add(i, 'days').format('M/DD')] = 0;
+				}
 
-// 				for (var j = 0; j < arrayLength; j++) {
-// 					tss = (responseValues[j].tss !== undefined) ? parseInt(responseValues[j].tss) : 0;
-// 					compareDate = moment.unix(responseValues[j].date).format('M/DD');
-// 					ascendingDates[compareDate] += tss;
-// 				}
+				for (var j = 0; j < arrayLength; j++) {
+					tss = (responseValues[j].tss !== undefined) ? parseInt(responseValues[j].tss) : 0;
+					compareDate = moment.unix(responseValues[j].date).format('M/DD');
+					ascendingDates[compareDate] += tss;
+				}
 
-// 				createProjectedChart(visibleDates, ascendingDates, chartObject);
-// 			}
-// 		})
-// }
+				createProjectedChart(visibleDates, ascendingDates, chartObject);
+			}
+		})
+}
 
 function postFirebaseData(object, whereTo) {
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/${whereTo}/.json`, {
@@ -430,8 +398,7 @@ function initApp() {
     if (user) {
       uid = user.uid;
      	userEmail = user.email;
-      getFirebaseData(uid, createActualChart, createProjectedChart);
-      // getProjectedFirebaseData(uid);
+      getFirebaseData(uid);
       $('#welcome').prepend(`<span style="color: #6C757C;">${userEmail}</span>`);
     } else {
       window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/');
@@ -447,22 +414,10 @@ function signOut() {
 
 function clearData() {
 	chartObject.data.labels = [];
-	chartObject.data.datasets[0].data = [];
-	chartObject.data.datasets[1].data = [];
-	chartObject.data.datasets[2].data = [];
-	chartObject.data.datasets[3].data = [];
-	chartObject.data.datasets[4].data = [];
-	chartObject.data.datasets[5].data = [];
-	chartObject.data.datasets[6].data = [];
-	chartObject.data.datasets[7].data = [];
-	chartObject.data.datasets[0].hidden = false;
-	chartObject.data.datasets[1].hidden = false;
-	chartObject.data.datasets[2].hidden = false;
-	chartObject.data.datasets[3].hidden = false;
-	chartObject.data.datasets[4].hidden = false;
-	chartObject.data.datasets[5].hidden = false;
-	chartObject.data.datasets[6].hidden = false;
-	chartObject.data.datasets[7].hidden = false;
+	$.each(chartObject.data.datasets, (index, value) => {
+		value.data = [];
+		value.hidden = false;
+	});
 }
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.

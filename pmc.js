@@ -105,7 +105,7 @@ let chartObject = {
       	borderColor: 'rgba(253, 101, 133, 0.9)',
       	borderWidth: 0.85,
       	borderDash: [5,5],
-      	hidden: false,
+      	hidden: true,
         data: []
     } 
     ]
@@ -223,6 +223,7 @@ function createProjectedChart(inputArray) {
 	setProjectedChartDateLabels(inputArray);
 	calulateProjectedGraphData();
 	chartObject.data.datasets[3].hidden = true;
+	chartObject.data.datasets[7].hidden = false;
 	chart.update();
 }
 

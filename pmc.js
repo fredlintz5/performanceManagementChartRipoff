@@ -243,7 +243,7 @@ function setProjectedChartDateLabels(inputArray) {
 	$.each(inputArray, (index,value) => {
 		chartObject.data.labels.unshift(value.date);
 		chartObject.data.datasets[7].data.unshift(value.tss);
-	}
+	})
 }
 
 function calulateGraphData() {

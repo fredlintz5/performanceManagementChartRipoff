@@ -420,6 +420,23 @@ function clearData() {
 	});
 }
 
+function createProjectedInputs(firebaseData) {
+	let firebaseKey = '',
+	let date = '5/31',
+	let inputRow = `
+	<div class="form-group row">
+		<label for="${firebaseKey}" class="col-sm-3 col-form-label">${date}</label>
+		<div class="col-sm-9">
+			<input class="form-control" id="${firebaseKey}" type="numeric">
+		</div>
+	</div>`;
+	for (var i = 0; i < 14; i++){
+		$('#nav-projected').append(inputRow);
+	}
+}
+createProjectedInputs();
+
+
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.
 // Fatigue (ATL) is a 7 day average of your TSS that accounts for the workouts you have done recently.
 // Form (TSB) is the balance of TSS equal to yesterday's fitness minus yesterday's fatigue.

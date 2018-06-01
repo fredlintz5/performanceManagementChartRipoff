@@ -171,7 +171,7 @@ $('#submitActualTSS').on('click', event => {
 })
 
 $('#nav-projected-tab').on('click', event => {
-	getProjectedFirebaseData(uid, chartObject);
+	createProjectedInputs();
 })
 
 $('#submitProjectedTSS').on('click', function() {
@@ -357,36 +357,47 @@ function getFirebaseData(uid) {
 		})
 }
 
-function getProjectedFirebaseData(uid, chartObject) {
-	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected/.json`)
-		.then(response => response.json())
-		.then(response => {
+// function getProjectedFirebaseData(uid, chartObject) {
+// 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected/.json`)
+// 		.then(response => response.json())
+// 		.then(response => {
 
-			if (response === null) {
-				alert('Add some Projected data to get lines to Display');
-				return;
-			} else {
-				let compareDate = '';
-				let ascendingDates = {};
-				let startDate = moment().unix();
-				let responseValues = Object.values(response);
-				let arrayLength = responseValues.length;
+// 			if (response === null) {
+// 				alert('Add some Projected data to get lines to Display');
+// 				return;
+// 			} else {
+// 				let compareDate = '';
+// 				let ascendingDates = {};
+// 				let startDate = moment().unix();
+// 				let responseValues = Object.values(response);
+// 				let arrayLength = responseValues.length;
 				
-				for (var i = 1; i < 14; i++) {
-					ascendingDates[moment.unix(startDate).add(i, 'days').format('M/DD')] = 0;
-				}
+// 				for (var i = 1; i < 14; i++) {
+// 					ascendingDates[moment.unix(startDate).add(i, 'days').format('M/DD')] = 0;
+// 				}
 
-				for (var j = 0; j < arrayLength; j++) {
-					tss = (responseValues[j].tss !== undefined) ? parseInt(responseValues[j].tss) : 0;
-					compareDate = moment.unix(responseValues[j].date).format('M/DD');
-					ascendingDates[compareDate] += tss;
-				}
+// 				for (var j = 0; j < arrayLength; j++) {
+// 					tss = (responseValues[j].tss !== undefined) ? parseInt(responseValues[j].tss) : 0;
+// 					compareDate = moment.unix(responseValues[j].date).format('M/DD');
+// 					ascendingDates[compareDate] += tss;
+// 				}
 
-				$('#loading').addClass('hidden');
-				createProjectedInputs(response);
-			}
-		})
-}
+// 				$('#loading').addClass('d-none');
+// 				createProjectedInputs(response);
+// 			}
+// 		})
+// }
+
+// function populateProjectedFirebaseDataWithZeros(uid) {
+// 	let startDate = moment().unix();
+// 	for (var i = 0; i < 14; i++){
+// 		fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected/.json`, {
+//         method: 'POST',
+//         type: 'JSON',
+//         body: `{"date": "${moment.unix(startDate).add(i, 'days').format('M/DD')}","tss": "0"}`
+//     })
+// 	}
+// }
 
 function postActualFirebaseData(object) {
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/actual/.json`, {
@@ -423,23 +434,24 @@ function clearData() {
 	});
 }
 
-function createProjectedInputs(firebaseData) {
+function createProjectedInputs() {
 	let projectedTSS = 0;
 	let firebaseKey = '';
-	let date = moment().format('M/DD');;
+	let startDate = moment().unix();;
 
-	firebaseData.forEach((value,index) => {
-		console.log(value);
-	})
-		// let inputRow = `
-		// 	<div class="form-group row">
-		// 		<label for="${firebaseKey}" class="col-sm-3 col-form-label">${date}</label>
-		// 		<div class="col-sm-9">
-		// 			<input class="form-control" id="${firebaseKey}" type="numeric" value="${projectedTSS}" required>
-		// 		</div>
-		// 	</div>`;
+	for (var i = 14; i > 0; i--) {
+		let newDate = moment.unix(startDate).add(i, 'days').format('M/DD');
+		let inputRow = `
+			<div class="form-group row">
+				<label for="${newDate + '-' + i}" class="col-sm-3 col-form-label">${newDate}</label>
+				<div class="col-sm-9">
+					<input class="form-control" id="${newDate + '-' + i}" type="numeric" value="0">
+				</div>
+			</div>`;
 
-		// $('#nav-projected').prepend(inputRow);
+		$('#nav-projected').prepend(inputRow);
+	}
+	
 
 }
 

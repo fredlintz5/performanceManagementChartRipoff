@@ -71,7 +71,7 @@ let chartObject = {
         borderColor: 'rgb(100,146,182, 0.9)',
         borderWidth: 0.85,
         borderDash: [5,5],
-        hidden: true,
+        hidden: false,
         data: []
     }, {
     		type: 'line',
@@ -83,7 +83,7 @@ let chartObject = {
         borderColor: 'rgba(242,140,222, 0.9)',
         borderWidth: 0.85,
         borderDash: [5,5],
-        hidden: true,
+        hidden: false,
         data: []
     }, {
     		type: 'line',
@@ -95,7 +95,7 @@ let chartObject = {
         borderColor: 'rgba(246,192,119, 0.9)',
         borderWidth: 0.85,
         borderDash: [5,5],
-        hidden: true,
+        hidden: false,
         data: []
     }, {
     		type: 'bar',
@@ -105,7 +105,7 @@ let chartObject = {
       	borderColor: 'rgba(253, 101, 133, 0.9)',
       	borderWidth: 0.85,
       	borderDash: [5,5],
-      	hidden: true,
+      	hidden: false,
         data: []
     } 
     ]

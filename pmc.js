@@ -15,6 +15,7 @@ let userEmail = '';
 let visibleDates = 42;
 let ctx = $('#powerGraph');
 let descendingDates = {};
+let tempArray = {};
 let chartObject = {
   type: 'bar',
   data: {
@@ -235,6 +236,7 @@ function setActualChartDateLabels() {
 		chartObject.data.labels.unshift(prop);
 		chartObject.data.datasets[3].data.unshift(descendingDates[prop]);
 		chartObject.data.datasets[7].data.unshift(descendingDates[prop]);
+		tempArray.unshift(descendingDates[prop]);
 		
 		index++;
 	}
@@ -244,6 +246,7 @@ function setProjectedChartDateLabels(inputArray) {
 	$.each(inputArray, (index,value) => {
 		chartObject.data.labels.push(value.date);
 		chartObject.data.datasets[7].data.push(value.tss);
+		tempArray.push(value.tss);
 	})
 }
 
@@ -283,15 +286,13 @@ function calulateGraphData() {
 function calulateProjectedGraphData() {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
 	let parentArrayLength = visibleDates + 14;
-	let tssArray = chartObject.data.datasets[7].data;
-	let arrayLength = tssArray.length;
 	
 	for (var i = 0; i < parentArrayLength; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
 
-		for (var j = 0; j < arrayLength; j++) {
-			tss = parseInt(tssArray[j]);
+		for (var j = 0; j < tempArray.length; j++) {
+			tss = parseInt(tempArray[j]);
 
 			if (j === 42) {
 				break;
@@ -302,7 +303,7 @@ function calulateProjectedGraphData() {
 				}
 			} 
 		}
-		tssArray.shift();
+		tempArray.shift();
 
 		CTL = (ctlTSS/42).toFixed(2);
 		ATL = (atlTSS/7).toFixed(2);

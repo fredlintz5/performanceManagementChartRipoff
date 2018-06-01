@@ -236,7 +236,6 @@ function setActualChartDateLabels() {
 		chartObject.data.labels.unshift(prop);
 		chartObject.data.datasets[3].data.unshift(descendingDates[prop]);
 		chartObject.data.datasets[7].data.unshift(descendingDates[prop]);
-		tempArray.unshift(descendingDates[prop]);
 		
 		index++;
 	}
@@ -252,6 +251,7 @@ function setProjectedChartDateLabels(inputArray) {
 
 function calulateGraphData() {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
+	let tempArray = Object.values(descendingDates);
 	let tssArray = Object.values(descendingDates);
 	let arrayLength = tssArray.length;
 

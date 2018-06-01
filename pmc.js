@@ -180,7 +180,7 @@ $('#submitProjectedTSS').on('click', function() {
 
 	inputs.each(() => inputArray.push({date: $(this).attr('id'), tss: $(this).val()}));
 	
-	createProjectedChart(visibleDates, inputArray, chartObject);
+	createProjectedChart(inputArray);
 
 	$('#addTSSModal').modal('hide');
 })
@@ -218,7 +218,7 @@ function createActualChart() {
 	chart = new Chart(ctx, chartObject);
 }
 
-function createProjectedChart(visibleDates, inputArray) {
+function createProjectedChart(inputArray) {
 	setProjectedChartDateLabels(inputArray);
 	calulateProjectedGraphData();
 }
@@ -282,15 +282,16 @@ function calulateGraphData() {
 function calulateProjectedGraphData() {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
 	let parentArrayLength = visibleDates + 14;
-	let nestedArrayLength = projectedTSSArray.length;
+	let tssArray = chartObject.data.datasets[7].data;
+	let arrayLength = tssArray.length;
 	
 
 	for (var i = 0; i < parentArrayLength; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
 
-		for (var j = 0; j < nestedArrayLength; j++) {
-			tss = parseInt(projectedTSSArray[j]);
+		for (var j = 0; j < arrayLength; j++) {
+			tss = parseInt(tssArray[j]);
 
 			if (j === 42) {
 				break;
@@ -301,7 +302,7 @@ function calulateProjectedGraphData() {
 				}
 			} 
 		}
-		projectedTSSArray.shift();
+		tssArray.shift();
 
 		CTL = (ctlTSS/42).toFixed(2);
 		ATL = (atlTSS/7).toFixed(2);

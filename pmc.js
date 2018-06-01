@@ -221,6 +221,7 @@ function createActualChart() {
 function createProjectedChart(inputArray) {
 	setProjectedChartDateLabels(inputArray);
 	calulateProjectedGraphData();
+	chart.update();
 }
 
 function setActualChartDateLabels() {
@@ -285,7 +286,6 @@ function calulateProjectedGraphData() {
 	let tssArray = chartObject.data.datasets[7].data;
 	let arrayLength = tssArray.length;
 	
-
 	for (var i = 0; i < parentArrayLength; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;

@@ -240,7 +240,7 @@ function setActualChartDateLabels() {
 }
 
 function setProjectedChartDateLabels(inputArray) {
-	$.each(inputArray, (index,value) => ) {
+	$.each(inputArray, (index,value) => {
 		chartObject.data.labels.unshift(value.date);
 		chartObject.data.datasets[7].data.unshift(value.tss);
 	}
@@ -281,9 +281,9 @@ function calulateGraphData() {
 
 function calulateProjectedGraphData() {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
-
-	let nestedArrayLength = projectedTSSArray.length;
 	let parentArrayLength = visibleDates + 14;
+	let nestedArrayLength = projectedTSSArray.length;
+	
 
 	for (var i = 0; i < parentArrayLength; i++) {
 		ctlTSS = 0;

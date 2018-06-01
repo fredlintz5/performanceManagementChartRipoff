@@ -71,7 +71,7 @@ let chartObject = {
         borderColor: 'rgb(100,146,182, 0.9)',
         borderWidth: 0.85,
         borderDash: [5,5],
-        hidden: false,
+        hidden: true,
         data: []
     }, {
     		type: 'line',
@@ -83,7 +83,7 @@ let chartObject = {
         borderColor: 'rgba(242,140,222, 0.9)',
         borderWidth: 0.85,
         borderDash: [5,5],
-        hidden: false,
+        hidden: true,
         data: []
     }, {
     		type: 'line',
@@ -95,7 +95,7 @@ let chartObject = {
         borderColor: 'rgba(246,192,119, 0.9)',
         borderWidth: 0.85,
         borderDash: [5,5],
-        hidden: false,
+        hidden: true,
         data: []
     }, {
     		type: 'bar',
@@ -205,8 +205,11 @@ $('#legend button').on('click', function() {
 			$(this).toggleClass('false');
 			break;
 		case 'Projected Data':
-			// chartObject.data.datasets[3].hidden = $(this).hasClass('false') ? true : false;
-			// $(this).toggleClass('false');
+			chartObject.data.datasets[4].hidden = $(this).hasClass('false') ? true : false;
+			chartObject.data.datasets[5].hidden = $(this).hasClass('false') ? true : false;
+			chartObject.data.datasets[6].hidden = $(this).hasClass('false') ? true : false;
+			chartObject.data.datasets[7].hidden = $(this).hasClass('false') ? true : false;
+			$(this).toggleClass('false');
 			console.log($(this));
 			break;
 	}

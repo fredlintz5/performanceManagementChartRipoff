@@ -171,7 +171,7 @@ $('#submitActualTSS').on('click', event => {
 })
 
 $('#nav-projected-tab').on('click', event => {
-
+	getProjectedFirebaseData(uid, chartObject);
 })
 
 $('#submitProjectedTSS').on('click', function() {
@@ -357,7 +357,7 @@ function getFirebaseData(uid) {
 		})
 }
 
-function getProjectedFirebaseData(uid) {
+function getProjectedFirebaseData(uid, chartObject) {
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected/.json`)
 		.then(response => response.json())
 		.then(response => {
@@ -382,7 +382,8 @@ function getProjectedFirebaseData(uid) {
 					ascendingDates[compareDate] += tss;
 				}
 
-				createProjectedChart(visibleDates, ascendingDates, chartObject);
+				$('#loading').addClass('hidden');
+				createProjectedInputs(response);
 			}
 		})
 }
@@ -425,18 +426,21 @@ function clearData() {
 function createProjectedInputs(firebaseData) {
 	let projectedTSS = 0;
 	let firebaseKey = '';
-	let date = '5/31';
+	let date = moment().format('M/DD');;
 
-	let inputRow = `
-	<div class="form-group row">
-		<label for="${firebaseKey}" class="col-sm-3 col-form-label">${date}</label>
-		<div class="col-sm-9">
-			<input class="form-control" id="${firebaseKey}" type="numeric" value="${projectedTSS}" required>
-		</div>
-	</div>`;
-	for (var i = 14; i > 0; i--){
-		$('#nav-projected').prepend(inputRow);
-	}
+	firebaseData.forEach((value,index) => {
+		console.log(value);
+	})
+		// let inputRow = `
+		// 	<div class="form-group row">
+		// 		<label for="${firebaseKey}" class="col-sm-3 col-form-label">${date}</label>
+		// 		<div class="col-sm-9">
+		// 			<input class="form-control" id="${firebaseKey}" type="numeric" value="${projectedTSS}" required>
+		// 		</div>
+		// 	</div>`;
+
+		// $('#nav-projected').prepend(inputRow);
+
 }
 
 function clearModalInputs() {

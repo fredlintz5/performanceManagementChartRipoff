@@ -251,9 +251,9 @@ function setProjectedChartDateLabels(inputArray) {
 
 function calulateGraphData() {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
-	let tempArray = Object.values(descendingDates);
 	let tssArray = Object.values(descendingDates);
 	let arrayLength = tssArray.length;
+	tempArray = Object.values(descendingDates);
 
 	for (var i = 0; i < visibleDates; i++) {
 		ctlTSS = 0;

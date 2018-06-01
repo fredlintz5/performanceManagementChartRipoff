@@ -148,7 +148,8 @@ let chartObject = {
   } 
 };
 
-initApp()
+initApp();
+createProjectedInputs();
 
 $('#submitActualTSS').on('click', event => {
 	event.preventDefault();
@@ -161,7 +162,7 @@ $('#submitActualTSS').on('click', event => {
 
 	postActualFirebaseData({date:convertedDate,tss:submittedActualTSS,if:submittedActualIF});
 	if (chartObject.data.datasets[3].data.length > 0) {
-		clearData(); 
+		clearChartData(); 
 		chart.destroy();
 	}
 	getFirebaseData(uid);
@@ -170,25 +171,17 @@ $('#submitActualTSS').on('click', event => {
 	$('#addTSSModal').modal('hide');
 })
 
-$('#nav-projected-tab').on('click', event => {
-	createProjectedInputs();
-})
-
 $('#submitProjectedTSS').on('click', function() {
 	event.preventDefault();
 
 	let submittedProjectedTSS = $("#submittedProjectedTSS").val();
 	let submittedProjectedDate = $("#submittedProjectedDate").val();
-	let convertedDate = moment(submittedProjectedDate).unix();
-
-	// postFirebaseData({date:convertedDate,tss:submittedProjectedTSS,if:'0'}, 'projected');
+	
 	if (chartObject.data.datasets[3].data.length > 0) {
-		clearData(); 
+		clearChartData(); 
 		chart.destroy();
 	}
-	getFirebaseData(uid);
 
-	clearModalInputs();
 	$('#addTSSModal').modal('hide');
 })
 
@@ -357,48 +350,6 @@ function getFirebaseData(uid) {
 		})
 }
 
-// function getProjectedFirebaseData(uid, chartObject) {
-// 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected/.json`)
-// 		.then(response => response.json())
-// 		.then(response => {
-
-// 			if (response === null) {
-// 				alert('Add some Projected data to get lines to Display');
-// 				return;
-// 			} else {
-// 				let compareDate = '';
-// 				let ascendingDates = {};
-// 				let startDate = moment().unix();
-// 				let responseValues = Object.values(response);
-// 				let arrayLength = responseValues.length;
-				
-// 				for (var i = 1; i < 14; i++) {
-// 					ascendingDates[moment.unix(startDate).add(i, 'days').format('M/DD')] = 0;
-// 				}
-
-// 				for (var j = 0; j < arrayLength; j++) {
-// 					tss = (responseValues[j].tss !== undefined) ? parseInt(responseValues[j].tss) : 0;
-// 					compareDate = moment.unix(responseValues[j].date).format('M/DD');
-// 					ascendingDates[compareDate] += tss;
-// 				}
-
-// 				$('#loading').addClass('d-none');
-// 				createProjectedInputs(response);
-// 			}
-// 		})
-// }
-
-// function populateProjectedFirebaseDataWithZeros(uid) {
-// 	let startDate = moment().unix();
-// 	for (var i = 0; i < 14; i++){
-// 		fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/projected/.json`, {
-//         method: 'POST',
-//         type: 'JSON',
-//         body: `{"date": "${moment.unix(startDate).add(i, 'days').format('M/DD')}","tss": "0"}`
-//     })
-// 	}
-// }
-
 function postActualFirebaseData(object) {
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/actual/.json`, {
 		method: 'POST',
@@ -426,7 +377,7 @@ function signOut() {
   	.catch(error => console.log(error));
 }
 
-function clearData() {
+function clearChartData() {
 	chartObject.data.labels = [];
 	$.each(chartObject.data.datasets, (index, value) => {
 		value.data = [];
@@ -435,8 +386,6 @@ function clearData() {
 }
 
 function createProjectedInputs() {
-	let projectedTSS = 0;
-	let firebaseKey = '';
 	let startDate = moment().unix();;
 
 	for (var i = 14; i > 0; i--) {
@@ -451,8 +400,6 @@ function createProjectedInputs() {
 
 		$('#nav-projected').prepend(inputRow);
 	}
-	
-
 }
 
 function clearModalInputs() {

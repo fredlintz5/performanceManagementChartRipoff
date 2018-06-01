@@ -309,9 +309,9 @@ function calulateProjectedGraphData() {
 		ATL = (atlTSS/7).toFixed(2);
 		TSB = (CTL - ATL).toFixed(2);
 		
-		chartObject.data.datasets[4].data.push(CTL);
-		chartObject.data.datasets[5].data.push(ATL);
-		chartObject.data.datasets[6].data.push(TSB);
+		chartObject.data.datasets[4].data.unshift(CTL);
+		chartObject.data.datasets[5].data.unshift(ATL);
+		chartObject.data.datasets[6].data.unshift(TSB);
 	}	
 }
 

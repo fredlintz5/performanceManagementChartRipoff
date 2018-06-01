@@ -285,9 +285,9 @@ function calulateGraphData() {
 
 function calulateProjectedGraphData() {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
-	let parentArrayLength = visibleDates + 14;
+	let arrayLength = visibleDates + 14;
 	
-	for (var i = 0; i < parentArrayLength; i++) {
+	for (var i = 0; i < arrayLength; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
 

@@ -222,6 +222,7 @@ function createActualChart() {
 function createProjectedChart(inputArray) {
 	setProjectedChartDateLabels(inputArray);
 	calulateProjectedGraphData();
+	chartObject.data.datasets[3].hidden = true;
 	chart.update();
 }
 

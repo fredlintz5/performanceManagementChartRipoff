@@ -421,8 +421,8 @@ function clearData() {
 }
 
 function createProjectedInputs(firebaseData) {
-	let firebaseKey = '',
-	let date = '5/31',
+	let firebaseKey = '';
+	let date = '5/31';
 	let inputRow = `
 	<div class="form-group row">
 		<label for="${firebaseKey}" class="col-sm-3 col-form-label">${date}</label>

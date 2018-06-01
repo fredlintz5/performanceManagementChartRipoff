@@ -15,7 +15,7 @@ let userEmail = '';
 let visibleDates = 42;
 let ctx = $('#powerGraph');
 let descendingDates = {};
-let tempArray = {};
+let tempArray = [];
 let chartObject = {
   type: 'bar',
   data: {

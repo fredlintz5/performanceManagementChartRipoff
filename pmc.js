@@ -430,8 +430,8 @@ function createProjectedInputs(firebaseData) {
 			<input class="form-control" id="${firebaseKey}" type="numeric">
 		</div>
 	</div>`;
-	for (var i = 0; i < 14; i++){
-		$('#nav-projected').append(inputRow);
+	for (var i = 14; i > 0; i--){
+		$('#nav-projected').prepend(inputRow);
 	}
 }
 createProjectedInputs();

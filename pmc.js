@@ -14,6 +14,7 @@ let uid = '';
 let userEmail = '';
 let visibleDates = 42;
 let ctx = $('#powerGraph');
+let descendingDates = {};
 let chartObject = {
   type: 'bar',
   data: {
@@ -160,7 +161,7 @@ $('#submitActualTSS').on('click', event => {
 	if (submittedActualTSS === '' || submittedActualDate === '' || submittedActualIF === '') {return}
 	let convertedDate = moment(submittedActualDate).unix();
 
-	postActualFirebaseData({date:convertedDate,tss:submittedActualTSS,if:submittedActualIF});
+	postFirebaseData({date:convertedDate,tss:submittedActualTSS,if:submittedActualIF});
 	if (chartObject.data.datasets[3].data.length > 0) {
 		clearChartData(); 
 		chart.destroy();
@@ -174,13 +175,12 @@ $('#submitActualTSS').on('click', event => {
 $('#submitProjectedTSS').on('click', function() {
 	event.preventDefault();
 
-	let submittedProjectedTSS = $("#submittedProjectedTSS").val();
-	let submittedProjectedDate = $("#submittedProjectedDate").val();
+	let inputArray = [];
+	let inputs = $('#nav-projected :input').not(':input[type=button]');
+
+	inputs.each(() => inputArray.push({date: $(this).attr('id'), tss: $(this).val()}));
 	
-	if (chartObject.data.datasets[3].data.length > 0) {
-		clearChartData(); 
-		chart.destroy();
-	}
+	createProjectedChart(visibleDates, inputArray, chartObject);
 
 	$('#addTSSModal').modal('hide');
 })
@@ -212,22 +212,22 @@ $('#legend button').on('click', function() {
 	chart.update();
 })
 
-function createActualChart(days, data) {
-	setActualChartDateLabels(days, data);
-	calulateGraphData(days, data);
+function createActualChart() {
+	setActualChartDateLabels();
+	calulateGraphData();
 	chart = new Chart(ctx, chartObject);
 }
 
-function createProjectedChart(days, firebaseData, chartObject) {
-	setProjectedChartDateLabels(firebaseData);
-	calulateProjectedGraphData(days, chartObject);
+function createProjectedChart(visibleDates, inputArray) {
+	setProjectedChartDateLabels(inputArray);
+	calulateProjectedGraphData();
 }
 
-function setActualChartDateLabels(days, data) {
+function setActualChartDateLabels() {
 	let index = 1;
 
-	for (let prop in data) {
-		if (index > parseInt(days)) {
+	for (let prop in descendingDates) {
+		if (index > parseInt(visibleDates)) {
 			break;
 		} 
 		
@@ -239,27 +239,19 @@ function setActualChartDateLabels(days, data) {
 	}
 }
 
-function setProjectedChartDateLabels(data) {
-	let index = 13;
-
-	for (let prop in data) {
-		if (index < 1) {
-			break;
-		} 
-		
-		chartObject.data.labels.push(prop);
-		chartObject.data.datasets[7].data.push(data[prop]);
-		
-		index--;
+function setProjectedChartDateLabels(inputArray) {
+	$.each(inputArray, (index,value) => ) {
+		chartObject.data.labels.unshift(value.date);
+		chartObject.data.datasets[7].data.unshift(value.tss);
 	}
 }
 
-function calulateGraphData(days, data) {
+function calulateGraphData() {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
-	let tssArray = Object.values(data);
+	let tssArray = Object.values(descendingDates);
 	let arrayLength = tssArray.length;
 
-	for (var i = 0; i < days; i++) {
+	for (var i = 0; i < visibleDates; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
 
@@ -287,16 +279,17 @@ function calulateGraphData(days, data) {
 	}	
 }
 
-function calulateProjectedGraphData(days, chartObject) {
+function calulateProjectedGraphData() {
 	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
-	let projectedTSSArray = chartObject.data.datasets[7].data;
-	let arrayLength = projectedTSSArray.length;
 
-	for (var i = 0; i < 52; i++) {
+	let nestedArrayLength = projectedTSSArray.length;
+	let parentArrayLength = visibleDates + 14;
+
+	for (var i = 0; i < parentArrayLength; i++) {
 		ctlTSS = 0;
 		atlTSS = 0;
 
-		for (var j = 0; j < arrayLength; j++) {
+		for (var j = 0; j < nestedArrayLength; j++) {
 			tss = parseInt(projectedTSSArray[j]);
 
 			if (j === 42) {
@@ -330,7 +323,6 @@ function getFirebaseData(uid) {
 				return;
 			} else {
 				let compareDate = '';
-				let descendingDates = {};
 				let startDate = moment().unix();
 				let responseValues = Object.values(response);
 				let arrayLength = responseValues.length;
@@ -345,12 +337,12 @@ function getFirebaseData(uid) {
 					descendingDates[compareDate] += tss;
 				}
 
-				createActualChart(visibleDates, descendingDates);
+				createActualChart(descendingDates);
 			}
 		})
 }
 
-function postActualFirebaseData(object) {
+function postFirebaseData(object) {
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/actual/.json`, {
 		method: 'POST',
 		type: 'JSON',
@@ -392,9 +384,9 @@ function createProjectedInputs() {
 		let newDate = moment.unix(startDate).add(i, 'days').format('M/DD');
 		let inputRow = `
 			<div class="form-group row">
-				<label for="${newDate + '-' + i}" class="col-sm-3 col-form-label">${newDate}</label>
+				<label for="${newDate}" class="col-sm-3 col-form-label">${newDate}</label>
 				<div class="col-sm-9">
-					<input class="form-control" id="${newDate + '-' + i}" type="numeric" value="0">
+					<input class="form-control" id="${newDate}" type="numeric" value="0">
 				</div>
 			</div>`;
 

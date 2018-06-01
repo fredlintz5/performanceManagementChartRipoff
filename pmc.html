@@ -67,39 +67,27 @@
 				  	<div class="form-group row">
 		        	<label for="submittedActualDate" class="col-sm-2 col-form-label">Date</label>
 		        	<div class="col-sm-10">
-		      			<input class="form-control" id="submittedActualDate" type="date">
+		      			<input class="form-control" id="submittedActualDate" type="date" required>
 		      		</div>
 		      	</div>
 		        <div class="form-group row">
 		        	<label for="submittedActualTSS" class="col-sm-2 col-form-label">TSS</label>
 		        	<div class="col-sm-10">
-								<input class="form-control" id="submittedActualTSS" type="numeric" placeholder="100">
+								<input class="form-control" id="submittedActualTSS" type="numeric" placeholder="100" required>
 							</div>
 						</div>
 						<div class="form-group row">
 		        	<label for="submittedActualIF" class="col-sm-2 col-form-label">IF</label>
 		        	<div class="col-sm-10">
-								<input class="form-control" id="submittedActualIF" type="numeric" placeholder="0.8" min="0.1" max="2.0" step="0.01">
+								<input class="form-control" id="submittedActualIF" type="numeric" placeholder="0.8" min="0.1" max="2.0" step="0.01" required>
 							</div>
 						</div>
-						<button class="btn btn-secondary pull-right btn-block" id="submitActualTSS" type="button">Submit - Actual</button>
+						<button class="btn btn-secondary pull-right btn-block" id="submitActualTSS" type="button">Submit</button>
 					</div>
 				  <div class="tab-pane fade" id="nav-projected" role="tabpanel" aria-labelledby="nav-projected-tab">
-				  	<!-- <div class="form-group row">
-		        	<label for="submittedProjectedDate" class="col-sm-2 col-form-label">Date</label>
-		        	<div class="col-sm-10">
-		      			<input class="form-control" id="submittedProjectedDate" type="date">
-		      		</div>
-		      	</div> -->
-		        <!-- <div class="form-group row">
-		        	<label for="submittedProjectedTSS" class="col-sm-2 col-form-label">TSS</label>
-		        	<div class="col-sm-10">
-								<input class="form-control" id="submittedProjectedTSS" type="numeric" placeholder="100">
-							</div>
-						</div> -->
 						<div id="loading">Loading Data...</div>
-						<button class="btn btn-secondary btn-block" id="submitProjectedTSS" type="button">Submit - Projected</button>
-						<button class="btn btn-secondary btn-block" id="clearProjectedTSS" type="button">Clear - Projected</button>
+						<button class="btn btn-secondary btn-block" id="submitProjectedTSS" type="button">Submit</button>
+						<button class="btn btn-outline-danger btn-block" id="clearProjectedTSS" type="button">Clear All Data</button>
 				  </div>
 				</div>
 	    </div>

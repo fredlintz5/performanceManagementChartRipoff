@@ -241,9 +241,9 @@ function setActualChartDateLabels() {
 }
 
 function setProjectedChartDateLabels(inputArray) {
-	$.each(inputArray, (index,value) => {
-		chartObject.data.labels.unshift(value.date);
-		chartObject.data.datasets[7].data.unshift(value.tss);
+	$.each(inputArray.reverse(), (index,value) => {
+		chartObject.data.labels.push(value.date);
+		chartObject.data.datasets[7].data.push(value.tss);
 	})
 }
 

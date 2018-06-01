@@ -170,7 +170,11 @@ $('#submitActualTSS').on('click', event => {
 	$('#addTSSModal').modal('hide');
 })
 
-$('#submitProjectedTSS').on('click', event => {
+$('#nav-projected-tab').on('click', event => {
+
+})
+
+$('#submitProjectedTSS').on('click', function() {
 	event.preventDefault();
 
 	let submittedProjectedTSS = $("#submittedProjectedTSS").val();
@@ -438,7 +442,6 @@ function createProjectedInputs(firebaseData) {
 function clearModalInputs() {
 	$('#addTSSModal :input').val('');
 }
-
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.
 // Fatigue (ATL) is a 7 day average of your TSS that accounts for the workouts you have done recently.

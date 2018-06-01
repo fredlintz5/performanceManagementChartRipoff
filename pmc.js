@@ -178,7 +178,7 @@ $('#submitProjectedTSS').on('click', function() {
 	let inputArray = [];
 	let inputs = $('#nav-projected :input').not(':input[type=button]');
 
-	inputs.each(() => inputArray.push({date: $(value).attr('id'), tss: $(value).val()}));
+	inputs.each((i, value) => inputArray.push({date: $(value).attr('id'), tss: $(value).val()}));
 	
 	createProjectedChart(inputArray);
 

@@ -156,6 +156,7 @@ $('#submitActualTSS').on('click', event => {
 	let submittedActualTSS = $("#submittedActualTSS").val();
 	let submittedActualDate = $("#submittedActualDate").val();
 	let submittedActualIF = $("#submittedActualIF").val();
+	if (submittedActualTSS === '' || submittedActualDate === '' || submittedActualIF === '') {return}
 	let convertedDate = moment(submittedActualDate).unix();
 
 	postActualFirebaseData({date:convertedDate,tss:submittedActualTSS,if:submittedActualIF});
@@ -421,7 +422,7 @@ function createProjectedInputs(firebaseData) {
 	let projectedTSS = 0;
 	let firebaseKey = '';
 	let date = '5/31';
-	
+
 	let inputRow = `
 	<div class="form-group row">
 		<label for="${firebaseKey}" class="col-sm-3 col-form-label">${date}</label>

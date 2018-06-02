@@ -210,7 +210,7 @@ $('#legend button').on('click', function() {
 			chartObject.data.datasets[6].hidden = $(this).hasClass('false') ? true : false;
 			chartObject.data.datasets[7].hidden = $(this).hasClass('false') ? true : false;
 			$(this).toggleClass('false');
-			console.log($(this));
+			$(this).toggleClass('d-none');
 			break;
 	}
 	chart.update();

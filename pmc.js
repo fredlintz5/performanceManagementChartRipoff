@@ -183,6 +183,7 @@ $('#submitProjectedTSS').on('click', function() {
 	
 	createProjectedChart(inputArray);
 	$('#projectedButton').toggleClass('d-none');
+	$('#projectedButton').toggleClass('false');
 	$('#addTSSModal').modal('hide');
 })
 
@@ -226,6 +227,9 @@ function createProjectedChart(inputArray) {
 	setProjectedChartDateLabels(inputArray);
 	calulateProjectedGraphData();
 	chartObject.data.datasets[3].hidden = true;
+	chartObject.data.datasets[4].hidden = false;
+	chartObject.data.datasets[5].hidden = false;
+	chartObject.data.datasets[6].hidden = false;
 	chartObject.data.datasets[7].hidden = false;
 	chart.update();
 }

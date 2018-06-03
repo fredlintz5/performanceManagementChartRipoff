@@ -415,9 +415,9 @@ function fillHeaderData() {
 	let ctl = parseInt(chartObject.data.datasets[0].data[chartObject.data.datasets[0].data.length - 1]).toFixed();
 	let atl = parseInt(chartObject.data.datasets[1].data[chartObject.data.datasets[1].data.length - 1]).toFixed();
 	let tsb = parseInt(chartObject.data.datasets[2].data[chartObject.data.datasets[2].data.length - 1]).toFixed();
-	let ctlInterval = setInterval(ctlIncrementer, 30);
-	let atlInterval = setInterval(atlIncrementer, 20);
-	let tsbInterval = setInterval(tsbIncrementer, 60);
+	let ctlInterval = setInterval(ctlIncrementer, 20);
+	let atlInterval = setInterval(atlIncrementer, 15);
+	let tsbInterval = setInterval(tsbIncrementer, 40);
 	let ctlIndex = 0;
 	let atlIndex = 0;
 	let tsbIndex = 0;

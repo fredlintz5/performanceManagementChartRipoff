@@ -416,10 +416,14 @@ function fillHeaderData() {
 	let atl = parseInt(chartObject.data.datasets[1].data[chartObject.data.datasets[1].data.length - 1]).toFixed();
 	let tsb = parseInt(chartObject.data.datasets[2].data[chartObject.data.datasets[2].data.length - 1]).toFixed();
 
-	let ctlInterval = setInterval(myTimer, 50);
+	let ctlInterval = setInterval(ctlIncrementer, 30);
+	let atlInterval = setInterval(atlIncrementer, 40);
+	let tsbInterval = setInterval(tsbIncrementer, 50);
 	let ctlIndex = 1;
+	let atlIndex = 1;
+	let tsbIndex = 1;
 
-	function myTimer() {
+	function ctlIncrementer() {
 		if (ctlIndex <= ctl) {
 	   $('#fitnessHead').text(ctlIndex);
 	   ctlIndex++
@@ -427,10 +431,24 @@ function fillHeaderData() {
 			clearInterval(ctlInterval);
 		}
 	}
-	
-	$('#fatigueHead').append(atl);
-	$('#stressHead').append(tsb);
 
+	function atlIncrementer() {
+		if (atlIndex <= atl) {
+	   $('#fatigueHead').text(atlIndex);
+	   atlIndex++
+		} else {
+			clearInterval(atlInterval);
+		}
+	}
+
+	function tsbIncrementer() {
+		if (tsbIndex <= tsb) {
+	   $('#fitnessHead').text(tsbIndex);
+	   tsbIndex++
+		} else {
+			clearInterval(tsbInterval);
+		}
+	}
 }
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.

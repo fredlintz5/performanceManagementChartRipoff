@@ -25,24 +25,16 @@
 <body>
 
 	<div class="container">
-		<div class="pos-f-t">
-			<nav class="navbar navbar-light">
-		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-		      <span class="navbar-toggler-icon"></span>
-		    </button>
-		  </nav>
-		  <div class="collapse" id="navbarToggleExternalContent">
-		  	<div class="p-4">
-					<button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#addTSSModal">
-						<i class="fas fa-plus" title="Add Daily TSS"></i>
-					</button>
-					<div id="welcome">
-						<button class="btn btn-secondary btn-sm pull-right" onclick="signOut()">Log Out</button>
-					</div>
-				</div>
-		  </div>
+		<div class="row text-center mb-3" style="margin-top: 10px">
+			<div class="col-2 text-left">
+				<button class="btn btn-secondary btn-sm pull-left" data-toggle="modal" data-target="#addTSSModal">
+					<i class="fas fa-plus" title="Add Daily TSS"></i>
+				</button>
+			</div>
+			<div class="col-10 text-right" id="welcome">
+				<button class="btn btn-secondary btn-sm pull-right" onclick="signOut()">Log Out</button>
+			</div>
 		</div>
-
 		<div class="row">
 			<canvas id="powerGraph"></canvas>
 		</div>
@@ -53,7 +45,8 @@
 				<button class="btn btn-sm text-white false" style="background-color: rgba(242,140,222,0.9)">Fatigue (ATL)</button>
 				<button class="btn btn-sm text-white false" style="background-color: rgba(246,192,119,0.9)">Form (TSB)</button>
 				<button class="btn btn-sm text-white false" style="background-color: rgba(253,101,133,0.9)">Daily TSS</button>
-				<button class="btn btn-sm text-white" title="Add Projected Data to See Results" style="background-color: rgb(128,203,196,0.9)" id="projectedButton" disabled>Projected Data</button>
+				<button class="btn btn-sm text-white" disabled style="background-color: rgb(128,203,196,0.9)" id="projected">Projected Data</button>
+				<!-- <button class="btn btn-sm text-white" style="background-color: rgba(51,130,94,0.9)">Intensity Factor</button> -->
 			</div>
 			<div class="col-sm-2"></div>
 		</div>

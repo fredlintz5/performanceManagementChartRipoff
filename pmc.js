@@ -415,7 +415,6 @@ function fillHeaderData() {
 	let ctl = parseInt(chartObject.data.datasets[0].data[chartObject.data.datasets[0].data.length - 1]).toFixed();
 	let atl = parseInt(chartObject.data.datasets[1].data[chartObject.data.datasets[1].data.length - 1]).toFixed();
 	let tsb = parseInt(chartObject.data.datasets[2].data[chartObject.data.datasets[2].data.length - 1]).toFixed();
-
 	let ctlInterval = setInterval(ctlIncrementer, 30);
 	let atlInterval = setInterval(atlIncrementer, 40);
 	let tsbInterval = setInterval(tsbIncrementer, 50);
@@ -443,7 +442,7 @@ function fillHeaderData() {
 
 	function tsbIncrementer() {
 		if (tsbIndex <= tsb) {
-	   $('#fitnessHead').text(tsbIndex);
+	   $('#stressHead').text(tsbIndex);
 	   tsbIndex++
 		} else {
 			clearInterval(tsbInterval);

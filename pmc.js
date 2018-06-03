@@ -418,7 +418,7 @@ function fillHeaderData() {
 
 	for (var i = 0; i < ctl; i++) {
 		setTimeout(() => {
-			$('#fitnessHead').append(i);
+			$('#fitnessHead').text(i);
 		}, 50)
 	}
 

@@ -23,28 +23,19 @@
 	<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
 
 	<style type="text/css">
-		.fitness {
-			background-color: rgba(100,146,182,0.9);
-		}
-		.fatigue {
-			background-color: rgba(242,140,222,0.9);
-		}
-		.stressBalance {
-			background-color: rgba(246,192,119,0.9);
-		}
-		.dailyTSS {
-			background-color: rgba(253,101,133,0.9);
-		}
-		.projected {
-			background-color: rgb(128,203,196,0.9);
-		}
+		.fitness {background-color: rgba(100,146,182,0.9);}
+		.fatigue {background-color: rgba(242,140,222,0.9);}
+		.stressBalance {background-color: rgba(246,192,119,0.9);}
+		.dailyTSS {background-color: rgba(253,101,133,0.9);}
+		.projected {background-color: rgb(128,203,196,0.9);}
+		.card-bodyHeader {padding: .3rem;}
 	</style>
 </head>
 <body>
 
 	<div class="container">
 		<div class="row text-center mb-3" style="margin-top: 10px">
-			<div class="col-1 text-left">
+			<div class="col-2 text-left">
 				<button class="btn btn-secondary btn-sm pull-left" data-toggle="modal" data-target="#addTSSModal">
 					<i class="fas fa-plus" title="Add Daily TSS"></i>
 				</button>
@@ -52,23 +43,23 @@
 			<div class="col-8">
 				<div class="card-deck">
 				  <div class="card fitness">
-				    <div class="card-body text-center">
+				    <div class="card-body text-center card-bodyHeader">
 				      <p class="card-text">55</p>
 				    </div>
 				  </div>
 				  <div class="card fatigue">
-				    <div class="card-body text-center">
+				    <div class="card-body text-center card-bodyHeader">
 				      <p class="card-text">65</p>
 				    </div>
 				  </div>
 				  <div class="card stressBalance">
-				    <div class="card-body text-center">
+				    <div class="card-body text-center card-bodyHeader">
 				      <p class="card-text">10</p>
 				    </div>
 				  </div>
 				</div>
 			</div>
-			<div class="col-1 text-right" id="welcome"></div>
+			<div class="col-2 text-right" id="welcome"></div>
 		</div>
 		<div class="row">
 			<canvas id="powerGraph"></canvas>

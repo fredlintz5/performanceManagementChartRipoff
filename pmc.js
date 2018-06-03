@@ -412,9 +412,9 @@ function clearModalInputs() {
 }
 
 function fillHeaderData() {
-	let ctl = chartObject.data.datasets[0].data[chartObject.data.datasets[0].data.length - 1].toFixed();
-	let atl = chartObject.data.datasets[1].data[chartObject.data.datasets[1].data.length - 1].toFixed();
-	let tsb = chartObject.data.datasets[2].data[chartObject.data.datasets[2].data.length - 1].toFixed();
+	let ctl = parseInt(chartObject.data.datasets[0].data[chartObject.data.datasets[0].data.length - 1]).toFixed();
+	let atl = parseInt(chartObject.data.datasets[1].data[chartObject.data.datasets[1].data.length - 1]).toFixed();
+	let tsb = parseInt(chartObject.data.datasets[2].data[chartObject.data.datasets[2].data.length - 1]).toFixed();
 
 	for (var i = 0; i < ctl; i++) {
 		setTimeout(() => {

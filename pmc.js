@@ -415,20 +415,18 @@ function fillHeaderData() {
 	let ctl = parseInt(chartObject.data.datasets[0].data[chartObject.data.datasets[0].data.length - 1]).toFixed();
 	let atl = parseInt(chartObject.data.datasets[1].data[chartObject.data.datasets[1].data.length - 1]).toFixed();
 	let tsb = parseInt(chartObject.data.datasets[2].data[chartObject.data.datasets[2].data.length - 1]).toFixed();
-	let ctlIndex = 1;
 
 	let ctlInterval = setInterval(myTimer, 100);
+	let ctlIndex = 1;
 
 	function myTimer() {
-		if (ctlIndex <== ctl) {
+		if (ctlIndex <= ctl) {
 	   $('#fitnessHead').text(ctlIndex);
 	   ctlIndex++
 		} else {
 			clearInterval(myVar);
 		}
 	}
-
-
 	
 	$('#fatigueHead').append(atl);
 	$('#stressHead').append(tsb);

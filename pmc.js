@@ -410,6 +410,17 @@ function clearModalInputs() {
 	$('#addTSSModal :input').val('');
 }
 
+function fillHeaderData() {
+	let ctl = chartObject.data.datasets[0].data[chartObject.data.datasets[0].data.length - 1];
+	let atl = chartObject.data.datasets[1].data[chartObject.data.datasets[1].data.length - 1];
+	let tsb = chartObject.data.datasets[2].data[chartObject.data.datasets[2].data.length - 1];
+
+	$('#fitnessHead').append(ctl);
+	$('#fatigueHead').append(atl);
+	$('#stressHead').append(tsb);
+
+}
+
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.
 // Fatigue (ATL) is a 7 day average of your TSS that accounts for the workouts you have done recently.
 // Form (TSB) is the balance of TSS equal to yesterday's fitness minus yesterday's fatigue.

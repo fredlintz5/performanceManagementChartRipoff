@@ -11,7 +11,7 @@ firebase.initializeApp(config);
 
 let chart = '';
 let uid = '';
-let photoURL = '';
+let photoURL = 'http://bsmar.com/wp-content/uploads/2015/11/LOL.jpg';
 let visibleDates = 42;
 let ctx = $('#powerGraph');
 let descendingDates = {};
@@ -365,7 +365,6 @@ function initApp() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       uid = user.uid;
-      console.log(user);
      	photoURL = user.photoURL;
       getFirebaseData(uid);
       $('#welcome').prepend(`<image src=${photoURL} style="height: 26px; border-radius: 50%" />`);

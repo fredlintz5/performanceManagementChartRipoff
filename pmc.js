@@ -419,7 +419,7 @@ function fillHeaderData() {
 	for (var i = 0; i < ctl; i++) {
 		setTimeout(() => {
 			$('#fitnessHead').text(i);
-		}, 50)
+		}, 100)
 	}
 
 	

@@ -12,7 +12,7 @@ firebase.initializeApp(config);
 let chart = '';
 let uid = '';
 let photoURL = 'http://bsmar.com/wp-content/uploads/2015/11/LOL.jpg';
-let visibleDates = 42;
+let visibleDates = window.innerWidth > 700 ? 42 : 14;
 let ctx = $('#powerGraph');
 let descendingDates = {};
 let tempArray = [];

@@ -416,7 +416,13 @@ function fillHeaderData() {
 	let atl = chartObject.data.datasets[1].data[chartObject.data.datasets[1].data.length - 1];
 	let tsb = chartObject.data.datasets[2].data[chartObject.data.datasets[2].data.length - 1];
 
-	$('#fitnessHead').append(ctl);
+	for (var i = 0; i < ctl.toFixed(); i++) {
+		setTimeout(() => {
+			$('#fitnessHead').append(i);
+		}, 50)
+	}
+
+	
 	$('#fatigueHead').append(atl);
 	$('#stressHead').append(tsb);
 

@@ -21,6 +21,24 @@
 
 	<!-- Firebase -->
 	<script src="https://www.gstatic.com/firebasejs/5.0.3/firebase.js"></script>
+
+	<style type="text/css">
+		.fitness {
+			background-color: rgba(100,146,182,0.9);
+		}
+		.fatigue {
+			background-color: rgba(242,140,222,0.9);
+		}
+		.stressBalance {
+			background-color: rgba(246,192,119,0.9);
+		}
+		.dailyTSS {
+			background-color: rgba(253,101,133,0.9);
+		}
+		.projected {
+			background-color: rgb(128,203,196,0.9);
+		}
+	</style>
 </head>
 <body>
 
@@ -31,6 +49,25 @@
 					<i class="fas fa-plus" title="Add Daily TSS"></i>
 				</button>
 			</div>
+			<div class="col-8">
+				<div class="card-deck">
+				  <div class="card bg-primary">
+				    <div class="card-body text-center">
+				      <p class="card-text">Some text inside the first card</p>
+				    </div>
+				  </div>
+				  <div class="card bg-warning">
+				    <div class="card-body text-center">
+				      <p class="card-text">Some text inside the second card</p>
+				    </div>
+				  </div>
+				  <div class="card bg-success">
+				    <div class="card-body text-center">
+				      <p class="card-text">Some text inside the third card</p>
+				    </div>
+				  </div>
+				</div>
+			</div>
 			<div class="col-10 text-right" id="welcome"></div>
 		</div>
 		<div class="row">
@@ -39,11 +76,11 @@
 		<div class="row" id="legend">
 			<div class="col-sm-2"></div>
 			<div class="col-sm-8 text-center">
-				<button class="btn btn-sm text-white false" style="background-color: rgba(100,146,182,0.9)">Fitness (CTL)</button>
-				<button class="btn btn-sm text-white false" style="background-color: rgba(242,140,222,0.9)">Fatigue (ATL)</button>
-				<button class="btn btn-sm text-white false" style="background-color: rgba(246,192,119,0.9)">Form (TSB)</button>
-				<button class="btn btn-sm text-white false" style="background-color: rgba(253,101,133,0.9)">Daily TSS</button>
-				<button class="btn btn-sm text-white" disabled style="background-color: rgb(128,203,196,0.9)" id="projected">Projected Data</button>
+				<button class="btn btn-sm text-white false fitness">Fitness (CTL)</button>
+				<button class="btn btn-sm text-white false fatigue">Fatigue (ATL)</button>
+				<button class="btn btn-sm text-white false stressBalance">Form (TSB)</button>
+				<button class="btn btn-sm text-white false dailyTSS">Daily TSS</button>
+				<button class="btn btn-sm text-white projected" id="projected">Projected Data</button>
 			</div>
 			<div class="col-sm-2"></div>
 		</div>

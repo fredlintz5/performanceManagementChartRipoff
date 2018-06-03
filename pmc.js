@@ -145,7 +145,7 @@ let chartObject = {
         ticks: {max: 500,min: 0,display: false},
         gridlines: {display: false}
       }],
-      xAxes: {gridLines: {display:false}},
+      xAxes: [{gridLines: {display:false}}]
     }
   } 
 };

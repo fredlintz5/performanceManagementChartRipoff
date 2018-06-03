@@ -221,6 +221,7 @@ function createActualChart() {
 	setActualChartDateLabels();
 	calulateGraphData();
 	chart = new Chart(ctx, chartObject);
+	fillHeaderData();
 }
 
 function createProjectedChart(inputArray) {

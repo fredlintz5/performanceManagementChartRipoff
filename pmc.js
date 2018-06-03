@@ -11,7 +11,7 @@ firebase.initializeApp(config);
 
 let chart = '';
 let uid = '';
-let photURL = '';
+let photoURL = '';
 let visibleDates = 42;
 let ctx = $('#powerGraph');
 let descendingDates = {};
@@ -366,9 +366,9 @@ function initApp() {
     if (user) {
       uid = user.uid;
       console.log(user);
-     	photURL = user.photURL;
+     	photoURL = user.photoURL;
       getFirebaseData(uid);
-      $('#welcome').prepend(`<span style="height: 26px; border-radius: 50%">${photURL}</span>`);
+      $('#welcome').prepend(`<image src=${photoURL} style="height: 26px; border-radius: 50%" />`);
     } else {
       window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/');
     }

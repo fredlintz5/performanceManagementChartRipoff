@@ -424,7 +424,7 @@ function fillHeaderData() {
 	   $('#fitnessHead').text(ctlIndex);
 	   ctlIndex++
 		} else {
-			clearInterval(myVar);
+			clearInterval(ctlInterval);
 		}
 	}
 	

@@ -416,16 +416,16 @@ function fillHeaderData() {
 	let atl = parseInt(chartObject.data.datasets[1].data[chartObject.data.datasets[1].data.length - 1]).toFixed();
 	let tsb = parseInt(chartObject.data.datasets[2].data[chartObject.data.datasets[2].data.length - 1]).toFixed();
 	let ctlInterval = setInterval(ctlIncrementer, 30);
-	let atlInterval = setInterval(atlIncrementer, 40);
-	let tsbInterval = setInterval(tsbIncrementer, 50);
-	let ctlIndex = 1;
-	let atlIndex = 1;
-	let tsbIndex = 1;
+	let atlInterval = setInterval(atlIncrementer, 20);
+	let tsbInterval = setInterval(tsbIncrementer, 60);
+	let ctlIndex = 0;
+	let atlIndex = 0;
+	let tsbIndex = 0;
 
 	function ctlIncrementer() {
 		if (ctlIndex <= ctl) {
-	   $('#fitnessHead').text(ctlIndex);
-	   ctlIndex++
+	  	$('#fitnessHead').text(ctlIndex);
+	   	ctlIndex++
 		} else {
 			clearInterval(ctlInterval);
 		}
@@ -433,19 +433,28 @@ function fillHeaderData() {
 
 	function atlIncrementer() {
 		if (atlIndex <= atl) {
-	   $('#fatigueHead').text(atlIndex);
-	   atlIndex++
+	   	$('#fatigueHead').text(atlIndex);
+	   	atlIndex++
 		} else {
 			clearInterval(atlInterval);
 		}
 	}
 
 	function tsbIncrementer() {
-		if (tsbIndex <= tsb) {
-	   $('#stressHead').text(tsbIndex);
-	   tsbIndex++
+		if (tsb < 0) {
+			if (tsbIndex >= tsb) {
+		   	$('#stressHead').text(tsbIndex);
+		   	ttsbIndex--;
+			} else {
+				clearInterval(tsbInterval);
+			}
 		} else {
-			clearInterval(tsbInterval);
+			if (tsbIndex <= tsb) {
+		   	$('#stressHead').text(tsbIndex);
+		   	tsbIndex++
+			} else {
+				clearInterval(tsbInterval);
+			}
 		}
 	}
 }

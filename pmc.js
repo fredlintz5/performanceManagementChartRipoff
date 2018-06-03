@@ -189,23 +189,23 @@ $('#submitProjectedTSS').on('click', function() {
 
 $('#legend button').on('click', function() {
 	switch ($(this).text()) {
-		case 'Fitness (CTL)':
+		case 'CTL':
 			chartObject.data.datasets[0].hidden = $(this).hasClass('false') ? true : false;
 			$(this).toggleClass('false');
 			break;
-		case 'Fatigue (ATL)':
+		case 'ATL':
 			chartObject.data.datasets[1].hidden = $(this).hasClass('false') ? true : false;
 			$(this).toggleClass('false');
 			break;
-		case 'Form (TSB)':
+		case 'TSB':
 			chartObject.data.datasets[2].hidden = $(this).hasClass('false') ? true : false;
 			$(this).toggleClass('false');
 			break;
-		case 'Daily TSS':
+		case 'TSS':
 			chartObject.data.datasets[3].hidden = $(this).hasClass('false') ? true : false;
 			$(this).toggleClass('false');
 			break;
-		case 'Projected Data':
+		case 'Future':
 			chartObject.data.datasets[4].hidden = $(this).hasClass('false') ? true : false;
 			chartObject.data.datasets[5].hidden = $(this).hasClass('false') ? true : false;
 			chartObject.data.datasets[6].hidden = $(this).hasClass('false') ? true : false;

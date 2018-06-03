@@ -25,16 +25,26 @@
 <body>
 
 	<div class="container">
-		<div class="row text-center mb-3" style="margin-top: 10px">
-			<div class="col-2 text-left">
-				<button class="btn btn-secondary btn-sm pull-left" data-toggle="modal" data-target="#addTSSModal">
-					<i class="fas fa-plus" title="Add Daily TSS"></i>
-				</button>
-			</div>
-			<div class="col-10 text-right" id="welcome">
-				<button class="btn btn-secondary btn-sm pull-right" onclick="signOut()">Log Out</button>
-			</div>
+		<div class="pos-f-t">
+		  <div class="collapse" id="navbarToggleExternalContent">
+		    <div class="row text-center mb-3" style="margin-top: 10px">
+					<div class="col-2 text-left">
+						<button class="btn btn-secondary btn-sm pull-left" data-toggle="modal" data-target="#addTSSModal">
+							<i class="fas fa-plus" title="Add Daily TSS"></i>
+						</button>
+					</div>
+					<div class="col-10 text-right" id="welcome">
+						<button class="btn btn-secondary btn-sm pull-right" onclick="signOut()">Log Out</button>
+					</div>
+				</div>
+		  </div>
+		  <nav class="navbar navbar-dark bg-dark">
+		    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button>
+		  </nav>
 		</div>
+
 		<div class="row">
 			<canvas id="powerGraph"></canvas>
 		</div>

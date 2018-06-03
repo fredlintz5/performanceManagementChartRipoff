@@ -130,19 +130,19 @@ let chartObject = {
         id: 'A',
         type: 'linear',
         position: 'right',
-        ticks: {max: 80,min: 0},
+        ticks: {max: 80,min: 0,display: false},
         gridlines: {display: false}
       }, {
         id: 'B',
         type: 'linear',
         position: 'left',
-        ticks: {max: 30,min: -30},
+        ticks: {max: 30,min: -30,display: false},
         gridlines: {display: false}
       }, {
         id: 'C',
         type: 'linear',
         position: 'right',
-        ticks: {max: 500,min: 0},
+        ticks: {max: 500,min: 0,display: false},
         gridlines: {display: false}
       }],
       xAxes: {gridLines: {display:false}},

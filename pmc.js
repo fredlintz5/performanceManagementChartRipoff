@@ -444,7 +444,7 @@ function fillHeaderData() {
 		if (tsb < 0) {
 			if (tsbIndex >= tsb) {
 		   	$('#stressHead').text(tsbIndex);
-		   	ttsbIndex--;
+		   	tsbIndex--;
 			} else {
 				clearInterval(tsbInterval);
 			}

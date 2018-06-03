@@ -412,11 +412,11 @@ function clearModalInputs() {
 }
 
 function fillHeaderData() {
-	let ctl = chartObject.data.datasets[0].data[chartObject.data.datasets[0].data.length - 1];
-	let atl = chartObject.data.datasets[1].data[chartObject.data.datasets[1].data.length - 1];
-	let tsb = chartObject.data.datasets[2].data[chartObject.data.datasets[2].data.length - 1];
+	let ctl = chartObject.data.datasets[0].data[chartObject.data.datasets[0].data.length - 1].toFixed();
+	let atl = chartObject.data.datasets[1].data[chartObject.data.datasets[1].data.length - 1].toFixed();
+	let tsb = chartObject.data.datasets[2].data[chartObject.data.datasets[2].data.length - 1].toFixed();
 
-	for (var i = 0; i < ctl.toFixed(); i++) {
+	for (var i = 0; i < ctl; i++) {
 		setTimeout(() => {
 			$('#fitnessHead').append(i);
 		}, 50)

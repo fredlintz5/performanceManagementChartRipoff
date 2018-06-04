@@ -28,6 +28,38 @@
 		.stressBalance {background-color: rgba(246,192,119,0.9);}
 		.dailyTSS {background-color: rgba(253,101,133,0.9);}
 		.projected {background-color: rgb(128,203,196,0.9);}
+
+		#fatigueHead {
+			position: absolute;
+	    width: 45px;
+	    border-top-left-radius: 10px;
+	    border-bottom-left-radius: 10px;
+	    border: 2px solid rgb(242,140,222);
+	    top: 2px;
+	    right: 142px;
+		}
+
+		#fitnessHead {
+			position: absolute;
+	    width: 60px;
+	    border-radius: 10px;
+	    right: 85px;
+	    z-index: 100;
+	    top: -5px;
+    	background-color: rgb(100,146,182);
+		}
+
+		#stressHead {
+			position: absolute;
+	    position: absolute;
+	    width: 45px;
+	    border-top-right-radius: 10px;
+	    border-bottom-right-radius: 10px;
+	    border: 2px solid rgb(246,192,119);
+	    top: 2px;
+	    right: 48px;
+		}
+
 	</style>
 </head>
 <body>
@@ -40,10 +72,19 @@
 				</button>
 			</div>
 			<div class="col-8 text-center text-white">
-				<div class="headerData">
-					<div class="fatigue p-2" id="fatigueHead">-</div>
-				  <div class="fitness p-3" id="fitnessHead">-</div>
-				  <div class="stressBalance p-2" id="stressHead">-</div>
+				<div class="headerData" style="position: relative;">
+					<div class="fatigue p-2" id="fatigueHead">
+						<span>-</span>
+						<div>FATIGUE</div>
+					</div>
+				  <div class="fitness p-3" id="fitnessHead">
+				  	<span>-</span>
+				  	<div>FITNESS</div>
+				  </div>
+				  <div class="stressBalance p-2" id="stressHead">
+				  	<span>-</span>
+				  	<div>FORM</div>
+				  </div>
 				</div>
 			</div>
 			<div class="col-2 text-right" id="welcome"></div>

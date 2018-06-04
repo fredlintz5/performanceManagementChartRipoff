@@ -433,7 +433,7 @@ function fillHeaderData() {
 
 	function atlIncrementer() {
 		if (atlIndex <= atl) {
-	   	$('#fatigueHead').text(atlIndex);
+	   	$('#fatigueHead span').text(atlIndex);
 	   	atlIndex++
 		} else {
 			clearInterval(atlInterval);
@@ -443,14 +443,14 @@ function fillHeaderData() {
 	function tsbIncrementer() {
 		if (tsb < 0) {
 			if (tsbIndex >= tsb) {
-		   	$('#stressHead').text(tsbIndex);
+		   	$('#stressHead span').text(tsbIndex);
 		   	tsbIndex--;
 			} else {
 				clearInterval(tsbInterval);
 			}
 		} else {
 			if (tsbIndex <= tsb) {
-		   	$('#stressHead').text(tsbIndex);
+		   	$('#stressHead span').text(tsbIndex);
 		   	tsbIndex++
 			} else {
 				clearInterval(tsbInterval);

@@ -367,7 +367,7 @@ function initApp() {
       uid = user.uid;
      	photoURL = user.photoURL;
       getFirebaseData(uid);
-      $('#welcome').html(`<image src=${photoURL} class="btn" title="Log Out" onclick="signOut()"/>`);
+      $('#welcome').html(`<image src=${photoURL} title="Log Out" onclick="signOut()"/>`);
     } else {
       window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/');
     }

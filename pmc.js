@@ -424,7 +424,7 @@ function fillHeaderData() {
 
 	function ctlIncrementer() {
 		if (ctlIndex <= ctl) {
-	  	$('#fitnessHead').text(ctlIndex);
+	  	$('#fitnessHead span').text(ctlIndex);
 	   	ctlIndex++
 		} else {
 			clearInterval(ctlInterval);

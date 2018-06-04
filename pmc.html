@@ -176,6 +176,13 @@
 		<div class="row">
 			<div class="col-lg-10">
 				<canvas id="powerGraph"></canvas>
+				<div id="legend">
+					<button class="btn btn-sm text-white false fitness">CTL</button>
+					<button class="btn btn-sm text-white false fatigue">ATL</button>
+					<button class="btn btn-sm text-white false stressBalance">TSB</button>
+					<button class="btn btn-sm text-white false dailyTSS">TSS</button>
+					<button class="btn btn-sm text-white projected" id="projected" disabled>Future</button>
+				</div>
 			</div>
 			<div class="col-lg-2">
 				<div class="card bg-primary">
@@ -195,7 +202,7 @@
 			  </div>
 			</div>
 		</div>
-		<div class="row" id="legend">
+		<!-- <div class="row" id="legend">
 			<div class="col-sm-1"></div>
 			<div class="col-sm-10 text-center">
 				<button class="btn btn-sm text-white false fitness">CTL</button>
@@ -205,7 +212,7 @@
 				<button class="btn btn-sm text-white projected" id="projected" disabled>Future</button>
 			</div>
 			<div class="col-sm-1"></div>
-		</div>
+		</div> -->
 	</div>
 
 	<div class="modal" id="addTSSModal">

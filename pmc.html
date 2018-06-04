@@ -81,10 +81,24 @@
 		}
 
 		@media only screen and (max-width: 768px) {
-    body {
-        background-color: lightblue;
-    }
-}
+	    #headerData {
+		    width: 225px;
+		    height: 40px;
+			}
+
+			#fitnessHead {
+				font-size: .8rem;
+		    right: 100px;
+			}
+
+			#fatigueHead div{
+				padding: 0px
+			}
+
+			#stressHead div{
+				padding: 0px
+			}
+	}
 
 	</style>
 </head>
@@ -113,7 +127,9 @@
 				  </div>
 				</div>
 			</div>
-			<div class="col-2 text-right" id="welcome"></div>
+			<div class="col-2 text-right" id="welcome">
+				<image src="http://bsmar.com/wp-content/uploads/2015/11/LOL.jpg" class="btn" title="Log Out" onclick="signOut()"/>
+			</div>
 		</div>
 		<div class="row">
 			<canvas id="powerGraph"></canvas>

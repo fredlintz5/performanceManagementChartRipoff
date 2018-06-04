@@ -37,18 +37,24 @@
 		}
 
 		#fatigueHead {
+			font-size: .8rem;
 			position: absolute;
-	    width: 45px;
-	    border-top-left-radius: 10px;
-	    border-bottom-left-radius: 10px;
-	    border: 2px solid rgb(242,140,222);
-	    top: 2px;
-	    right: 142px;
+	    width: 65px;
+	    border-top-left-radius: 5px;
+	    border-bottom-left-radius: 5px;
+	    border: 1px solid rgb(242,140,222);
+	    top: 1px;
+	    right: 162px;
+		}
+		#fatigueHead span {color: rgb(242,140,222);}
+		#fatigueHead div {
+			background-color: rgb(242,140,222);
+	    padding: 5px;
+	    border-bottom-left-radius: 4px;
 		}
 
 		#fitnessHead {
 			position: absolute;
-	    width: 60px;
 	    border-radius: 10px;
 	    right: 85px;
 	    z-index: 100;
@@ -57,14 +63,21 @@
 		}
 
 		#stressHead {
-			position: absolute;
+			font-size: .8rem;
 	    position: absolute;
-	    width: 45px;
-	    border-top-right-radius: 10px;
-	    border-bottom-right-radius: 10px;
-	    border: 2px solid rgb(246,192,119);
-	    top: 2px;
-	    right: 48px;
+	    width: 65px;
+	    border-top-right-radius: 5px;
+	    border-bottom-right-radius: 5px;
+	    border: 1px solid rgb(246,192,119);
+	    top: 1px;
+	    right: 23px;
+		}
+
+		#stressHead span {color: rgb(246,192,119);}
+		#stressHead div {
+			background-color: rgb(246,192,119);
+	    padding: 5px;
+	    border-bottom-right-radius: 4px;
 		}
 
 	</style>
@@ -80,15 +93,15 @@
 			</div>
 			<div class="col-8 text-center text-white">
 				<div id="headerData">
-					<div class="fatigue p-2" id="fatigueHead">
+					<div class="p-1" id="fatigueHead">
 						<span>-</span>
 						<div>FATIGUE</div>
 					</div>
-				  <div class="fitness p-3" id="fitnessHead">
+				  <div class="fitness p-2" id="fitnessHead">
 				  	<span>-</span>
 				  	<div>FITNESS</div>
 				  </div>
-				  <div class="stressBalance p-2" id="stressHead">
+				  <div class="p-1" id="stressHead">
 				  	<span>-</span>
 				  	<div>FORM</div>
 				  </div>

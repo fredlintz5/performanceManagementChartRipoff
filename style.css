@@ -81,6 +81,17 @@
 
 #sevenDay {
 	display: flex;
+	color: #6c757d;
+}
+
+#currentFTP {
+	display: flex;
+	color: #6c757d;
+}
+
+#fourteenDay {
+	display: flex;
+	color: #6c757d;
 }
 
 .statLeft {
@@ -100,14 +111,6 @@
 .statData {
 	font-size: 2rem;
   margin-top: -5px;
-}
-
-#currentFTP {
-	display: flex;
-}
-
-#fourteenDay {
-	display: flex;
 }
 
 
@@ -173,3 +176,7 @@
 		top: 1px;
 	}
 }
+
+
+
+

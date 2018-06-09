@@ -378,7 +378,7 @@ function getFTPData(object) {
 		.then(response => response.json())
 		.then(response => {
 			console.log(response);
-		}
+		})
 }
 
 function postFTPData(object) {

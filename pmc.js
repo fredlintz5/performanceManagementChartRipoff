@@ -374,10 +374,10 @@ function postFirebaseData(object) {
 	})
 }
 
-function getFTPData(object) {
+function getFTPData() {
 	let date = 0;
 	let ftp = 0;
-	
+
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/ftp/.json`)
 		.then(response => response.json())
 		.then(response => {
@@ -392,7 +392,7 @@ function getFTPData(object) {
 					}
 				})
 			}
-			return ftp;
+			$('#currentFTP .statData').empty().text(ftp);
 		})
 }
 
@@ -511,9 +511,7 @@ function fillFooterData() {
 		.empty()
 		.text(tssArray.slice((tssArray.length - 7), tssArray.length).reduce((a, b) => a + b, 0));
 
-	$('#currentFTP .statData')
-		.empty()
-		.text(getFTPData());
+	getFTPData();
 }
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.

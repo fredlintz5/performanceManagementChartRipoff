@@ -46,7 +46,7 @@
 			left: 50px;
 		}
 
-		#legend span {margin-right: 5px;}
+		#legend span {margin-right: 5px; cursor: pointer;}
 
 		#headerData {
 			position: relative;
@@ -139,6 +139,10 @@
 		}
 
 		@media only screen and (max-width: 380px) {
+			#legend {
+				display: none;
+			}
+
 			#headerData {
 		    width: 225px;
 			}

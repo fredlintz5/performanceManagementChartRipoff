@@ -187,7 +187,7 @@ $('#submitProjectedTSS').on('click', function() {
 	$('#addTSSModal').modal('hide');
 })
 
-$('#legend button').on('click', function() {
+$('#legend span').on('click', function() {
 	switch ($(this).text()) {
 		case 'CTL':
 			chartObject.data.datasets[0].hidden = $(this).hasClass('false') ? true : false;

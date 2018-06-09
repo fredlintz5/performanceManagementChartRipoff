@@ -192,7 +192,7 @@ $('#submitFTP').on('click', event => {
 	let submittedFTP = $("#submittedFTP").val();
 	if (submittedFTP === '') {return};
 
-	postFTPData({date:moment().unix(),ftp:parseInt(submittedFTP)});
+	postFTPData({date:moment().unix(),ftp:submittedFTP});
 
 	clearModalInputs();
 	$('#addTSSModal').modal('hide');

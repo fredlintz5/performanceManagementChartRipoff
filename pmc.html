@@ -29,12 +29,23 @@
 		.dailyTSS {background-color: rgba(253,101,133,0.9);}
 		.projected {background-color: rgb(128,203,196,0.9);}
 
+		.fitness-color {color: rgba(100,146,182,0.9);}
+		.fatigue-color {color: rgba(242,140,222,0.9);}
+		.stressBalance-color {color: rgba(246,192,119,0.9);}
+		.dailyTSS-color {color: rgba(253,101,133,0.9);}
+		.projected-color {color: rgb(128,203,196,0.9);}
+
 		#welcome img {
 			border-radius: 50%;
 			height: 40px;
 		}
 
-		#legend button {color: white;}
+		#legend span {
+			position: absolute;
+			top: 0px;
+			left: 50px;
+			margin-right: 5px;
+		}
 
 		#headerData {
 			position: relative;
@@ -179,12 +190,12 @@
 			<div class="col-12 mb-3">
 				<canvas id="powerGraph"></canvas>
 				<div class="row" id="legend">
-					<div class="col-12 text-center">
-						<button class="btn btn-sm false fitness">CTL</button>
-						<button class="btn btn-sm false fatigue">ATL</button>
-						<button class="btn btn-sm false stressBalance">TSB</button>
-						<button class="btn btn-sm false dailyTSS">TSS</button>
-						<button class="btn btn-sm projected" id="projected" disabled>Future</button>
+					<div class="col-12">
+						<span class="false fitness-color">CTL</span>
+						<span class="false fatigue-color">ATL</span>
+						<span class="false stressBalance-color">TSB</span>
+						<span class="false dailyTSS-color">TSS</span>
+						<span class="projected-color" id="projected" disabled>Future</span>
 					</div>
 				</div>
 			</div>

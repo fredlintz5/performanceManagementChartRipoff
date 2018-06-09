@@ -196,6 +196,7 @@ $('#submitFTP').on('click', event => {
 
 	clearModalInputs();
 	$('#addTSSModal').modal('hide');
+	fillFooterData();
 })
 
 $('#legend span').on('click', function() {
@@ -488,8 +489,13 @@ function fillHeaderData() {
 function fillFooterData() {
 	let tssArray = chartObject.data.datasets[3].data;
 
-	$('#fourteenDay .statData').text(tssArray.slice((tssArray.length - 14), tssArray.length).reduce((a, b) => a + b, 0));
-	$('#sevenDay .statData').text(tssArray.slice((tssArray.length - 7), tssArray.length).reduce((a, b) => a + b, 0));
+	$('#fourteenDay .statData')
+		.empty()
+		.text(tssArray.slice((tssArray.length - 14), tssArray.length).reduce((a, b) => a + b, 0));
+		
+	$('#sevenDay .statData')
+		.empty()
+		.text(tssArray.slice((tssArray.length - 7), tssArray.length).reduce((a, b) => a + b, 0));
 
 	getFTPData();
 

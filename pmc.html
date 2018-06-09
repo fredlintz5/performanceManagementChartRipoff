@@ -40,12 +40,13 @@
 			height: 40px;
 		}
 
-		#legend span {
+		#legend {
 			position: absolute;
 			top: 0px;
 			left: 50px;
-			margin-right: 5px;
 		}
+
+		#legend span {margin-right: 5px;}
 
 		#headerData {
 			position: relative;
@@ -189,14 +190,12 @@
 		<div class="row">
 			<div class="col-12 mb-3">
 				<canvas id="powerGraph"></canvas>
-				<div class="row" id="legend">
-					<div class="col-12">
-						<span class="false fitness-color">CTL</span>
-						<span class="false fatigue-color">ATL</span>
-						<span class="false stressBalance-color">TSB</span>
-						<span class="false dailyTSS-color">TSS</span>
-						<span class="projected-color" id="projected" disabled>Future</span>
-					</div>
+				<div id="legend">
+					<span class="false fitness-color">CTL</span>
+					<span class="false fatigue-color">ATL</span>
+					<span class="false stressBalance-color">TSB</span>
+					<span class="false dailyTSS-color">TSS</span>
+					<span class="projected-color" id="projected" disabled>Future</span>
 				</div>
 			</div>
 		</div>

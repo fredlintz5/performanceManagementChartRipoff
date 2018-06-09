@@ -79,6 +79,19 @@
   border-bottom-right-radius: 4px;
 }
 
+#sevenDay {
+	display: flex;
+}
+
+#currentFTP {
+	display: flex;
+}
+
+#fourteenDay {
+	display: flex;
+}
+
+
 @media only screen and (max-width: 768px) {
 	#welcome img {
 		height: 35px;

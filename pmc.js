@@ -220,6 +220,7 @@ function createActualChart() {
 	calulateGraphData();
 	chart = new Chart(ctx, chartObject);
 	fillHeaderData();
+	fillFooterData();
 }
 
 function createProjectedChart(inputArray) {
@@ -454,6 +455,14 @@ function fillHeaderData() {
 			}
 		}
 	}
+}
+
+function fillFooterData() {
+	let tssArray = chartObject.data.datasets[3].data;
+
+	$('#fourteenDay .statData').text(tssArray.slice((tssArray.length - 13), tssArray.length).reduce((a, b) => a + b, 0));
+	$('#sevenDay .statData').text(tssArray.slice((tssArray.length - 6), tssArray.length).reduce((a, b) => a + b, 0));
+
 }
 
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.

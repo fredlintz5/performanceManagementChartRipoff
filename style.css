@@ -83,6 +83,8 @@
 		height: 35px;
 	}
 
+	#legend {font-size: .7rem}
+
   #headerData {
     width: 260px;
     height: 40px;

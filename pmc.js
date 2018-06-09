@@ -186,6 +186,18 @@ $('#submitProjectedTSS').on('click', function() {
 	$('#addTSSModal').modal('hide');
 })
 
+$('#submitFTP').on('click', event => {
+	event.preventDefault();
+
+	let submittedFTP = $("#submittedFTP").val();
+	if (submittedFTP === '') {return};
+
+	postFTPData({date:moment().unix(),ftp:parseInt(submittedFTP)});
+
+	clearModalInputs();
+	$('#addTSSModal').modal('hide');
+})
+
 $('#legend span').on('click', function() {
 	switch ($(this).text()) {
 		case 'CTL':
@@ -361,6 +373,22 @@ function postFirebaseData(object) {
 	})
 }
 
+function getFTPData(object) {
+	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/ftp/.json`)
+		.then(response => response.json())
+		.then(response => {
+			console.log(response);
+		}
+}
+
+function postFTPData(object) {
+	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/ftp/.json`, {
+		method: 'POST',
+		type: 'JSON',
+		body: `{"date": "${object.date}","ftp": "${object.tss}"}`
+	})
+}
+
 function initApp() {
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
@@ -462,6 +490,8 @@ function fillFooterData() {
 
 	$('#fourteenDay .statData').text(tssArray.slice((tssArray.length - 14), tssArray.length).reduce((a, b) => a + b, 0));
 	$('#sevenDay .statData').text(tssArray.slice((tssArray.length - 7), tssArray.length).reduce((a, b) => a + b, 0));
+
+	getFTPData();
 
 }
 

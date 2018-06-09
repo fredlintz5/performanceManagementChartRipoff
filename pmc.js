@@ -182,7 +182,6 @@ $('#submitProjectedTSS').on('click', function() {
 	inputs.each((i, value) => inputArray.push({date: $(value).attr('id'), tss: $(value).val()}));
 	
 	createProjectedChart(inputArray);
-	$('#projected').prop('disabled', false);
 	$('#projected').toggleClass('false');
 	$('#addTSSModal').modal('hide');
 })

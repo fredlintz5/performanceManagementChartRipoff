@@ -386,7 +386,7 @@ function postFTPData(object) {
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/ftp/.json`, {
 		method: 'POST',
 		type: 'JSON',
-		body: `{"date": "${object.date}","ftp": "${object.tss}"}`
+		body: `{"date": "${object.date}","ftp": "${object.ftp}"}`
 	})
 }
 
@@ -492,7 +492,7 @@ function fillFooterData() {
 	$('#fourteenDay .statData')
 		.empty()
 		.text(tssArray.slice((tssArray.length - 14), tssArray.length).reduce((a, b) => a + b, 0));
-		
+
 	$('#sevenDay .statData')
 		.empty()
 		.text(tssArray.slice((tssArray.length - 7), tssArray.length).reduce((a, b) => a + b, 0));

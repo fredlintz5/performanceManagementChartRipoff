@@ -143,6 +143,17 @@
 	}
 
 	#stressHead div{padding: 0px;}
+
+	.statLeft {
+		width: 15%;
+	  font-size: 2rem;
+	}
+
+	.statRight{
+		width: 85%;
+	  font-size: .7rem;
+	}
+	.statData {font-size: 1rem;}
 }
 
 @media only screen and (max-width: 380px) {

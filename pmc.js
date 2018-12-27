@@ -277,10 +277,11 @@ function createActualChart(descendingDates) {
 		const ctlInterval = setInterval(ctlIncrementer, 20);
 		const atlInterval = setInterval(atlIncrementer, 15);
 		const tsbInterval = setInterval(tsbIncrementer, 40);
+		let ctlIndex = 0;
+		let atlIndex = 0;
+		let tsbIndex = 0;
 
 		function ctlIncrementer() {
-			let ctlIndex = 0;
-
 			if (ctlIndex <= ctl) {
 				$('#fitnessHead span').text(ctlIndex);
 				ctlIndex++
@@ -290,8 +291,6 @@ function createActualChart(descendingDates) {
 		}
 
 		function atlIncrementer() {
-			let atlIndex = 0;
-
 			if (atlIndex <= atl) {
 				$('#fatigueHead span').text(atlIndex);
 				atlIndex++
@@ -301,8 +300,6 @@ function createActualChart(descendingDates) {
 		}
 
 		function tsbIncrementer() {
-			let tsbIndex = 0;
-
 			if (tsb < 0) {
 				if (tsbIndex >= tsb) {
 					$('#stressHead span').text(tsbIndex);

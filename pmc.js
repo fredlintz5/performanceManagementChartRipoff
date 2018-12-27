@@ -1,8 +1,7 @@
+const ctx = $('#powerGraph');
 let chart = '';
 let uid = '';
 let visibleDates = window.innerWidth > 700 ? 42 : 14;
-let ctx = $('#powerGraph');
-let descendingDates = {};
 let tempArray = [];
 let chartObject = {
 	type: 'bar',
@@ -217,7 +216,7 @@ $('#legend span').on('click', function() {
 	chart.update();
 })
 
-function createActualChart() {
+function createActualChart(descendingDates) {
 	const datasets = chartObject.data.datasets;
 
 	// Set date labels on bottom of graph for visible dates
@@ -418,7 +417,7 @@ function getFirebaseData(uid) {
 					descendingDates[compareDate] += tss;
 				}
 
-				createActualChart();
+				createActualChart(descendingDates);
 			}
 		})
 }

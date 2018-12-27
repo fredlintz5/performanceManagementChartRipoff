@@ -229,19 +229,19 @@ $('#legend span').on('click', function() {
 $('#nav-projected-tab').on('click', function() {
 	const startDate = moment().unix();
 
-	$('#nav-projected').empty();
+	if ($('#nav-projected form-group').length) {
+		for (var i = 14; i > 0; i--) {
+			let newDate = moment.unix(startDate).add(i, 'days').format('M/DD');
+			let inputRow = `
+				<div class="form-group row">
+					<label for="${newDate}" class="col-sm-3 col-form-label">${newDate}</label>
+					<div class="col-sm-9">
+						<input class="form-control" id="${newDate}" type="numeric" value="0">
+					</div>
+				</div>`;
 
-	for (var i = 14; i > 0; i--) {
-		let newDate = moment.unix(startDate).add(i, 'days').format('M/DD');
-		let inputRow = `
-			<div class="form-group row">
-				<label for="${newDate}" class="col-sm-3 col-form-label">${newDate}</label>
-				<div class="col-sm-9">
-					<input class="form-control" id="${newDate}" type="numeric" value="0">
-				</div>
-			</div>`;
-
-		$('#nav-projected').prepend(inputRow);
+			$('#nav-projected').prepend(inputRow);
+		}
 	}
 });
 

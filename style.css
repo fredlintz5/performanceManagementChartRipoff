@@ -29,9 +29,7 @@
 
 #powerGraph-container {
 	position: relative;
-	margin: auto;
-	height: 80vh;
-	width: 85vw;
+	height: 75vh;
 }
 
 #welcome img {
@@ -141,12 +139,7 @@
 								Responsive
 *********************************************/
 @media only screen and (max-width: 768px) {
-	#powerGraph-container {
-		position: relative;
-		margin: auto;
-		height: 70vh;
-		width: 90vw;
-	}
+	#powerGraph-container { height: 80vh; }
 
 	#welcome img {
 		height: 35px;
@@ -193,12 +186,7 @@
 }
 
 @media only screen and (max-width: 380px) {
-	#powerGraph-container {
-		position: relative;
-		margin: auto;
-		height: 60vh;
-		width: 95vw;
-	}
+	#powerGraph-container { height: 70vh; }
 
 	#legend {display: none;}
 

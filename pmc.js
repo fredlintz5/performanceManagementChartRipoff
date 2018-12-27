@@ -229,7 +229,7 @@ $('#legend span').on('click', function() {
 $('#nav-projected-tab').on('click', function() {
 	const startDate = moment().unix();
 
-	if ($('#nav-projected form-group').length === 0) {
+	if ($('#nav-projected .form-group').length === 0) {
 		for (var i = 14; i > 0; i--) {
 			let newDate = moment.unix(startDate).add(i, 'days').format('M/DD');
 			let inputRow = `

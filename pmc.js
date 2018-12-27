@@ -371,10 +371,10 @@ function createProjectedChart(inputArray) {
 
 	// Set date labels on bottom of graph for projected dates
 	(function(inputArray) {
-		$.each(inputArray, (index,value) => {
-			chartObject.data.labels.push(value.date);
-			datasets[7].data.push(parseInt(value.tss));
-			tempArray.unshift(parseInt(value.tss));
+		inputArray.forEach(val => {
+			chartObject.data.labels.push(val.date);
+			datasets[7].data.push(parseInt(val.tss));
+			tempArray.unshift(parseInt(val.tss));
 		})
 	})();
 

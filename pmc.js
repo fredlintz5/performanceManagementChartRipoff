@@ -269,9 +269,6 @@ function createActualChart() {
 			datasets[2].data.unshift(TSB);
 		}	
 	})();
-
-	// create chart.js chart object with newly calculated labels and data
-	chart = new Chart(ctx, chartObject);
 	
 	// Set/Increment Header Data with current CTL, ATL, & TSB
 	(function() {
@@ -341,6 +338,9 @@ function createActualChart() {
 
 		getFTPData();
 	})();
+
+	// create chart.js chart object with newly calculated labels and data
+	chart = new Chart(ctx, chartObject);
 }
 
 function createProjectedChart(inputArray) {

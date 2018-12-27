@@ -6,9 +6,9 @@ Training Peaks' software is way more advanced and much easier to use, but I want
 Using charts.js, moment.js, Google Auth Login, and Google Firebase for Data Storage, I've created a basic application that would allow a user to input their Training Stress Score and Intenisty Factor for a given date, and track their fitness over time and even project their fitness by adding workouts in the future.
 
 Using the user's data I calculate the following:
->Fitness (CTL) is a rolling 42 day average of your daily TSS.
->Fatigue (ATL) is a 7 day average of your TSS that accounts for the workouts you have done recently.
->Form (TSB) is the balance of TSS equal to yesterday's fitness minus yesterday's fatigue.
+* Fitness (CTL) is a rolling 42 day average of your daily TSS.
+* Fatigue (ATL) is a 7 day average of your TSS that accounts for the workouts you have done recently.
+* Form (TSB) is the balance of TSS equal to yesterday's fitness minus yesterday's fatigue.
 
 ## Login Screen
 ![](readme_images/login.png)

@@ -3,7 +3,7 @@ My own personal PMC, modeled off of [Training Peaks Software](https://www.traini
 
 Training Peaks' software is way more advanced and much easier to use, but I wanted to see if I could build the same logic myself. 
 
-Using charts.js, Google Auth Login, and Google Firebase for Data Storgae, I've created a basic application that would allow a user to input their Training Stress Score, and track their fitness over time and even project their fitness by adding workouts in the future.
+Using charts.js, moment.js, Google Auth Login, and Google Firebase for Data Storgae, I've created a basic application that would allow a user to input their Training Stress Score, and track their fitness over time and even project their fitness by adding workouts in the future.
 
 ## Login Screen
 ![](readme_images/login.png)

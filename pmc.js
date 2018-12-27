@@ -1,12 +1,4 @@
 // Initialize Firebase
-let config = {
-	apiKey: "AIzaSyCkkEdBNDDh4kGZFOrhE1Pm4_Fn528m7ak",
-	authDomain: "performance-management-chart.firebaseapp.com",
-	databaseURL: "https://performance-management-chart.firebaseio.com",
-	projectId: "performance-management-chart",
-	storageBucket: "performance-management-chart.appspot.com",
-	messagingSenderId: "835339356426"
-};
 firebase.initializeApp(config);
 
 let chart = '';

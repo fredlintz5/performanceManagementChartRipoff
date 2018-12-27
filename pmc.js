@@ -6,7 +6,6 @@ let ctx = $('#powerGraph');
 let descendingDates = {};
 let tempArray = [];
 let chartObject = {
-	maintainAspectRatio: false,
 	type: 'bar',
 	data: {
 		labels: [],
@@ -101,6 +100,8 @@ let chartObject = {
 		]
 	}, 
 	options: {
+		responsive: true,
+		maintainAspectRatio: false,
 		legend: {display: false},
 		tooltips: {
 			mode: 'index',
@@ -139,6 +140,8 @@ let chartObject = {
 		}
 	} 
 };
+
+ctx.height('78vh');
 
 initApp();
 createProjectedInputs();

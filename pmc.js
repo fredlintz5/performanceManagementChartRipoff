@@ -359,7 +359,7 @@ function createActualChart(descendingDates) {
 			.text(tssArray.slice((tssArray.length - 7), tssArray.length)
 			.reduce((a, b) => a + b, 0));
 
-		getFTPData();
+		getFTPData(uid);
 	})();
 
 	// create chart.js chart object with newly calculated labels and data
@@ -459,7 +459,7 @@ function postFirebaseData(object) {
 	})
 }
 
-function getFTPData() {
+function getFTPData(uid) {
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/ftp/.json`)
 		.then(response => response.json())
 		.then(response => {

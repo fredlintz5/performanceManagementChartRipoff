@@ -141,8 +141,6 @@ let chartObject = {
 	} 
 };
 
-ctx.height('75vh');
-
 initApp();
 createProjectedInputs();
 

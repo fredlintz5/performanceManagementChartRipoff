@@ -27,6 +27,13 @@
 .dailyTSS-color {color: rgb(253,101,133);}
 .projected-color {color: rgb(128,203,196);}
 
+#powerGraph-container {
+	position: relative;
+	margin: auto;
+	height: 80vh;
+	width: 85vw;
+}
+
 #welcome img {
 	border-radius: 50%;
 	height: 40px;
@@ -134,6 +141,13 @@
 								Responsive
 *********************************************/
 @media only screen and (max-width: 768px) {
+	#powerGraph-container {
+		position: relative;
+		margin: auto;
+		height: 70vh;
+		width: 90vw;
+	}
+
 	#welcome img {
 		height: 35px;
 	}
@@ -179,6 +193,13 @@
 }
 
 @media only screen and (max-width: 380px) {
+	#powerGraph-container {
+		position: relative;
+		margin: auto;
+		height: 60vh;
+		width: 95vw;
+	}
+
 	#legend {display: none;}
 
 	#headerData {width: 225px;}

@@ -226,8 +226,10 @@ $('#legend span').on('click', function() {
 	chart.update();
 })
 
-$('#nav-projected-tab').on('click', function(){
-	const startDate = moment().unix();;
+$('#nav-projected-tab').on('click', function() {
+	const startDate = moment().unix();
+
+	$('#nav-projected').empty();
 
 	for (var i = 14; i > 0; i--) {
 		let newDate = moment.unix(startDate).add(i, 'days').format('M/DD');

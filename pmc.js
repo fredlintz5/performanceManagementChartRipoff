@@ -226,7 +226,7 @@ $('#legend span').on('click', function() {
 	chart.update();
 })
 
-$('#addTSSModal').on('show', createProjectedInputs());
+$('#nav-projected-tab').on('click', createProjectedInputs());
 
 function createActualChart(descendingDates) {
 	const datasets = chartObject.data.datasets;

@@ -227,7 +227,7 @@ $('#legend span').on('click', function() {
 })
 
 $('#nav-projected-tab').on('click', function(){
-	let const = moment().unix();;
+	const startDate = moment().unix();;
 
 	for (var i = 14; i > 0; i--) {
 		let newDate = moment.unix(startDate).add(i, 'days').format('M/DD');

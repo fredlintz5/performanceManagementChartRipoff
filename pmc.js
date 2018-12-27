@@ -226,7 +226,22 @@ $('#legend span').on('click', function() {
 	chart.update();
 })
 
-$('#nav-projected-tab').on('click', createProjectedInputs());
+$('#nav-projected-tab').on('click', function(){
+	let const = moment().unix();;
+
+	for (var i = 14; i > 0; i--) {
+		let newDate = moment.unix(startDate).add(i, 'days').format('M/DD');
+		let inputRow = `
+			<div class="form-group row">
+				<label for="${newDate}" class="col-sm-3 col-form-label">${newDate}</label>
+				<div class="col-sm-9">
+					<input class="form-control" id="${newDate}" type="numeric" value="0">
+				</div>
+			</div>`;
+
+		$('#nav-projected').prepend(inputRow);
+	}
+});
 
 function createActualChart(descendingDates) {
 	const datasets = chartObject.data.datasets;
@@ -352,54 +367,58 @@ function createActualChart(descendingDates) {
 }
 
 function createProjectedChart(inputArray) {
-	setProjectedChartDateLabels(inputArray);
-	calulateProjectedGraphData();
-	chartObject.data.datasets[3].hidden = true;
-	chartObject.data.datasets[4].hidden = false;
-	chartObject.data.datasets[5].hidden = false;
-	chartObject.data.datasets[6].hidden = false;
-	chartObject.data.datasets[7].hidden = false;
-	chart.update();
-}
+	const datasets = chartObject.data.datasets;
 
-function setProjectedChartDateLabels(inputArray) {
-	$.each(inputArray, (index,value) => {
-		chartObject.data.labels.push(value.date);
-		chartObject.data.datasets[7].data.push(parseInt(value.tss));
-		tempArray.unshift(parseInt(value.tss));
-	})
-}
+	// Set date labels on bottom of graph for projected dates
+	(function(inputArray) {
+		$.each(inputArray, (index,value) => {
+			chartObject.data.labels.push(value.date);
+			datasets[7].data.push(parseInt(value.tss));
+			tempArray.unshift(parseInt(value.tss));
+		})
+	})();
 
-function calulateProjectedGraphData() {
-	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
-	let arrayLength = visibleDates + 14;
-	
-	for (var i = 0; i < arrayLength; i++) {
-		ctlTSS = 0;
-		atlTSS = 0;
-
-		for (var j = 0; j < tempArray.length; j++) {
-			tss = parseInt(tempArray[j]);
-
-			if (j === 42) {
-				break;
-			} else {
-				ctlTSS += tss;
-				if (j < 7) {
-					atlTSS += tss;
-				}
-			} 
-		}
-		tempArray.shift();
-
-		CTL = (ctlTSS/42).toFixed(2);
-		ATL = (atlTSS/7).toFixed(2);
-		TSB = (CTL - ATL).toFixed(2);
+	// Calculate CTL, ATL, & TSB values for visible dates
+	(function() {
+		let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
+		let arrayLength = visibleDates + 14;
 		
-		chartObject.data.datasets[4].data.unshift(CTL);
-		chartObject.data.datasets[5].data.unshift(ATL);
-		chartObject.data.datasets[6].data.unshift(TSB);
-	}	
+		for (var i = 0; i < arrayLength; i++) {
+			ctlTSS = 0;
+			atlTSS = 0;
+
+			for (var j = 0; j < tempArray.length; j++) {
+				tss = parseInt(tempArray[j]);
+
+				if (j === 42) {
+					break;
+				} else {
+					ctlTSS += tss;
+					if (j < 7) {
+						atlTSS += tss;
+					}
+				} 
+			}
+			tempArray.shift();
+
+			CTL = (ctlTSS/42).toFixed(2);
+			ATL = (atlTSS/7).toFixed(2);
+			TSB = (CTL - ATL).toFixed(2);
+			
+			datasets[4].data.unshift(CTL);
+			datasets[5].data.unshift(ATL);
+			datasets[6].data.unshift(TSB);
+		}	
+	})();
+
+
+	datasets[3].hidden = true;  // TSS
+	datasets[4].hidden = false; // CTL - Projected
+	datasets[5].hidden = false; // ATL - Projected
+	datasets[6].hidden = false; // TSB - Projected
+	datasets[7].hidden = false; // TSS - Projected 
+
+	chart.update();
 }
 
 function getFirebaseData(uid) {
@@ -497,23 +516,6 @@ function clearChartData() {
 		value.data = [];
 		value.hidden = false;
 	});
-}
-
-function createProjectedInputs() {
-	let startDate = moment().unix();;
-
-	for (var i = 14; i > 0; i--) {
-		let newDate = moment.unix(startDate).add(i, 'days').format('M/DD');
-		let inputRow = `
-			<div class="form-group row">
-				<label for="${newDate}" class="col-sm-3 col-form-label">${newDate}</label>
-				<div class="col-sm-9">
-					<input class="form-control" id="${newDate}" type="numeric" value="0">
-				</div>
-			</div>`;
-
-		$('#nav-projected').prepend(inputRow);
-	}
 }
 
 function clearModalInputs() {

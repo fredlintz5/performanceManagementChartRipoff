@@ -400,6 +400,7 @@ function getFirebaseData(uid) {
 				return;
 			} else {
 				let compareDate = '';
+				let descendingDates = {};
 				let startDate = moment().unix();
 				let responseValues = Object.values(response);
 				let arrayLength = responseValues.length;

@@ -370,7 +370,7 @@ function createProjectedChart(inputArray) {
 	const datasets = chartObject.data.datasets;
 
 	// Set date labels on bottom of graph for projected dates
-	(function(inputArray) {
+	(function() {
 		inputArray.forEach(val => {
 			chartObject.data.labels.push(val.date);
 			datasets[7].data.push(parseInt(val.tss));

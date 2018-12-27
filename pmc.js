@@ -6,6 +6,7 @@ let ctx = $('#powerGraph');
 let descendingDates = {};
 let tempArray = [];
 let chartObject = {
+	maintainAspectRatio: false,
 	type: 'bar',
 	data: {
 		labels: [],

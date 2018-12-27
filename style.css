@@ -32,7 +32,7 @@
 	height: 75vh;
 }
 
-#welcome img {
+#profile img {
 	border-radius: 50%;
 	height: 40px;
 }
@@ -141,7 +141,7 @@
 @media only screen and (max-width: 768px) {
 	#powerGraph-container { height: 80vh; }
 
-	#welcome img {
+	#profile img {
 		height: 35px;
 	}
 

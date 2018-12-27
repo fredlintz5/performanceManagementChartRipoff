@@ -1,6 +1,5 @@
 let chart = '';
 let uid = '';
-let photoURL = '';
 let visibleDates = window.innerWidth > 700 ? 42 : 14;
 let ctx = $('#powerGraph');
 let descendingDates = {};
@@ -96,8 +95,7 @@ let chartObject = {
 			borderDash: [5,5],
 			hidden: true,
 			data: []
-		} 
-		]
+		}]
 	}, 
 	options: {
 		responsive: true,
@@ -138,7 +136,7 @@ let chartObject = {
 			}],
 			xAxes: [{gridLines: {display:false}}]
 		}
-	} 
+	}
 };
 
 initApp();
@@ -220,7 +218,19 @@ $('#legend span').on('click', function() {
 })
 
 function createActualChart() {
-	setActualChartDateLabels();
+	(function setDateLabels() {
+		let index = 1;
+
+		for (let prop in descendingDates) {
+			if (index > parseInt(visibleDates)) { break; } 
+			
+			chartObject.data.labels.unshift(prop);
+			chartObject.data.datasets[3].data.unshift(descendingDates[prop]);
+			chartObject.data.datasets[7].data.unshift(descendingDates[prop]);
+			
+			index++;
+		}
+	})();
 	calulateGraphData();
 	chart = new Chart(ctx, chartObject);
 	fillHeaderData();
@@ -238,19 +248,7 @@ function createProjectedChart(inputArray) {
 	chart.update();
 }
 
-function setActualChartDateLabels() {
-	let index = 1;
 
-	for (let prop in descendingDates) {
-		if (index > parseInt(visibleDates)) { break; } 
-		
-		chartObject.data.labels.unshift(prop);
-		chartObject.data.datasets[3].data.unshift(descendingDates[prop]);
-		chartObject.data.datasets[7].data.unshift(descendingDates[prop]);
-		
-		index++;
-	}
-}
 
 function setProjectedChartDateLabels(inputArray) {
 	$.each(inputArray, (index,value) => {
@@ -350,7 +348,7 @@ function getFirebaseData(uid) {
 					descendingDates[compareDate] += tss;
 				}
 
-				createActualChart(descendingDates);
+				createActualChart();
 			}
 		})
 }
@@ -397,9 +395,9 @@ function initApp() {
 	firebase.auth().onAuthStateChanged(user => {
 		if (user) {
 			uid = user.uid;
-			photoURL = user.photoURL;
+			photoURL = user.photoURL || '';
 			getFirebaseData(uid);
-			$('#welcome').html(`<image src=${photoURL} title="Log Out" onclick="signOut()"/>`);
+			$('#profile').html(`<image src=${photoURL} title="Log Out" onclick="signOut()"/>`);
 		} else {
 			window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/');
 		}

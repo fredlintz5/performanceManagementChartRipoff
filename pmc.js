@@ -9,137 +9,137 @@ let ctx = $('#powerGraph');
 let descendingDates = {};
 let tempArray = [];
 let chartObject = {
-  type: 'bar',
-  data: {
-    labels: [],
-    datasets: [{
-    		type: 'line',
-        label: "CTL",
-        lineTension: 0,
-        yAxisID: 'A',
-        backgroundColor: 'rgba(100,146,182, 0.2)',
-        borderColor: 'rgb(100,146,182, 0.9)',
-        borderWidth: 0.85,
-        hidden: false,
-        data: []
-    }, {
-    		type: 'line',
-        label: "ATL",
-        lineTension: 0,
-        yAxisID: 'A',
-        fill: false,
-        backgroundColor: 'rgba(242,140,222, 0.9)',
-        borderColor: 'rgba(242,140,222, 0.9)',
-        borderWidth: 0.85,
-        hidden: false,
-        data: []
-    }, {
-    		type: 'line',
-        label: "TSB",
-        lineTension: 0,
-        yAxisID: 'B',
-        fill: false,
-        backgroundColor: 'rgba(246,192,119, 0.9)',
-        borderColor: 'rgba(246,192,119, 0.9)',
-        borderWidth: 0.85,
-        hidden: false,
-        data: []
-    }, {
-    		type: 'bar',
-        label: 'TSS',
-        yAxisID: 'C',
-        backgroundColor: 'rgba(253, 101, 133, 0.9)',
-      	borderColor: 'rgba(253, 101, 133, 0.9)',
-      	borderWidth: 0.85,
-      	hidden: false,
-        data: []
-    },{
-    		type: 'line',
-        label: "CTL - Projected",
-        lineTension: 0,
-        yAxisID: 'A',
-        fill: false,
-        backgroundColor: 'rgba(100,146,182, 0.2)',
-        borderColor: 'rgb(100,146,182, 0.9)',
-        borderWidth: 0.85,
-        borderDash: [5,5],
-        hidden: true,
-        data: []
-    }, {
-    		type: 'line',
-        label: "ATL - Projected",
-        lineTension: 0,
-        yAxisID: 'A',
-        fill: false,
-        backgroundColor: 'rgba(242,140,222, 0.9)',
-        borderColor: 'rgba(242,140,222, 0.9)',
-        borderWidth: 0.85,
-        borderDash: [5,5],
-        hidden: true,
-        data: []
-    }, {
-    		type: 'line',
-        label: "TSB - Projected",
-        lineTension: 0,
-        yAxisID: 'B',
-        fill: false,
-        backgroundColor: 'rgba(246,192,119, 0.9)',
-        borderColor: 'rgba(246,192,119, 0.9)',
-        borderWidth: 0.85,
-        borderDash: [5,5],
-        hidden: true,
-        data: []
-    }, {
-    		type: 'bar',
-        label: 'TSS - Projected',
-        yAxisID: 'C',
-        backgroundColor: 'rgba(253, 101, 133, 0.4)',
-      	borderColor: 'rgba(253, 101, 133, 0.9)',
-      	borderWidth: 0.85,
-      	borderDash: [5,5],
-      	hidden: true,
-        data: []
-    } 
-    ]
-  }, 
-  options: {
-  	legend: {display: false},
-  	tooltips: {
+	type: 'bar',
+	data: {
+		labels: [],
+		datasets: [{
+				type: 'line',
+				label: "CTL",
+				lineTension: 0,
+				yAxisID: 'A',
+				backgroundColor: 'rgba(100,146,182, 0.2)',
+				borderColor: 'rgb(100,146,182, 0.9)',
+				borderWidth: 0.85,
+				hidden: false,
+				data: []
+		}, {
+				type: 'line',
+				label: "ATL",
+				lineTension: 0,
+				yAxisID: 'A',
+				fill: false,
+				backgroundColor: 'rgba(242,140,222, 0.9)',
+				borderColor: 'rgba(242,140,222, 0.9)',
+				borderWidth: 0.85,
+				hidden: false,
+				data: []
+		}, {
+				type: 'line',
+				label: "TSB",
+				lineTension: 0,
+				yAxisID: 'B',
+				fill: false,
+				backgroundColor: 'rgba(246,192,119, 0.9)',
+				borderColor: 'rgba(246,192,119, 0.9)',
+				borderWidth: 0.85,
+				hidden: false,
+				data: []
+		}, {
+				type: 'bar',
+				label: 'TSS',
+				yAxisID: 'C',
+				backgroundColor: 'rgba(253, 101, 133, 0.9)',
+				borderColor: 'rgba(253, 101, 133, 0.9)',
+				borderWidth: 0.85,
+				hidden: false,
+				data: []
+		},{
+				type: 'line',
+				label: "CTL - Projected",
+				lineTension: 0,
+				yAxisID: 'A',
+				fill: false,
+				backgroundColor: 'rgba(100,146,182, 0.2)',
+				borderColor: 'rgb(100,146,182, 0.9)',
+				borderWidth: 0.85,
+				borderDash: [5,5],
+				hidden: true,
+				data: []
+		}, {
+				type: 'line',
+				label: "ATL - Projected",
+				lineTension: 0,
+				yAxisID: 'A',
+				fill: false,
+				backgroundColor: 'rgba(242,140,222, 0.9)',
+				borderColor: 'rgba(242,140,222, 0.9)',
+				borderWidth: 0.85,
+				borderDash: [5,5],
+				hidden: true,
+				data: []
+		}, {
+				type: 'line',
+				label: "TSB - Projected",
+				lineTension: 0,
+				yAxisID: 'B',
+				fill: false,
+				backgroundColor: 'rgba(246,192,119, 0.9)',
+				borderColor: 'rgba(246,192,119, 0.9)',
+				borderWidth: 0.85,
+				borderDash: [5,5],
+				hidden: true,
+				data: []
+		}, {
+				type: 'bar',
+				label: 'TSS - Projected',
+				yAxisID: 'C',
+				backgroundColor: 'rgba(253, 101, 133, 0.4)',
+				borderColor: 'rgba(253, 101, 133, 0.9)',
+				borderWidth: 0.85,
+				borderDash: [5,5],
+				hidden: true,
+				data: []
+		} 
+		]
+	}, 
+	options: {
+		legend: {display: false},
+		tooltips: {
 			mode: 'index',
 			intersect: true,
 			callbacks: {
-        label: (tooltipItem, data) => {
-        	let label = data.datasets[tooltipItem.datasetIndex].label || '';
+				label: (tooltipItem, data) => {
+					let label = data.datasets[tooltipItem.datasetIndex].label || '';
 
-          if (label) {label += ': ';}
-          label += tooltipItem.yLabel;
-          return label;
-        } 
-      }
+					if (label) {label += ': ';}
+					label += tooltipItem.yLabel;
+					return label;
+				} 
+			}
 		},
-  	scales: {
-      yAxes: [{
-        id: 'A',
-        type: 'linear',
-        position: 'right',
-        ticks: {max: 80,min: 0,display: false},
-        gridlines: {display: false}
-      }, {
-        id: 'B',
-        type: 'linear',
-        position: 'left',
-        ticks: {max: 30,min: -30,display: false},
-        gridlines: {display: false}
-      }, {
-        id: 'C',
-        type: 'linear',
-        position: 'right',
-        ticks: {max: 500,min: 0,display: false},
-        gridlines: {display: false}
-      }],
-      xAxes: [{gridLines: {display:false}}]
-    }
-  } 
+		scales: {
+			yAxes: [{
+				id: 'A',
+				type: 'linear',
+				position: 'right',
+				ticks: {max: 80,min: 0,display: false},
+				gridlines: {display: false}
+			}, {
+				id: 'B',
+				type: 'linear',
+				position: 'left',
+				ticks: {max: 30,min: -30,display: false},
+				gridlines: {display: false}
+			}, {
+				id: 'C',
+				type: 'linear',
+				position: 'right',
+				ticks: {max: 500,min: 0,display: false},
+				gridlines: {display: false}
+			}],
+			xAxes: [{gridLines: {display:false}}]
+		}
+	} 
 };
 
 initApp();
@@ -397,22 +397,22 @@ function postFTPData(object) {
 }
 
 function initApp() {
-  firebase.auth().onAuthStateChanged(user => {
-    if (user) {
-      uid = user.uid;
-     	photoURL = user.photoURL;
-      getFirebaseData(uid);
-      $('#welcome').html(`<image src=${photoURL} title="Log Out" onclick="signOut()"/>`);
-    } else {
-      window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/');
-    }
-  }, error => console.log(error));
+	firebase.auth().onAuthStateChanged(user => {
+		if (user) {
+			uid = user.uid;
+			photoURL = user.photoURL;
+			getFirebaseData(uid);
+			$('#welcome').html(`<image src=${photoURL} title="Log Out" onclick="signOut()"/>`);
+		} else {
+			window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/');
+		}
+	}, error => console.log(error));
 }
 
 function signOut() {
-  firebase.auth().signOut()
-  	.then(() => window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/'))
-  	.catch(error => console.log(error));
+	firebase.auth().signOut()
+		.then(() => window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/'))
+		.catch(error => console.log(error));
 }
 
 function clearChartData() {
@@ -457,8 +457,8 @@ function fillHeaderData() {
 
 	function ctlIncrementer() {
 		if (ctlIndex <= ctl) {
-	  	$('#fitnessHead span').text(ctlIndex);
-	   	ctlIndex++
+			$('#fitnessHead span').text(ctlIndex);
+			ctlIndex++
 		} else {
 			clearInterval(ctlInterval);
 		}
@@ -466,8 +466,8 @@ function fillHeaderData() {
 
 	function atlIncrementer() {
 		if (atlIndex <= atl) {
-	   	$('#fatigueHead span').text(atlIndex);
-	   	atlIndex++
+			$('#fatigueHead span').text(atlIndex);
+			atlIndex++
 		} else {
 			clearInterval(atlInterval);
 		}
@@ -476,15 +476,15 @@ function fillHeaderData() {
 	function tsbIncrementer() {
 		if (tsb < 0) {
 			if (tsbIndex >= tsb) {
-		   	$('#stressHead span').text(tsbIndex);
-		   	tsbIndex--;
+				$('#stressHead span').text(tsbIndex);
+				tsbIndex--;
 			} else {
 				clearInterval(tsbInterval);
 			}
 		} else {
 			if (tsbIndex <= tsb) {
-		   	$('#stressHead span').text(tsbIndex);
-		   	tsbIndex++
+				$('#stressHead span').text(tsbIndex);
+				tsbIndex++
 			} else {
 				clearInterval(tsbInterval);
 			}

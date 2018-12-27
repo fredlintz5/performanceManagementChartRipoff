@@ -440,9 +440,6 @@ function postFirebaseData(object) {
 }
 
 function getFTPData() {
-	let date = 0;
-	let ftp = 0;
-
 	fetch(`https://performance-management-chart.firebaseio.com/users/${uid}/ftp/.json`)
 		.then(response => response.json())
 		.then(response => {
@@ -450,7 +447,8 @@ function getFTPData() {
 				alert('Add some FTP data!');
 				return;
 			} else {
-
+				let date, ftp = 0;
+				// set the latest updated FTP value
 				Object.values(response).forEach((val, i) => {
 					if (parseInt(val.date) > date) {
 						date = val.date;

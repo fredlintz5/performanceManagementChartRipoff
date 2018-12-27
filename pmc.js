@@ -453,6 +453,7 @@ function getFTPData() {
 
 				Object.values(response).forEach((val, i) => {
 					if (parseInt(val.date) > date) {
+						date = val.date;
 						ftp = parseInt(val.ftp);
 					}
 				})

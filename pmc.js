@@ -1,6 +1,3 @@
-// Initialize Firebase
-firebase.initializeApp(config);
-
 let chart = '';
 let uid = '';
 let photoURL = '';
@@ -13,92 +10,92 @@ let chartObject = {
 	data: {
 		labels: [],
 		datasets: [{
-				type: 'line',
-				label: "CTL",
-				lineTension: 0,
-				yAxisID: 'A',
-				backgroundColor: 'rgba(100,146,182, 0.2)',
-				borderColor: 'rgb(100,146,182, 0.9)',
-				borderWidth: 0.85,
-				hidden: false,
-				data: []
+			type: 'line',
+			label: "CTL",
+			lineTension: 0,
+			yAxisID: 'A',
+			backgroundColor: 'rgba(100,146,182, 0.2)',
+			borderColor: 'rgb(100,146,182, 0.9)',
+			borderWidth: 0.85,
+			hidden: false,
+			data: []
 		}, {
-				type: 'line',
-				label: "ATL",
-				lineTension: 0,
-				yAxisID: 'A',
-				fill: false,
-				backgroundColor: 'rgba(242,140,222, 0.9)',
-				borderColor: 'rgba(242,140,222, 0.9)',
-				borderWidth: 0.85,
-				hidden: false,
-				data: []
+			type: 'line',
+			label: "ATL",
+			lineTension: 0,
+			yAxisID: 'A',
+			fill: false,
+			backgroundColor: 'rgba(242,140,222, 0.9)',
+			borderColor: 'rgba(242,140,222, 0.9)',
+			borderWidth: 0.85,
+			hidden: false,
+			data: []
 		}, {
-				type: 'line',
-				label: "TSB",
-				lineTension: 0,
-				yAxisID: 'B',
-				fill: false,
-				backgroundColor: 'rgba(246,192,119, 0.9)',
-				borderColor: 'rgba(246,192,119, 0.9)',
-				borderWidth: 0.85,
-				hidden: false,
-				data: []
+			type: 'line',
+			label: "TSB",
+			lineTension: 0,
+			yAxisID: 'B',
+			fill: false,
+			backgroundColor: 'rgba(246,192,119, 0.9)',
+			borderColor: 'rgba(246,192,119, 0.9)',
+			borderWidth: 0.85,
+			hidden: false,
+			data: []
 		}, {
-				type: 'bar',
-				label: 'TSS',
-				yAxisID: 'C',
-				backgroundColor: 'rgba(253, 101, 133, 0.9)',
-				borderColor: 'rgba(253, 101, 133, 0.9)',
-				borderWidth: 0.85,
-				hidden: false,
-				data: []
+			type: 'bar',
+			label: 'TSS',
+			yAxisID: 'C',
+			backgroundColor: 'rgba(253, 101, 133, 0.9)',
+			borderColor: 'rgba(253, 101, 133, 0.9)',
+			borderWidth: 0.85,
+			hidden: false,
+			data: []
 		},{
-				type: 'line',
-				label: "CTL - Projected",
-				lineTension: 0,
-				yAxisID: 'A',
-				fill: false,
-				backgroundColor: 'rgba(100,146,182, 0.2)',
-				borderColor: 'rgb(100,146,182, 0.9)',
-				borderWidth: 0.85,
-				borderDash: [5,5],
-				hidden: true,
-				data: []
+			type: 'line',
+			label: "CTL - Projected",
+			lineTension: 0,
+			yAxisID: 'A',
+			fill: false,
+			backgroundColor: 'rgba(100,146,182, 0.2)',
+			borderColor: 'rgb(100,146,182, 0.9)',
+			borderWidth: 0.85,
+			borderDash: [5,5],
+			hidden: true,
+			data: []
 		}, {
-				type: 'line',
-				label: "ATL - Projected",
-				lineTension: 0,
-				yAxisID: 'A',
-				fill: false,
-				backgroundColor: 'rgba(242,140,222, 0.9)',
-				borderColor: 'rgba(242,140,222, 0.9)',
-				borderWidth: 0.85,
-				borderDash: [5,5],
-				hidden: true,
-				data: []
+			type: 'line',
+			label: "ATL - Projected",
+			lineTension: 0,
+			yAxisID: 'A',
+			fill: false,
+			backgroundColor: 'rgba(242,140,222, 0.9)',
+			borderColor: 'rgba(242,140,222, 0.9)',
+			borderWidth: 0.85,
+			borderDash: [5,5],
+			hidden: true,
+			data: []
 		}, {
-				type: 'line',
-				label: "TSB - Projected",
-				lineTension: 0,
-				yAxisID: 'B',
-				fill: false,
-				backgroundColor: 'rgba(246,192,119, 0.9)',
-				borderColor: 'rgba(246,192,119, 0.9)',
-				borderWidth: 0.85,
-				borderDash: [5,5],
-				hidden: true,
-				data: []
+			type: 'line',
+			label: "TSB - Projected",
+			lineTension: 0,
+			yAxisID: 'B',
+			fill: false,
+			backgroundColor: 'rgba(246,192,119, 0.9)',
+			borderColor: 'rgba(246,192,119, 0.9)',
+			borderWidth: 0.85,
+			borderDash: [5,5],
+			hidden: true,
+			data: []
 		}, {
-				type: 'bar',
-				label: 'TSS - Projected',
-				yAxisID: 'C',
-				backgroundColor: 'rgba(253, 101, 133, 0.4)',
-				borderColor: 'rgba(253, 101, 133, 0.9)',
-				borderWidth: 0.85,
-				borderDash: [5,5],
-				hidden: true,
-				data: []
+			type: 'bar',
+			label: 'TSS - Projected',
+			yAxisID: 'C',
+			backgroundColor: 'rgba(253, 101, 133, 0.4)',
+			borderColor: 'rgba(253, 101, 133, 0.9)',
+			borderWidth: 0.85,
+			borderDash: [5,5],
+			hidden: true,
+			data: []
 		} 
 		]
 	}, 
@@ -243,9 +240,7 @@ function setActualChartDateLabels() {
 	let index = 1;
 
 	for (let prop in descendingDates) {
-		if (index > parseInt(visibleDates)) {
-			break;
-		} 
+		if (index > parseInt(visibleDates)) { break; } 
 		
 		chartObject.data.labels.unshift(prop);
 		chartObject.data.datasets[3].data.unshift(descendingDates[prop]);
@@ -509,18 +504,3 @@ function fillFooterData() {
 // Fitness (CTL) is a rolling 42 day average of your daily TSS.
 // Fatigue (ATL) is a 7 day average of your TSS that accounts for the workouts you have done recently.
 // Form (TSB) is the balance of TSS equal to yesterday's fitness minus yesterday's fatigue.
-
-
-// fetch(`https://performance-management-chart.firebaseio.com/.json`)
-//   .then(response => response.json())
-//   .then(response => {
-// 	let fireBaseData = Object.values(response);
-
-// 	for (var i=0; i < fireBaseData.length; i++){
-// 		fetch(`https://performance-management-chart.firebaseio.com/users/8APzI8H9ZdYROAZ8NZzH30GWj492/.json`, {
-//         method: 'POST',
-//         type: 'JSON',
-//         body: `{"date": "${fireBaseData[i].date}","tss": "${fireBaseData[i].tss}"}`
-//     })
-// 	}
-// })

@@ -1,4 +1,20 @@
+/*********************************************
+								index.html
+*********************************************/
+#homePage_container {
+	background-image: url('http://d7ab823tjbf2qywyt3grgq63.wpengine.netdna-cdn.com/wp-content/uploads/2012/02/lemond_depleated.jpg');
+	height: 100vh;
+	max-height: 800px;
+}
 
+#firebaseui-auth-container {
+	position: relative;
+	top: 50%;
+}
+
+/*********************************************
+								PMC.html
+*********************************************/
 .fitness {background-color: rgba(100,146,182,0.9);}
 .fatigue {background-color: rgba(242,140,222,0.9);}
 .stressBalance {background-color: rgba(246,192,119,0.9);}
@@ -27,56 +43,56 @@
 
 #headerData {
 	position: relative;
-  width: 250px;
-  margin: auto;
-  height: 50px;
+	width: 250px;
+	margin: auto;
+	height: 50px;
 }
 
 #fatigueHead {
 	font-size: .8rem;
 	position: absolute;
-  width: 65px;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-  border: 1px solid rgb(242,140,222);
-  top: 1px;
-  right: 162px;
+	width: 65px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border: 1px solid rgb(242,140,222);
+	top: 1px;
+	right: 162px;
 }
 
 #fatigueHead span {color: rgb(242,140,222);}
 
 #fatigueHead div {
 	background-color: rgb(242,140,222);
-  padding: 5px;
-  border-bottom-left-radius: 4px;
+	padding: 5px;
+	border-bottom-left-radius: 4px;
 }
 
 #fitnessHead {
 	position: absolute;
-  border-radius: 10px;
-  right: 85px;
-  z-index: 100;
-  top: -5px;
+	border-radius: 10px;
+	right: 85px;
+	z-index: 100;
+	top: -5px;
 	background-color: rgb(100,146,182);
 }
 
 #stressHead {
 	font-size: .8rem;
-  position: absolute;
-  width: 65px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border: 1px solid rgb(246,192,119);
-  top: 1px;
-  right: 23px;
+	position: absolute;
+	width: 65px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border: 1px solid rgb(246,192,119);
+	top: 1px;
+	right: 23px;
 }
 
 #stressHead span {color: rgb(246,192,119);}
 
 #stressHead div {
 	background-color: rgb(246,192,119);
-  padding: 5px;
-  border-bottom-right-radius: 4px;
+	padding: 5px;
+	border-bottom-right-radius: 4px;
 }
 
 #sevenDay {
@@ -96,24 +112,27 @@
 
 .statLeft {
 	width: 20%;
-  font-size: 3.5rem;
-  margin-top: -10px;
-  text-align: right;
+	font-size: 3.5rem;
+	margin-top: -10px;
+	text-align: right;
 }
 
 .statRight{
 	width: 80%;
-  text-align: left;
-  padding-left: 8%;
-  font-size: .9rem;
+	text-align: left;
+	padding-left: 8%;
+	font-size: .9rem;
 }
 
 .statData {
 	font-size: 2rem;
-  margin-top: -5px;
+	margin-top: -5px;
 }
 
 
+/*********************************************
+								Responsive
+*********************************************/
 @media only screen and (max-width: 768px) {
 	#welcome img {
 		height: 35px;
@@ -121,14 +140,14 @@
 
 	#legend {font-size: .7rem}
 
-  #headerData {
-    width: 260px;
-    height: 40px;
+	#headerData {
+		width: 260px;
+		height: 40px;
 	}
 
 	#fitnessHead {
 		font-size: .8rem;
-    right: 100px;
+		right: 100px;
 	}
 
 	#fatigueHead {
@@ -149,12 +168,12 @@
 
 	.statLeft {
 		width: 15%;
-	  font-size: 2rem;
+		font-size: 2rem;
 	}
 
 	.statRight{
 		width: 85%;
-	  font-size: .7rem;
+		font-size: .7rem;
 	}
 	.statData {font-size: 1rem;}
 }

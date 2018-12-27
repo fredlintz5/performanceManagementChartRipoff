@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
 	<!-- Custom StyleSheet -->
-	<link rel="stylesheet" href="./style.css" type="text/css">
+	<link rel="stylesheet" href="style.css" type="text/css">
 	
 	<!-- chart.js and moment.js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
@@ -27,7 +27,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row" style="margin-top: 10px">
+		<div class="row mt-2">
 			<div class="col-2 text-left">
 				<button class="btn btn-secondary btn-sm pull-left" data-toggle="modal" data-target="#addTSSModal">
 					<i class="fas fa-plus" title="Add Data"></i>
@@ -39,14 +39,14 @@
 						<span>-</span>
 						<div>FATIGUE</div>
 					</div>
-				  <div class="fitness p-2" id="fitnessHead">
-				  	<span>-</span>
-				  	<div>FITNESS</div>
-				  </div>
-				  <div id="stressHead">
-				  	<span>-</span>
-				  	<div>FORM</div>
-				  </div>
+					<div class="fitness p-2" id="fitnessHead">
+						<span>-</span>
+						<div>FITNESS</div>
+					</div>
+					<div id="stressHead">
+						<span>-</span>
+						<div>FORM</div>
+					</div>
 				</div>
 			</div>
 			<div class="col-2 text-right" id="welcome">
@@ -68,89 +68,90 @@
 		<div class="row mb-5">
 			<div class="col-sm-4">
 				<div id="sevenDay">
-			    <div class="statLeft"><i class="far fa-calendar-alt"></i></div>
-				  <div class="statRight">
-				  	<div>TSS - Last 7 Days</div>
-				  	<div class="statData"></div>
-				  </div>
+					<div class="statLeft"><i class="far fa-calendar-alt"></i></div>
+					<div class="statRight">
+						<div>TSS - Last 7 Days</div>
+						<div class="statData"></div>
+					</div>
 				</div>
 			</div>
 			<div class="col-sm-4">
-     		<div id="currentFTP">
-	     		<div class="statLeft"><i class="fas fa-bolt"></i></div>
-		      <div class="statRight">
-		      	<div>FTP</div>
-		      	<div class="statData"></div>
-		      </div>
-	     	</div>
+				<div id="currentFTP">
+					<div class="statLeft"><i class="fas fa-bolt"></i></div>
+					<div class="statRight">
+						<div>FTP</div>
+						<div class="statData"></div>
+					</div>
+				</div>
 			</div>
 			<div class="col-sm-4">
-			  <div id="fourteenDay">
-			  	<div class="statLeft"><i class="far fa-calendar-alt"></i></div>
-				  <div class="statRight">
-				  	<div>TSS - Last 14 Days</div>
-				  	<div class="statData"></div>
-				  </div>
+				<div id="fourteenDay">
+					<div class="statLeft"><i class="far fa-calendar-alt"></i></div>
+					<div class="statRight">
+						<div>TSS - Last 14 Days</div>
+						<div class="statData"></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="modal" id="addTSSModal">
-	  <div class="modal-dialog">
-	    <div class="modal-content">
-	      <div class="modal-body">
-      	<button type="button" class="btn close pull-right" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>	
-        </button>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+				<button type="button" class="btn close pull-right" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>	
+				</button>
 				<nav>
-				  <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
-				    <a class="nav-item nav-link active" id="nav-actual-tab" data-toggle="tab" href="#nav-actual" role="tab" aria-controls="nav-actual" aria-selected="true">Actual</a>
-				    <a class="nav-item nav-link" id="nav-projected-tab" data-toggle="tab" href="#nav-projected" role="tab" aria-controls="nav-projected" aria-selected="false">Projected</a>
-				    <a class="nav-item nav-link" id="nav-ftp-tab" data-toggle="tab" href="#nav-ftp" role="tab" aria-controls="nav-ftp" aria-selected="false">FTP</a>
-				  </div>
+					<div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+						<a class="nav-item nav-link active" id="nav-actual-tab" data-toggle="tab" href="#nav-actual" role="tab" aria-controls="nav-actual" aria-selected="true">Actual</a>
+						<a class="nav-item nav-link" id="nav-projected-tab" data-toggle="tab" href="#nav-projected" role="tab" aria-controls="nav-projected" aria-selected="false">Projected</a>
+						<a class="nav-item nav-link" id="nav-ftp-tab" data-toggle="tab" href="#nav-ftp" role="tab" aria-controls="nav-ftp" aria-selected="false">FTP</a>
+					</div>
 				</nav>
 				<div class="tab-content" id="nav-tabContent">
-				  <div class="tab-pane fade show active" id="nav-actual" role="tabpanel" aria-labelledby="nav-actual-tab">
-				  	<div class="form-group row">
-		        	<label for="submittedActualDate" class="col-sm-2 col-form-label">Date</label>
-		        	<div class="col-sm-10">
-		      			<input class="form-control" id="submittedActualDate" type="date">
-		      		</div>
-		      	</div>
-		        <div class="form-group row">
-		        	<label for="submittedActualTSS" class="col-sm-2 col-form-label">TSS</label>
-		        	<div class="col-sm-10">
+					<div class="tab-pane fade show active" id="nav-actual" role="tabpanel" aria-labelledby="nav-actual-tab">
+						<div class="form-group row">
+							<label for="submittedActualDate" class="col-sm-2 col-form-label">Date</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="submittedActualDate" type="date">
+							</div>
+						</div>
+						<div class="form-group row">
+							<label for="submittedActualTSS" class="col-sm-2 col-form-label">TSS</label>
+							<div class="col-sm-10">
 								<input class="form-control" id="submittedActualTSS" type="numeric" placeholder="100">
 							</div>
 						</div>
 						<div class="form-group row">
-		        	<label for="submittedActualIF" class="col-sm-2 col-form-label">IF</label>
-		        	<div class="col-sm-10">
+							<label for="submittedActualIF" class="col-sm-2 col-form-label">IF</label>
+							<div class="col-sm-10">
 								<input class="form-control" id="submittedActualIF" type="numeric" placeholder="0.8" min="0.1" max="2.0" step="0.01">
 							</div>
 						</div>
 						<button class="btn btn-secondary btn-block" id="submitActualTSS" type="button">Submit</button>
 					</div>
-				  <div class="tab-pane fade" id="nav-projected" role="tabpanel" aria-labelledby="nav-projected-tab">
+					<div class="tab-pane fade" id="nav-projected" role="tabpanel" aria-labelledby="nav-projected-tab">
 						<button class="btn btn-secondary btn-block" id="submitProjectedTSS" type="button">View Projected Data</button>
 						<button class="btn btn-outline-danger btn-block" id="clearProjectedTSS" type="button">Clear All Data</button>
-				  </div>
-				  <div class="tab-pane fade" id="nav-ftp" role="tabpanel" aria-labelledby="nav-ftp-tab">
-				  	<div class="form-group row">
-		        	<label for="submittedFTP" class="col-sm-2 col-form-label">FTP</label>
-		        	<div class="col-sm-10">
-		      			<input class="form-control" id="submittedFTP" type="numeric" placeholder="400" step="1" min="1" max="500">
-		      		</div>
-		      	</div>
-		      	<button class="btn btn-secondary btn-block" id="submitFTP" type="button">Update FTP</button>
-				  </div>
+					</div>
+					<div class="tab-pane fade" id="nav-ftp" role="tabpanel" aria-labelledby="nav-ftp-tab">
+						<div class="form-group row">
+							<label for="submittedFTP" class="col-sm-2 col-form-label">FTP</label>
+							<div class="col-sm-10">
+								<input class="form-control" id="submittedFTP" type="numeric" placeholder="400" step="1" min="1" max="500">
+							</div>
+						</div>
+						<button class="btn btn-secondary btn-block" id="submitFTP" type="button">Update FTP</button>
+					</div>
 				</div>
-	    </div>
-	  </div>
+			</div>
+		</div>
 	</div>
 	
 	<script src="firebase_config.js"></script>
+	<script src="firebase_init.js"></script>
 	<script src="pmc.js"></script>
 </body>
 </html>

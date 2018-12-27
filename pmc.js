@@ -144,20 +144,26 @@ createProjectedInputs();
 $('#submitActualTSS').on('click', event => {
 	event.preventDefault();
 
-	let submittedActualTSS = $("#submittedActualTSS").val();
-	let submittedActualDate = $("#submittedActualDate").val();
-	let submittedActualIF = $("#submittedActualIF").val();
-	if (submittedActualTSS === '' || submittedActualDate === '' || submittedActualIF === '') {return}
-	let convertedDate = moment(submittedActualDate).unix();
+	const IF = $("#submittedActualIF").val();
+	const TSS = $("#submittedActualTSS").val();
+	const date = $("#submittedActualDate").val();
 
-	postFirebaseData({date:convertedDate,tss:submittedActualTSS,if:submittedActualIF});
+	if (TSS === '' || date === '' || IF === '') { return }
+
+	postFirebaseData({
+		date: moment(date).unix(),
+		tss: TSS,
+		if: IF
+	});
+
 	if (chartObject.data.datasets[3].data.length > 0) {
 		clearChartData(); 
 		chart.destroy();
 	}
-	getFirebaseData(uid);
 
+	getFirebaseData(uid);
 	clearModalInputs();
+
 	$('#addTSSModal').modal('hide');
 })
 
@@ -170,6 +176,7 @@ $('#submitProjectedTSS').on('click', function() {
 	inputs.each((i, value) => inputArray.push({date: $(value).attr('id'), tss: $(value).val()}));
 	
 	createProjectedChart(inputArray);
+
 	$('#projected').toggleClass('false');
 	$('#addTSSModal').modal('hide');
 })
@@ -177,42 +184,46 @@ $('#submitProjectedTSS').on('click', function() {
 $('#submitFTP').on('click', event => {
 	event.preventDefault();
 
-	let submittedFTP = $("#submittedFTP").val();
-	if (submittedFTP === '') {return};
+	const FTP = $("#submittedFTP").val();
 
-	postFTPData({date:moment().unix(),ftp:submittedFTP});
+	if (FTP === '') { return }
+
+	postFTPData({
+		date: moment().unix(),
+		ftp: FTP
+	});
 
 	clearModalInputs();
+
 	$('#addTSSModal').modal('hide');
-	fillFooterData();
+	$('#currentFTP .statData').empty().text(FTP);
 })
 
 $('#legend span').on('click', function() {
+	const datasets = chartObject.data.datasets;
+
 	switch ($(this).text()) {
 		case 'CTL':
-			chartObject.data.datasets[0].hidden = $(this).hasClass('false') ? true : false;
-			$(this).toggleClass('false');
+			datasets[0].hidden = $(this).hasClass('false') ? true : false;
 			break;
 		case 'ATL':
-			chartObject.data.datasets[1].hidden = $(this).hasClass('false') ? true : false;
-			$(this).toggleClass('false');
+			datasets[1].hidden = $(this).hasClass('false') ? true : false;
 			break;
 		case 'TSB':
-			chartObject.data.datasets[2].hidden = $(this).hasClass('false') ? true : false;
-			$(this).toggleClass('false');
+			datasets[2].hidden = $(this).hasClass('false') ? true : false;
 			break;
 		case 'TSS':
-			chartObject.data.datasets[3].hidden = $(this).hasClass('false') ? true : false;
-			$(this).toggleClass('false');
+			datasets[3].hidden = $(this).hasClass('false') ? true : false;
 			break;
 		case 'Future':
-			chartObject.data.datasets[4].hidden = $(this).hasClass('false') ? true : false;
-			chartObject.data.datasets[5].hidden = $(this).hasClass('false') ? true : false;
-			chartObject.data.datasets[6].hidden = $(this).hasClass('false') ? true : false;
-			chartObject.data.datasets[7].hidden = $(this).hasClass('false') ? true : false;
-			$(this).toggleClass('false');
+			datasets[4].hidden = $(this).hasClass('false') ? true : false;
+			datasets[5].hidden = $(this).hasClass('false') ? true : false;
+			datasets[6].hidden = $(this).hasClass('false') ? true : false;
+			datasets[7].hidden = $(this).hasClass('false') ? true : false;
 			break;
 	}
+	$(this).toggleClass('false');
+
 	chart.update();
 })
 

@@ -139,7 +139,6 @@ let chartObject = {
 };
 
 initApp();
-createProjectedInputs();
 
 $('#submitActualTSS').on('click', event => {
 	event.preventDefault();
@@ -226,6 +225,8 @@ $('#legend span').on('click', function() {
 
 	chart.update();
 })
+
+$('#addTSSModal').on('show', createProjectedInputs());
 
 function createActualChart(descendingDates) {
 	const datasets = chartObject.data.datasets;
@@ -484,7 +485,8 @@ function initApp() {
 }
 
 function signOut() {
-	firebase.auth().signOut()
+	firebase.auth()
+		.signOut()
 		.then(() => window.location.assign('https://fredlintz5.github.io/performanceManagementChartRipoff/'))
 		.catch(error => console.log(error));
 }

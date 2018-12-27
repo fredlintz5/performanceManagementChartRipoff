@@ -218,23 +218,129 @@ $('#legend span').on('click', function() {
 })
 
 function createActualChart() {
-	(function setDateLabels() {
+	const datasets = chartObject.data.datasets;
+
+	// Set date labels on bottom of graph for visible dates
+	(function() {
 		let index = 1;
 
 		for (let prop in descendingDates) {
 			if (index > parseInt(visibleDates)) { break; } 
 			
 			chartObject.data.labels.unshift(prop);
-			chartObject.data.datasets[3].data.unshift(descendingDates[prop]);
-			chartObject.data.datasets[7].data.unshift(descendingDates[prop]);
+			datasets[3].data.unshift(descendingDates[prop]);
+			datasets[7].data.unshift(descendingDates[prop]);
 			
 			index++;
 		}
 	})();
-	calulateGraphData();
+
+	// Calculate CTL, ATL, & TSB values for visible dates
+	(function() {
+		let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
+		let tssArray = Object.values(descendingDates);
+		let arrayLength = tssArray.length;
+		tempArray = Object.values(descendingDates);
+
+		for (var i = 0; i < visibleDates; i++) {
+			ctlTSS = 0;
+			atlTSS = 0;
+
+			for (var j = 0; arrayLength; j++) {
+				tss = parseInt(tssArray[j]);
+
+				if (j === 42) {
+					break;
+				} else {
+					ctlTSS += tss;
+					if (j < 7) {
+						atlTSS += tss;
+					}
+				} 
+			}
+			tssArray.shift();
+
+			CTL = (ctlTSS/42).toFixed(2);
+			ATL = (atlTSS/7).toFixed(2);
+			TSB = (CTL - ATL).toFixed(2);
+			
+			datasets[0].data.unshift(CTL);
+			datasets[1].data.unshift(ATL);
+			datasets[2].data.unshift(TSB);
+		}	
+	})();
+
+	// create chart.js chart object with newly calculated labels and data
 	chart = new Chart(ctx, chartObject);
-	fillHeaderData();
-	fillFooterData();
+	
+	// Set/Increment Header Data with current CTL, ATL, & TSB
+	(function() {
+		const ctl = parseInt(datasets[0].data[datasets[0].data.length - 1]).toFixed();
+		const atl = parseInt(datasets[1].data[datasets[1].data.length - 1]).toFixed();
+		const tsb = parseInt(datasets[2].data[datasets[2].data.length - 1]).toFixed();
+		const ctlInterval = setInterval(ctlIncrementer, 20);
+		const atlInterval = setInterval(atlIncrementer, 15);
+		const tsbInterval = setInterval(tsbIncrementer, 40);
+
+		function ctlIncrementer() {
+			let ctlIndex = 0;
+
+			if (ctlIndex <= ctl) {
+				$('#fitnessHead span').text(ctlIndex);
+				ctlIndex++
+			} else {
+				clearInterval(ctlInterval);
+			}
+		}
+
+		function atlIncrementer() {
+			let atlIndex = 0;
+
+			if (atlIndex <= atl) {
+				$('#fatigueHead span').text(atlIndex);
+				atlIndex++
+			} else {
+				clearInterval(atlInterval);
+			}
+		}
+
+		function tsbIncrementer() {
+			let tsbIndex = 0;
+
+			if (tsb < 0) {
+				if (tsbIndex >= tsb) {
+					$('#stressHead span').text(tsbIndex);
+					tsbIndex--;
+				} else {
+					clearInterval(tsbInterval);
+				}
+			} else {
+				if (tsbIndex <= tsb) {
+					$('#stressHead span').text(tsbIndex);
+					tsbIndex++
+				} else {
+					clearInterval(tsbInterval);
+				}
+			}
+		}
+	})();
+
+	// Set Footer Data with current FTP & past Total TSS Values
+	(function() {
+		const tssArray = datasets[3].data;
+
+		$('#fourteenDay .statData')
+			.empty()
+			.text(tssArray.slice((tssArray.length - 14), tssArray.length)
+			.reduce((a, b) => a + b, 0));
+
+		$('#sevenDay .statData')
+			.empty()
+			.text(tssArray.slice((tssArray.length - 7), tssArray.length)
+			.reduce((a, b) => a + b, 0));
+
+		getFTPData();
+	})();
 }
 
 function createProjectedChart(inputArray) {
@@ -248,48 +354,12 @@ function createProjectedChart(inputArray) {
 	chart.update();
 }
 
-
-
 function setProjectedChartDateLabels(inputArray) {
 	$.each(inputArray, (index,value) => {
 		chartObject.data.labels.push(value.date);
 		chartObject.data.datasets[7].data.push(parseInt(value.tss));
 		tempArray.unshift(parseInt(value.tss));
 	})
-}
-
-function calulateGraphData() {
-	let ctlTSS, atlTSS, CTL, ATL, TSB, tss;
-	let tssArray = Object.values(descendingDates);
-	let arrayLength = tssArray.length;
-	tempArray = Object.values(descendingDates);
-
-	for (var i = 0; i < visibleDates; i++) {
-		ctlTSS = 0;
-		atlTSS = 0;
-
-		for (var j = 0; arrayLength; j++) {
-			tss = parseInt(tssArray[j]);
-
-			if (j === 42) {
-				break;
-			} else {
-				ctlTSS += tss;
-				if (j < 7) {
-					atlTSS += tss;
-				}
-			} 
-		}
-		tssArray.shift();
-
-		CTL = (ctlTSS/42).toFixed(2);
-		ATL = (atlTSS/7).toFixed(2);
-		TSB = (CTL - ATL).toFixed(2);
-		
-		chartObject.data.datasets[0].data.unshift(CTL);
-		chartObject.data.datasets[1].data.unshift(ATL);
-		chartObject.data.datasets[2].data.unshift(TSB);
-	}	
 }
 
 function calulateProjectedGraphData() {
@@ -437,66 +507,4 @@ function createProjectedInputs() {
 
 function clearModalInputs() {
 	$('#addTSSModal :input').val('');
-}
-
-function fillHeaderData() {
-	let ctl = parseInt(chartObject.data.datasets[0].data[chartObject.data.datasets[0].data.length - 1]).toFixed();
-	let atl = parseInt(chartObject.data.datasets[1].data[chartObject.data.datasets[1].data.length - 1]).toFixed();
-	let tsb = parseInt(chartObject.data.datasets[2].data[chartObject.data.datasets[2].data.length - 1]).toFixed();
-	let ctlInterval = setInterval(ctlIncrementer, 20);
-	let atlInterval = setInterval(atlIncrementer, 15);
-	let tsbInterval = setInterval(tsbIncrementer, 40);
-	let ctlIndex = 0;
-	let atlIndex = 0;
-	let tsbIndex = 0;
-
-	function ctlIncrementer() {
-		if (ctlIndex <= ctl) {
-			$('#fitnessHead span').text(ctlIndex);
-			ctlIndex++
-		} else {
-			clearInterval(ctlInterval);
-		}
-	}
-
-	function atlIncrementer() {
-		if (atlIndex <= atl) {
-			$('#fatigueHead span').text(atlIndex);
-			atlIndex++
-		} else {
-			clearInterval(atlInterval);
-		}
-	}
-
-	function tsbIncrementer() {
-		if (tsb < 0) {
-			if (tsbIndex >= tsb) {
-				$('#stressHead span').text(tsbIndex);
-				tsbIndex--;
-			} else {
-				clearInterval(tsbInterval);
-			}
-		} else {
-			if (tsbIndex <= tsb) {
-				$('#stressHead span').text(tsbIndex);
-				tsbIndex++
-			} else {
-				clearInterval(tsbInterval);
-			}
-		}
-	}
-}
-
-function fillFooterData() {
-	let tssArray = chartObject.data.datasets[3].data;
-
-	$('#fourteenDay .statData')
-		.empty()
-		.text(tssArray.slice((tssArray.length - 14), tssArray.length).reduce((a, b) => a + b, 0));
-
-	$('#sevenDay .statData')
-		.empty()
-		.text(tssArray.slice((tssArray.length - 7), tssArray.length).reduce((a, b) => a + b, 0));
-
-	getFTPData();
 }

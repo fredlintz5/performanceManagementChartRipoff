@@ -185,7 +185,7 @@
 	.statData {font-size: 1rem;}
 }
 
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 414px) {
 	#powerGraph-container { height: 70vh; }
 
 	#legend {display: none;}

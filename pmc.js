@@ -446,16 +446,18 @@ function getFTPData() {
 			if (response === null) {
 				alert('Add some FTP data!');
 				return;
-			} else {
-				let date, ftp = 0;
-				// set the latest updated FTP value
-				Object.values(response).forEach((val, i) => {
-					if (parseInt(val.date) > date) {
-						date = val.date;
-						ftp = parseInt(val.ftp);
-					}
-				})
 			}
+
+			let date = 0;
+			let ftp = 0;
+			// set the latest updated FTP value
+			Object.values(response).forEach((val, i) => {
+				if (parseInt(val.date) > date) {
+					date = val.date;
+					ftp = parseInt(val.ftp);
+				}
+			})
+
 			$('#currentFTP .statData').empty().text(ftp);
 		})
 }

@@ -1,0 +1,23 @@
+{
+  "name": "performancemanagementchartripoff",
+  "version": "1.0.0",
+  "description": "My own personal PMC, modeled off of [Training Peaks Software](https://www.trainingpeaks.com/blog/what-is-the-performance-management-chart/). I do personally have a paid Training Peaks account, that provides this same exact information, allowing an athlete to track their Training Stress Score, along with Chronic and Acute Training loads over time, and into the future.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fredlintz5/performanceManagementChartRipoff.git"
+  },
+  "author": "Fred Lintz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fredlintz5/performanceManagementChartRipoff/issues"
+  },
+  "homepage": "https://github.com/fredlintz5/performanceManagementChartRipoff#readme",
+  "dependencies": {
+    "csvtojson": "^2.0.10",
+    "lodash.get": "^4.4.2"
+  }
+}

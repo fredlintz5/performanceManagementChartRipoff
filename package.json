@@ -18,6 +18,8 @@
   "homepage": "https://github.com/fredlintz5/performanceManagementChartRipoff#readme",
   "dependencies": {
     "csvtojson": "^2.0.10",
+    "fit-decoder": "^1.0.5",
+    "fit-file-parser": "^1.9.0",
     "lodash.get": "^4.4.2"
   }
 }

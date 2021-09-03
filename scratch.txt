@@ -1,0 +1,40 @@
+convert .fit to csv
+- ```fredlintz@Freds-MBP FitSDKRelease_21.60.00 % java -jar java/FitCSVTool.jar java/fredTest2.fit```
+
+
+
+TODOS:
+
+BACKEND
+  need to run csvFileToJson on a file with multiple laps (to see/understand how laps are recorded)
+  - Add workout_data object per lap
+
+  architect 'workout' storage in Firebase
+    - method of insert and shape of object to be stored
+    - must allow multiple workouts per day, per user
+    - maybe have a 'workout_slim' (without second by second data)?
+    - maybe have a 'workout_detailed' (with second by second data)?
+
+  - heart_rate && power zones
+    - time spent in zones charts
+
+  - Variability Index
+
+
+FRONTEND
+  - User Settings
+    - metric vs imperial
+    - celsius vs fahrenheit
+    - set FTP
+    - set HR zones
+    - set Power zones
+
+  - Upload Workouts
+  - Dashboard View
+  - Calendar View
+  - Workout View
+  - Planned Workouts
+
+  - Specificity Tags? (Future nice to have) - allow user to tag workout with different tags to highlight the type of workout
+    - Threshold, LSD, Anaerobic, Tabata, Sprints, etc
+    - On dashboards (PMC) user could toggle tags, and see the types of workouts over time/leading up to events (was I training specific to my intended disciplne?)

@@ -2,7 +2,7 @@
 								index.html
 *********************************************/
 #homePage_container {
-	background-image: url('http://d7ab823tjbf2qywyt3grgq63.wpengine.netdna-cdn.com/wp-content/uploads/2012/02/lemond_depleated.jpg');
+	background-image: url('./assets/exhausted.jpeg');
 	height: 100vh;
 	max-height: 800px;
 }

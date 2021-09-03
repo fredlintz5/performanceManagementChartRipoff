@@ -6,9 +6,10 @@ convert .fit to csv
 TODOS:
 
 BACKEND
-  need to run csvFileToJson on a file with multiple laps (to see/understand how laps are recorded)
-  - Add workout_data object per lap
-
+  store every second of lap data
+    - use lat/long to draw maps
+    - use altitude/gain to draw chart of route altitudes
+    - use power, cadence, HR, temp points to plot data to graphs, etc
   architect 'workout' storage in Firebase
     - method of insert and shape of object to be stored
     - must allow multiple workouts per day, per user

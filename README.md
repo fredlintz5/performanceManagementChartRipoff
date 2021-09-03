@@ -11,16 +11,16 @@ Using the user's data I calculate the following:
 * Form (TSB) is the balance of TSS equal to yesterday's fitness minus yesterday's fatigue.
 
 ## Login Screen
-![](readme_images/login.png)
+![](assets/readme_images/login.png)
 
 ## User's PMC
-![](readme_images/pmc.png)
+![](assets/readme_images/pmc.png)
 
 ## FTP - Update
-![](readme_images/ftp_update.png)
+![](assets/readme_images/ftp_update.png)
 
 ## TSS Current/Past - Add
-![](readme_images/tss_add.png)
+![](assets/readme_images/tss_add.png)
 
 ## TSS Future - Add
-![](readme_images/tss_future.png)
+![](assets/readme_images/tss_future.png)
